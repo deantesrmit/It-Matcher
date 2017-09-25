@@ -39,6 +39,7 @@ h1 {
 .buttons a:hover, .btn.btn-primary.btn-md a:hover {
     color: #481d46;
     background-color: #fff;
+    font-weight:bold;
 }
 
 .footer {
