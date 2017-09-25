@@ -18,13 +18,10 @@ public class App {
       return new ModelAndView(viewObjects, "home.ftl");
     }, new FreeMarkerEngine());
 
-    get("/login.ftl", (request, response) -> {
+    get("/login.html", (request, response) -> {
       Map<String, Object> viewObjects = new HashMap<>();
       viewObjects.put("title", "Welcome to IT Matcher");
       return new ModelAndView(viewObjects, "login.ftl");
     }, new FreeMarkerEngine());
-
-
-
   }
 }
