@@ -11,10 +11,20 @@ import static spark.Spark.get;
 public class App {
   public static void main(String[] args) {
     Spark.staticFiles.externalLocation("src/main/resources/public");
+
     get("/", (request, response) -> {
       Map<String, Object> viewObjects = new HashMap<>();
       viewObjects.put("title", "Welcome to IT Matcher");
-      return new ModelAndView(viewObjects, "masterTemplate.ftl");
+      return new ModelAndView(viewObjects, "home.ftl");
     }, new FreeMarkerEngine());
+
+    get("/login.ftl", (request, response) -> {
+      Map<String, Object> viewObjects = new HashMap<>();
+      viewObjects.put("title", "Welcome to IT Matcher");
+      return new ModelAndView(viewObjects, "login.ftl");
+    }, new FreeMarkerEngine());
+
+
+
   }
 }
