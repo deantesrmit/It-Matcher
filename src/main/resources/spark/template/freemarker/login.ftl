@@ -9,7 +9,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <img height="50px" src="IMG/logo.png">
+            <img height="50px" src="img/logo.png">
             <a class="navbar-brand" href="/">Home</a>
             <a class="navbar-brand" href="#">About Us</a>
             <a class="navbar-brand" href="#">Register</a>
@@ -20,7 +20,7 @@
           </divL
         </div>
       </nav>
-<img class = "bannerimg" src="IMG/banner.jpg">
+<img class = "bannerimg" src="img/banner.jpg">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-offset-5 col-md-3">
