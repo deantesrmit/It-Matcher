@@ -11,6 +11,7 @@
     <spark.version>2.2</spark.version>
     <spark.freemarker.version>2.0.0</spark.freemarker.version>
     <freemarker.version>2.3.23</freemarker.version>
+    <hsqldb.version>2.4.0</hsqldb.version>
   </properties>
 
   <dependencies>
@@ -31,6 +32,14 @@
       <groupId>org.freemarker</groupId>
       <artifactId>freemarker</artifactId>
       <version>${freemarker.version}</version>
+    </dependency>
+
+    <!-- hsqldb -->
+    <dependency>
+      <groupId>org.hsqldb.jdbc</groupId>
+      <artifactId>hsqldb</artifactId>
+      <version>2.4.0</version>
+      <scope>test</scope>
     </dependency>
 
     <!-- Slf4j Logging-->
