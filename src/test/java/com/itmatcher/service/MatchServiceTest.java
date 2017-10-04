@@ -2,15 +2,15 @@
  * Copyright (c) 2013-2014 Allianz Australia Ltd. (Allianz) All Rights Reserved.
  * This work is a trade secret of Allianz and unauthorized use or copying is prohibited.
  */
-package service;
+package com.itmatcher.service;
 
-import domain.CriteriaWeight;
-import domain.FreeLancer;
-import domain.Job;
-import domain.Language;
-import domain.ScoredFreeLancer;
-import domain.Skill;
-import domain.WeightedCriteria;
+import com.itmatcher.domain.CriteriaWeight;
+import com.itmatcher.domain.FreeLancer;
+import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Language;
+import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.domain.Skill;
+import com.itmatcher.domain.WeightedCriteria;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,7 +18,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import repository.FreeLancerRepository;
+import com.itmatcher.repository.FreeLancerRepository;
 import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

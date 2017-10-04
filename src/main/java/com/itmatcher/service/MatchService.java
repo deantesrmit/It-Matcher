@@ -1,19 +1,16 @@
-package service;/*
+package com.itmatcher.service;/*
  * Copyright (c) 2013-2014 Allianz Australia Ltd. (Allianz) All Rights Reserved.
  * This work is a trade secret of Allianz and unauthorized use or copying is prohibited.
  */
 
-import domain.FreeLancer;
-import domain.Job;
-import domain.Language;
-import domain.ScoredFreeLancer;
-import domain.Skill;
-import domain.WeightedCriteria;
+import com.itmatcher.domain.*;
+import com.itmatcher.repository.FreeLancerRepository;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import repository.FreeLancerRepository;
-import static domain.CriteriaWeight.REQUIRED;
+
+import static com.itmatcher.domain.CriteriaWeight.REQUIRED;
 
 /**
  * @author Dean Tesoriero

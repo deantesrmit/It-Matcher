@@ -1,0 +1,23 @@
+package com.itmatcher.controller;
+
+import com.itmatcher.util.Path;
+import com.itmatcher.util.ViewUtil;
+import org.springframework.stereotype.Component;
+import spark.Route;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by deant on 10/4/17.
+ */
+@Component
+public class LoginController {
+    public Route serveLoginPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            viewObjects.put("title", "Welcome to IT Matcher");
+            return ViewUtil.render(request, viewObjects, Path.Template.LOGIN);
+        };
+    }
+}

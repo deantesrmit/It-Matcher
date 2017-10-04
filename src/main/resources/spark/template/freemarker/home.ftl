@@ -16,7 +16,7 @@
             <a class="navbar-brand" href="#">How It Works</a>
           </div>
           <div class ="nav navbar-nav navbar-right">
-          <a class="navbar-brand" href="login.html">LOGIN</a>
+          <a class="navbar-brand" href="/login">LOGIN</a>
           </divL
         </div>
       </nav>
