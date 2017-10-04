@@ -50,7 +50,7 @@ h1 {
   color: #fff;
 }
 
-.form-login {
+.form-login, .form-register {
     margin: 20px 0px 20px 0px;
     background-color: #c4c0be;
     padding-top: 30px;
