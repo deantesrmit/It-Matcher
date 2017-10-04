@@ -2,7 +2,7 @@
 
 .containerhome {
     min-height: 800px;
-    background: url("../IMG/background.jpg");
+    background: url("../img/background.jpg");
     background-size: 100% 100%;
     //background-attachment: fixed;
     background-repeat: no-repeat;
@@ -39,6 +39,7 @@ h1 {
 .buttons a:hover, .btn.btn-primary.btn-md a:hover {
     color: #481d46;
     background-color: #fff;
+    font-weight:bold;
 }
 
 .footer {

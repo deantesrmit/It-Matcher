@@ -1,15 +1,23 @@
+<#macro masterTemplate title="Welcome">
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-  <h1 class="title">${title}</h1>
-</div>
+
+<#include "fragment/menu.html">
+
+<#nested />
+
+<#include "fragment/footer.html">
+
 </body>
 </html>
-<script src="js/jquery.min.js"></script>
-<script src="js/poppers.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/poppers.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</#macro>

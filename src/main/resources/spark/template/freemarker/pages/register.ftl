@@ -1,16 +1,6 @@
+<#import "../masterTemplate.ftl" as layout />
 
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/poppers.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</head>
-<body>
-<#include "/menu.html">
-<#include "/banner.html">
+<@layout.masterTemplate title="Register">
 <div class="container">
     <div class="row justify-content-center">
         <div class = "row">
@@ -46,6 +36,4 @@
         </div>
     </div>
 </div>
-<#include "/footer.html">
-</body>
-</html>
+</@layout.masterTemplate>

@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <script src="js/jquery.min.js"></script>
-  <script src="js/poppers.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</head>
-<body>
-<#include "/menu.html">
-<#include "/banner.html">
+<#import "../masterTemplate.ftl" as layout />
+
+<@layout.masterTemplate title="Login">
+<#include "../fragment/banner.html">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-offset-5 col-md-3">
@@ -29,6 +21,4 @@
         </div>
     </div>
 </div>
-<#include "/footer.html">
-</body>
-</html>
+</@layout.masterTemplate>
