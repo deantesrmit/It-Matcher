@@ -10,6 +10,21 @@
 <body>
 <#include "/menu.html">
 <#include "/banner.html">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <img height="50px" src="img/logo.png">
+            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="#">About Us</a>
+            <a class="navbar-brand" href="#">Register</a>
+            <a class="navbar-brand" href="#">How It Works</a>
+          </div>
+          <div class ="nav navbar-nav navbar-right">
+          <a class="navbar-brand" href="#">LOGIN</a>
+          </divL
+        </div>
+      </nav>
+<img class = "bannerimg" src="img/banner.jpg">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-offset-5 col-md-3">
