@@ -27,8 +27,14 @@ public class App {
 
     get("/login.html", (request, response) -> {
       Map<String, Object> viewObjects = new HashMap<>();
-      viewObjects.put("title", "Welcome to IT Matcher");
+      viewObjects.put("title", "Login to IT Matcher");
       return new ModelAndView(viewObjects, "login.ftl");
+    }, new FreeMarkerEngine());
+
+    get("/register.html", (request, response) -> {
+      Map<String, Object> viewObjects = new HashMap<>();
+      viewObjects.put("title", "Register for IT Matcher");
+      return new ModelAndView(viewObjects, "register.ftl");
     }, new FreeMarkerEngine());
   }
 

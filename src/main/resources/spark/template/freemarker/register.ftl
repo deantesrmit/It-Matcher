@@ -33,11 +33,11 @@
                             <option>Job Lister</option>
                             <option>Freelancer</option>
                             </select>
-                            </br> </br>
+                            </br>
                             <div class="wrapper">
                                 <span class="group-btn">
-                                    <a href="#" class="btn btn-primary btn-md">Login<i class="fa fa-sign-in"></i></a>
-                                    <p><br/>Forgot my password</p>
+                                    <a href="#" class="btn btn-primary btn-md">Register<i class="fa fa-sign-in"></i></a>
+
                                 </span>
                             </div>
                         </div>
