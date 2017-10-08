@@ -51,7 +51,7 @@ h1 {
   color: #fff;
 }
 
-.form-login, .form-register {
+.form-login, .form-register, .createjob {
     margin: 20px 0px 20px 0px;
     background-color: #c4c0be;
     padding-top: 30px;
@@ -61,7 +61,9 @@ h1 {
     border-radius: 15px;
     border-color:#481d46;
     border-width: 5px;
-
+}
+.form label {
+    font-style: bold;
 }
 
 .wrapper {
@@ -69,11 +71,22 @@ h1 {
 }
 
 .bannerimg {
-padding-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 #login {
-text-align: center !important;
+    text-align: center !important;
 }
 
+.matches {
+    text-align: left;
+}
 
+#heading {
+    background-color: #c4c0be;
+}
+
+#heading, .row.listings {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

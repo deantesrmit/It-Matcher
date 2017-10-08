@@ -2,7 +2,9 @@ package com.itmatcher.config;
 
 import com.itmatcher.controller.IndexController;
 import com.itmatcher.controller.LoginController;
+import com.itmatcher.controller.PageController;
 import com.itmatcher.controller.RegisterController;
+import com.itmatcher.controller.PageController;
 import com.itmatcher.filters.Filters;
 import com.itmatcher.util.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class WebConfig {
     IndexController indexController;
     @Autowired
     RegisterController registerController;
+    @Autowired
+    PageController pageController;
 
     public void initApplication() {
         Spark.staticFiles.externalLocation("src/main/resources/public");
@@ -40,5 +44,8 @@ public class WebConfig {
         get(Path.Web.INDEX, indexController.serveIndexPage());
         get(Path.Web.LOGIN, loginController.serveLoginPage());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
+        get(Path.Web.CREATE_JOB, pageController.serveJobPage());
+        get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
+
     }
 }
