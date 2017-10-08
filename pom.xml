@@ -36,13 +36,17 @@
       <version>${freemarker.version}</version>
     </dependency>
 
-    <!--&lt;!&ndash; hsqldb &ndash;&gt;-->
-    <!--<dependency>-->
-      <!--<groupId>org.hsqldb.jdbc</groupId>-->
-      <!--<artifactId>hsqldb</artifactId>-->
-      <!--<version>2.4.0</version>-->
-      <!--<scope>test</scope>-->
-    <!--</dependency>-->
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>23.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.mindrot</groupId>
+      <artifactId>jbcrypt</artifactId>
+      <version>0.3m</version>
+    </dependency>
 
     <!-- Slf4j Logging-->
     <dependency>

@@ -1,14 +1,19 @@
 package com.itmatcher.domain;
 
+import com.itmatcher.type.AccountType;
+
 /**
  * Created by deant on 10/5/17.
  */
 public class User {
     private long id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
+    private String salt;
+    private String accountType;
 
     public long getId() {
         return id;
@@ -48,5 +53,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 }
