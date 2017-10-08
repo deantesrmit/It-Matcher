@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public class ViewUtil {
     public static String render(Request request, Map<String, Object> model, String templatePath) {
+        model.put("userDetails", RequestUtil.getSessionCurrentUser(request));
         return new FreeMarkerEngine().render(new ModelAndView(model, templatePath));
     }
 

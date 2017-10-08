@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<#include "fragment/menu.html">
+<#include "fragment/menu.ftl">
 
 <#nested />
 

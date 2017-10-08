@@ -2,7 +2,7 @@ package com.itmatcher.config;
 
 import com.itmatcher.controller.IndexController;
 import com.itmatcher.controller.LoginController;
-import com.itmatcher.controller.PageController;
+import com.itmatcher.controller.ProfileController;
 import com.itmatcher.controller.RegisterController;
 import com.itmatcher.controller.PageController;
 import com.itmatcher.filters.Filters;
@@ -13,6 +13,7 @@ import spark.Spark;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
+import static spark.Spark.post;
 
 /**
  * Created by deant on 10/4/17.
@@ -28,7 +29,10 @@ public class WebConfig {
     @Autowired
     RegisterController registerController;
     @Autowired
+    ProfileController profileController;
+    @Autowired
     PageController pageController;
+
 
     public void initApplication() {
         Spark.staticFiles.externalLocation("src/main/resources/public");
@@ -43,9 +47,11 @@ public class WebConfig {
     private void initRoutes() {
         get(Path.Web.INDEX, indexController.serveIndexPage());
         get(Path.Web.LOGIN, loginController.serveLoginPage());
+        post(Path.Web.LOGIN, loginController.handleLoginPost());
+        post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
+        get(Path.Web.PROFILE, profileController.serveProfilePage());
         get(Path.Web.CREATE_JOB, pageController.serveJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
-
     }
 }
