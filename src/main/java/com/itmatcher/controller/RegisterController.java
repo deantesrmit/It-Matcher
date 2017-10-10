@@ -61,7 +61,6 @@ public class RegisterController {
         };
     }
 
-    //Use this method set all fields from form
     private User populateUser(Request request) {
         User user = new User();
         String username = getQueryParam(request, "username");
