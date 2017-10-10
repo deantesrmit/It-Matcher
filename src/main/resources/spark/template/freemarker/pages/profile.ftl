@@ -36,7 +36,10 @@
                         Phone 1: <br>
                         Phone 2: <br>
                         Email Address: <br>
-                        Location: <br>
+                        Address: <br>
+                        State: <br>
+                        Suburb: <br>
+                        Post Code: <br>
                         Education History: <br>
                         Bio: <br>
                         <button class="btn btn-success">Edit User Information</button>
