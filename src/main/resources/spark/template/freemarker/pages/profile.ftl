@@ -19,11 +19,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>Applied Jobs</strong></h4>
+                        <h4><strong>Auto-matched Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull applied jobs from database -->
-                        You currently have no Applied Jobs.
+                        You currently have no Auto-matched Jobs.
                     </div>
                 </div>
             </div>
