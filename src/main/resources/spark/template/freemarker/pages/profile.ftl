@@ -33,6 +33,7 @@
                         <h4><strong>User Information</strong></h4>
                     </div>
                     <div class="panel-body">
+                        <!-- Edit this to pull user info from database -->
                         Phone 1: <br>
                         Phone 2: <br>
                         Email Address: <br>
