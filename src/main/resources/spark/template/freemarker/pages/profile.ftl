@@ -1,9 +1,8 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Profile">
-<div class="containerhome">
+<#include "../fragment/banner.html">
     <div class="container">
-
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>

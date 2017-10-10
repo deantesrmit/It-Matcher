@@ -1,9 +1,8 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Profile">
-<div class="containerhome">
-    <div class="container">
-
+<#include "../fragment/banner.html">
+<div class="container">
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>
@@ -48,8 +47,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
 </div>
 
 

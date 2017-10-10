@@ -1,9 +1,8 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Login">
-<#--<#include "../fragment/banner.html">-->
-<div class="containerhome">
-    <div class="container">
+<#include "../fragment/banner.html">
+<div class="container">
     <div class="row justify-content-center">
         <div class="col-md-offset-5 col-md-4">
             <h4 id="login">Login to IT Matcher</h4>
@@ -23,6 +22,5 @@
             </form>
         </div>
     </div>
-</div>
 </div>
 </@layout.masterTemplate>

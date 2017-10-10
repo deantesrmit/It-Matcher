@@ -1,7 +1,7 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Login">
-<div class="containerhome">
+<#include "../fragment/banner.html">
     <div class="container">
         <h4 id="login">View Your Matches Below</h4>
         <br/>
@@ -77,6 +77,5 @@
                 </div>
             </div>
         </div>
-    </div>
 </div>
 </@layout.masterTemplate>
