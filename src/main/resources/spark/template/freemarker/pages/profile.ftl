@@ -1,16 +1,52 @@
 <#import "../masterTemplate.ftl" as layout />
 
-<@layout.masterTemplate title="Register">
-<div class="container">
-    <div class="row justify-content-center">
-        <div class = "row">
-            <div class = "col"> </div>
+<@layout.masterTemplate title="Profile">
+<div class="containerhome">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class = "row">
+                <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
-                    <h4>Profile</h4>
+                    <!-- Edit this to pull Freelancer name from database -->
+                    <h4>Freelancer Profile</h4>
                 </div>
-            <div class = "col"></div>
+                <div class = "col"></div>
+            </div>
         </div>
+
+        <div class="row pad-top">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><strong>Applied Jobs</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Edit this to pull applied jobs from database -->
+                        You currently have no Applied Jobs.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><strong>User Information</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        Phone 1: <br>
+                        Phone 2: <br>
+                        Email Address: <br>
+                        Location: <br>
+                        Education History: <br>
+                        Bio: <br>
+                        <button class="btn btn-success">Edit User Information</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
-<#include "../fragment/banner.html">
+
+
 </@layout.masterTemplate>
