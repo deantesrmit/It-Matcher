@@ -48,9 +48,7 @@ public class RegisterController {
                 model.put("error", "Please enter a username and password to register.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
             }
-
             else {
-
                 try {
                     User user = new User();
                     user.setUsername(username);
