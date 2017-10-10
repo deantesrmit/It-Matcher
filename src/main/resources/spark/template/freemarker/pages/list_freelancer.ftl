@@ -7,6 +7,7 @@
     <h1>Matched Freelancers</h1>
     <br/>
     <br/>
+    <br/>
     <h2 class="lead"><strong class="text-danger">3</strong> IT proffesionals were found for the search for <strong class="text-danger">building a website</strong></h2>
     <br/>
     <br/>
@@ -14,7 +15,7 @@
     <section class="col-xs-12 col-sm-6 col-md-12">
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="no photo" class="thumbnail"><img src="../img/no-picutre.jpg" alt="NO PHOTO" /></a>
+                <a href="#" title="no photo" class="thumbnail"><img src="../img/no-photo.jpg" alt="NO PHOTO" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
@@ -33,7 +34,7 @@
 
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="../img/no-picutre.jpg" alt="NO PHOTO" /></a>
+                <a href="#" title="no photo" class="thumbnail"><img src="../img/no-photo.jpg" alt="NO PHOTO" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
@@ -52,7 +53,7 @@
 
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="../img/no-picutre.jpg" alt="NO PHOTO" /></a>
+                <a href="#" title="no photo" class="thumbnail"><img src="../img/no-photo.jpg" alt="NO PHOTO" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
