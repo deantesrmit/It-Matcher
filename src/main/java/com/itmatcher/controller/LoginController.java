@@ -48,13 +48,19 @@ public class LoginController {
                 return ViewUtil.render(request, model, Path.Template.LOGIN);
             }
             request.session().attribute("currentUser", userRepository.getUserByUserName(username).get());
-            final String sessionRedirect = getSessionRedirect(request);
-            if (!isNullOrEmpty(sessionRedirect)) {
-                clearSessionRedirect(request);
-                response.redirect(sessionRedirect);
-            }
+
+            handleRedirect(request, response);
+
             return ViewUtil.render(request, model, Path.Template.INDEX);
         };
+    }
+
+    private void handleRedirect(Request request, Response response) {
+        final String sessionRedirect = getSessionRedirect(request);
+        if (!isNullOrEmpty(sessionRedirect)) {
+            clearSessionRedirect(request);
+            response.redirect(sessionRedirect);
+        }
     }
 
     public Route handleLogoutPost() {
