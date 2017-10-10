@@ -8,28 +8,30 @@
                 <div class = "col"> </div>
                     <div class = "col-12 col-md-auto">
                         <h4 id ="login">Register for IT Matcher</h4>
-                            <div class="form-register">
-                                <input type="text" id="email" class="form-control input-sm chat-input" placeholder="Email Address" />
+                            <form class="form-register"  action="/register/" method="POST">
+                                <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Username Address" />
                                 </br>
-                                <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+                                <input type="text" name="email" class="form-control input-sm chat-input" placeholder="Email Address" />
                                 </br>
-                                <input type="text" id="firstName" class="form-control input-sm chat-input" placeholder="First Name" />
+                                <input type="password" name="password" class="form-control input-sm chat-input" placeholder="Password" />
                                 </br>
-                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" />
+                                <input type="text" name="first" class="form-control input-sm chat-input" placeholder="First Name" />
+                                </br>
+                                <input type="text" name="lastname" class="form-control input-sm chat-input" placeholder="Last Name" />
                                 </br>
                                 <label for="registerType">Registration Type</label>
-                                <select class ="form-control" id = "registrationType">
-                                <option>Job Lister</option>
-                                <option>Freelancer</option>
+                                <select class ="form-control" name="registrationType">
+                                    <option value="FREELANCER">Job Lister</option>
+                                    <option value="POSTER">Freelancer</option>
                                 </select>
                                 </br>
                                 <div class="wrapper">
                                     <span class="group-btn">
-                                        <a href="#" class="btn btn-primary btn-md">Register<i class="fa fa-sign-in"></i></a>
+                                        <button href="#" class="btn btn-primary btn-md">Register<i class="fa fa-sign-in"></i></button>
 
                                     </span>
                                 </div>
-                            </div>
+                            </form>
                     </div>
                 <div class = "col"></div>
             </div>

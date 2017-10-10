@@ -33,13 +33,12 @@ public class AuthService {
         return hashedPassword.equals(user.getPassword());
     }
 
-    public void registerUser(User user, String password) {
+    public User registerUser(User user, String password) {
         //Check if exists. Should return error when register page exists
-        if(userRepository.getUserByUserName(user.getUsername()).isPresent()) return;
-
         String salt = BCrypt.gensalt();
         user.setSalt(salt);
         user.setPassword(BCrypt.hashpw(password, salt));
         userRepository.registerUser(user);
+        return userRepository.getUserByUserName(user.getUsername()).get();
     }
 }
