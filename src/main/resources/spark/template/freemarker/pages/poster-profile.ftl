@@ -18,11 +18,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>Your Jobs</strong></h4>
+                        <h4><strong>List of your Jobs/Applicants</strong></h4>
                     </div>
                     <div class="panel-body">
-                        <!-- Edit this to pull listed jobs from database -->
-                        You currently have no listed Jobs.
+                        <!-- Edit this to pull applied jobs from database -->
+                        <a href="" <button class="btn btn-success">Your Jobs</button></a>
                     </div>
                 </div>
             </div>
