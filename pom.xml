@@ -137,7 +137,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>App</mainClass>
+              <mainClass>com.itmatcher.App</mainClass>
             </manifest>
           </archive>
         </configuration>

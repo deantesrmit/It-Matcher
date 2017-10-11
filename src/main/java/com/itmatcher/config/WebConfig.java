@@ -46,12 +46,18 @@ public class WebConfig {
 
     private void initRoutes() {
         get(Path.Web.INDEX, indexController.serveIndexPage());
+
         get(Path.Web.LOGIN, loginController.serveLoginPage());
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
+
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
+
         get(Path.Web.PROFILE, profileController.serveProfilePage());
+
         get(Path.Web.CREATE_JOB, pageController.serveJobPage());
+
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
+
     }
 }

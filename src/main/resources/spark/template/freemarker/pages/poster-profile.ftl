@@ -2,13 +2,13 @@
 
 <@layout.masterTemplate title="Profile">
 <#include "../fragment/banner.html">
-    <div class="container">
+<div class="container">
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
                     <!-- Edit this to pull Freelancer name from database -->
-                    <h4>Freelancer Profile</h4>
+                    <h4>Job Poster Profile</h4>
                 </div>
                 <div class = "col"></div>
             </div>
@@ -18,11 +18,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>List of auto-matched Jobs</strong></h4>
+                        <h4><strong>Your Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
-                        <!-- Edit this to pull applied jobs from database -->
-                        <button class="btn btn-success">Auto-matched Jobs</button>
+                        <!-- Edit this to pull listed jobs from database -->
+                        You currently have no listed Jobs.
                     </div>
                 </div>
             </div>
@@ -47,8 +47,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
 </div>
 
 
