@@ -3,9 +3,9 @@
         <div class="navbar-header">
             <img height="50px" src="/img/logo.png">
             <a class="navbar-brand" href="/">Home</a>
-            <a class="navbar-brand" href="#">About Us</a>
+            <a class="navbar-brand" href="/aboutus">About Us</a>
             <a class="navbar-brand" href="/register/">Register</a>
-            <a class="navbar-brand" href="#">How It Works</a>
+            <a class="navbar-brand" href="/howitworks">How It Works</a>
             <a class="navbar-brand" href="/profile/">Profile</a>
         </div>
         <#if !userDetails??>
