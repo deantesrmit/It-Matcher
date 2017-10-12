@@ -22,7 +22,7 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull applied jobs from database -->
-                        <button class="btn btn-success">Auto-matched Jobs</button>
+                        <a href="/view_matches" <button class="btn btn-success">Auto-matched Jobs</button></a>
                     </div>
                 </div>
             </div>
