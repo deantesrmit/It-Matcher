@@ -59,5 +59,9 @@ public class WebConfig {
 
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
 
+        get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
+
+        get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
+
     }
 }
