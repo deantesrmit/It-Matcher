@@ -1,9 +1,8 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Profile">
-<div class="containerhome">
-    <div class="container">
-
+<#include "../fragment/banner.html">
+<div class="container">
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>
@@ -19,11 +18,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>Your Jobs</strong></h4>
+                        <h4><strong>List of your Jobs/Applicants</strong></h4>
                     </div>
                     <div class="panel-body">
-                        <!-- Edit this to pull listed jobs from database -->
-                        You currently have no listed Jobs.
+                        <!-- Edit this to pull applied jobs from database -->
+                        <a href="" <button class="btn btn-success">Your Jobs</button></a>
                     </div>
                 </div>
             </div>
@@ -48,8 +47,6 @@
                 </div>
             </div>
         </div>
-
-    </div>
 </div>
 
 

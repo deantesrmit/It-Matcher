@@ -1,9 +1,8 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="Profile">
-<div class="containerhome">
+<#include "../fragment/banner.html">
     <div class="container">
-
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>
@@ -19,11 +18,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>Auto-matched Jobs</strong></h4>
+                        <h4><strong>List of auto-matched Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull applied jobs from database -->
-                        You currently have no Auto-matched Jobs.
+                        <a href="/view_matches" <button class="btn btn-success">Auto-matched Jobs</button></a>
                     </div>
                 </div>
             </div>

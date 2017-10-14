@@ -25,6 +25,18 @@ public class PageController {
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }
+    public Route serveAboutUsPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.ABOUT_US);
+        };
+    }
+    public Route serveHowItWorksPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.HOW_IT_WORKS);
+        };
+    }
 
 
 }

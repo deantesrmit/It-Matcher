@@ -1,7 +1,7 @@
 <#import "../masterTemplate.ftl" as layout />
 
 <@layout.masterTemplate title="User Information">
-<div class="containerhome">
+<#include "../fragment/banner.html">
     <div class="container">
 
         <div class="row">
@@ -83,10 +83,6 @@
                 </div>
             </div>
         </div>
-
-
-
-    </div>
 </div>
 
 
