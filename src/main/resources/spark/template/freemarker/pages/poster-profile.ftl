@@ -22,7 +22,7 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull applied jobs from database -->
-                        <a href="" <button class="btn btn-success">Your Jobs</button></a>
+                        <a href="/viewFreelancers/1/" <button class="btn btn-success">Your Jobs</button></a>
                     </div>
                 </div>
             </div>

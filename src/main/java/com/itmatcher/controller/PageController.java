@@ -1,11 +1,17 @@
 package com.itmatcher.controller;
 
+import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.repository.FreeLancerRepository;
+import com.itmatcher.repository.SkillRepository;
+import com.itmatcher.service.MatchService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.ViewUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Route;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,7 +19,10 @@ import java.util.Map;
  */
 @Component
 public class PageController {
-    public Route serveJobPage() {
+    @Autowired
+    MatchService matchService;
+
+    public Route serveCreateJobPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
@@ -23,6 +32,26 @@ public class PageController {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
+        };
+    }
+
+    public Route serveFreelancersPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            viewObjects.put("freelancers", matchService.findFreelancersForJob(null));
+            return ViewUtil.render(request, viewObjects, Path.Template.VIEW_FREELANCER);
+        };
+    }
+    public Route serveAboutUsPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.ABOUT_US);
+        };
+    }
+    public Route serveHowItWorksPage() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.HOW_IT_WORKS);
         };
     }
 

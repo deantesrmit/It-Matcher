@@ -7,9 +7,9 @@
     //background-attachment: fixed;
     background-repeat: no-repeat;
 }
-
 .containerhome .container {
-padding-top: 50px;
+    padding-top: 50px;
+    min-height: 720px;
 }
 
 .companyh1 {
@@ -67,6 +67,7 @@ h1 {
 
 .wrapper {
     text-align: center;
+    margin-top: 20px;
 }
 
 .bannerimg {
@@ -93,7 +94,16 @@ h1 {
 .pad-top {
     padding-top: 20px;
     padding-bottom: 20px;
+
 }
+
+input:valid,
+input:in-range {
+    background:hsl(120, 50%, 90%);
+    border-color:hsl(120, 50%, 50%);
+}
+
+
 /*style for listing_freelancer page*/
 .search-result .thumbnail { border-radius: 0 !important; }
 .search-result:first-child { margin-top: 0 !important; }

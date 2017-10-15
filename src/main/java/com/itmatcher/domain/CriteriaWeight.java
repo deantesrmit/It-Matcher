@@ -8,7 +8,7 @@ package com.itmatcher.domain;
  * @author Dean Tesoriero
  */
 public enum CriteriaWeight {
-  REQUIRED(0),
+  REQUIRED(10),
   HIGH_PREFERENCE(5),
   LOW_PREFERENCE(1);
 

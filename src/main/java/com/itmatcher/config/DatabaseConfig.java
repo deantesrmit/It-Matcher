@@ -19,7 +19,9 @@ public class DatabaseConfig {
         EmbeddedDatabase db = builder
                 .setType(EmbeddedDatabaseType.HSQL)
                 .addScript("sql/create-db.sql")
-                .addScript("sql/insert-data.sql")
+                .addScript("sql/insert-user-data.sql")
+                .addScript("sql/insert-profile-data.sql")
+                .addScript("sql/insert-job-data.sql")
                 .build();
         return db;
     }

@@ -12,13 +12,18 @@
                         ${error}
                     </div>
                 </#if>
-                <input type="text" id="username" name="username" class="form-control input-sm chat-input" placeholder="username"/>
-                </br>
-                <input type="password" id="password" name="password" class="form-control input-sm chat-input" placeholder="password"/>
-                </br>
-                <div class="wrapper">
-                    <input type="submit" class="btn btn-primary btn-md" value="login" />
-                </div>
+
+
+
+                        <input type="text" id="username" name="username" class="form-control input-sm chat-input" placeholder="username" required/>
+
+                        <input type="password" id="password" name="password" class="form-control input-sm chat-input" placeholder="password" required/>
+
+
+
+                       <div class="wrapper">
+                           <input type="submit" class="btn btn-primary btn-md" value="login" />
+                       </div>
             </form>
         </div>
     </div>
