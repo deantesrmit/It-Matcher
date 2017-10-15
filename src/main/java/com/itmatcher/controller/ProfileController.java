@@ -32,5 +32,13 @@ public class ProfileController {
             return Path.Template.POSTER_PROFILE;
         }
     }
+
+    public Route serveEditProfilePage() {
+        return (request, response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
+                Map<String, Object> viewObjects = new HashMap<>();
+                return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
+            };
+    }
 }
 
