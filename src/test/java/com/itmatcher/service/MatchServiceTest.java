@@ -39,7 +39,7 @@ public class MatchServiceTest {
 
   @Test
   public void findOneFreeLancerWithRequiredJava(){
-    when(lancerRepository.findFreeLancersByRequired(any(),any())).thenReturn(asList(mockFreeLancer("JAVA", "Sql")));
+//    when(lancerRepository.findFreeLancersByRequired(any(),any())).thenReturn(asList(mockFreeLancer("JAVA", "Sql")));
 
     Job job = new Job();
     job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
