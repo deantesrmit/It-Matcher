@@ -1,8 +1,11 @@
--- Insert Two Freelancer Records
+-- Insert Three Freelancer Records
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
   VALUES (1, 'Free','lancer','freelancer', 'freelancer@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
   VALUES (3, 'Free','lancer2','freelancer2', 'freelancer2@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
+  VALUES (5, 'Free','lancer3','freelancer3', 'freelancer3@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+
 
 -- Insert Two Job Poster Records
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
@@ -21,7 +24,7 @@ INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, ac
 -- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (5, 1, 1, 1, 1, 1, 1);
 -- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (6, 1, 1, 1, 1, 1, 1);
 
--- Insert One Job Record
+-- Insert Three Job Records
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (100, Null, 2, 'Job No 1 Description', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
@@ -29,5 +32,11 @@ INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, job
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (102, Null, 4, 'Job No 3 Description', 0, Null, 0, Null, 0);
 
--- INSERT INTO tblFreelancer(freelancerID, userID, bio)
---   VALUES (1, 1, 'I like to write programs');
+-- Insert a Profile for a Freelancer
+INSERT INTO tblProfile(profileID, userID, location, address1, suburb, state, postCode, bio, education, workExperience)
+  VALUES (100, 1, 'Palm Cove', '22 Test Street', 'Testville', 'QLD', '4444', 'I like to write programs', 'Bach', '5 Years');
+INSERT INTO tblProfile(profileID, userID, location, address1, suburb, state, postCode, bio, education, workExperience)
+  VALUES (101, 5, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', 'Bach', '2 Years');
+
+
+
