@@ -23,7 +23,11 @@ INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, ac
 
 -- Insert One Job Record
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (100, Null, 2, 'Job No 1 Description', 0, Null, 0, Null, 0)
+  VALUES (100, Null, 2, 'Job No 1 Description', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (101, Null, 2, 'Job No 2 Description', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (102, Null, 4, 'Job No 3 Description', 0, Null, 0, Null, 0);
 
 -- INSERT INTO tblFreelancer(freelancerID, userID, bio)
 --   VALUES (1, 1, 'I like to write programs');
