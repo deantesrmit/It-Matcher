@@ -1,6 +1,8 @@
 package com.itmatcher.util;
 
+import com.google.common.base.Strings;
 import com.itmatcher.domain.User;
+import com.itmatcher.type.AccountType;
 import spark.Request;
 import spark.Response;
 
@@ -38,5 +40,12 @@ public class RequestUtil {
             setSessionRedirect(request, request.pathInfo());
             response.redirect(Path.Web.LOGIN);
         }
+    }
+
+    public static AccountType getAccountType(Request request) {
+        final String accountType = getSessionCurrentUser(request).getAccountType();
+        if(!Strings.isNullOrEmpty(accountType))
+            return AccountType.valueOf(accountType);
+        throw new RuntimeException("Not logged in");
     }
 }

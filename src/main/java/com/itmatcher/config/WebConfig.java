@@ -50,17 +50,14 @@ public class WebConfig {
         get(Path.Web.LOGIN, loginController.serveLoginPage());
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
-
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
 
         get(Path.Web.PROFILE, profileController.serveProfilePage());
-
-        get(Path.Web.CREATE_JOB, pageController.serveJobPage());
-
+        get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
+        get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
 
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
-
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
 
     }
