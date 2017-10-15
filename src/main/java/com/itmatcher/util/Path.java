@@ -11,7 +11,9 @@ public class Path {
         public static final String REGISTER = "/register/";
         public static final String PROFILE = "/profile/";
         public static final String CREATE_JOB ="/create_job/";
-        public static final String VIEW_MATCHES ="view_matches/";
+        public static final String VIEW_MATCHES ="/view_matches/";
+        public static final String ABOUT_US ="/aboutus/";
+        public static final String HOW_IT_WORKS ="/howitworks/";
 
     }
 
@@ -21,7 +23,9 @@ public class Path {
         public final static String REGISTER = "/pages/register.ftl";
         public final static String PROFILE = "/pages/profile.ftl";
         public final static String CREATE_JOB = "/pages/create_job.ftl";
-        public final static String VIEW_MATCHES = "pages/view_matches.ftl";
+        public final static String VIEW_MATCHES = "/pages/view_matches.ftl";
+        public final static String ABOUT_US = "/pages/aboutus.ftl";
+        public final static String HOW_IT_WORKS = "/pages/howitworks.ftl";
 
     }
 
