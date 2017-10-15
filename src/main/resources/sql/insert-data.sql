@@ -16,13 +16,17 @@ INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, ac
 -- INSERT INTO tblUser(userID, firstName, lastName, email, password, userType) VALUES (7, 'Daffy','Duck','daffy.duck@acme.com','dd',2);
 -- INSERT INTO tblUser(userID, firstName, lastName, email, password, userType) VALUES (8, 'Elma','Fudd','elma.fudd@acme.com','ef',2);
 
--- Insert some skills
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (1, 1, 1, 1, 1, 1, 1);
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (2, 1, 1, 1, 1, 1, 1);
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (3, 1, 1, 1, 1, 1, 1);
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (4, 1, 1, 1, 1, 1, 1);
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (5, 1, 1, 1, 1, 1, 1);
--- INSERT INTO tblSkills(skillsID, skill1, skill2, skill3, skill4, skill5, skill6) VALUES (6, 1, 1, 1, 1, 1, 1);
+-- Insert some skills for three Freelancers
+INSERT INTO tblSkills(skillID, freelancerID, jobsID, skill1, skill2, skill3, skill4, skill5, skill6, skill7, skill8, skill9, skill10)
+  VALUES (1, 1, Null, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+INSERT INTO tblSkills(skillID, freelancerID, jobsID, skill1, skill2, skill3, skill4, skill5, skill6, skill7, skill8, skill9, skill10)
+  VALUES (2, 3, Null, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1);
+INSERT INTO tblSkills(skillID, freelancerID, jobsID, skill1, skill2, skill3, skill4, skill5, skill6, skill7, skill8, skill9, skill10)
+  VALUES (3, 5, Null, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0);
+-- Insert some skills required for Job 100
+INSERT INTO tblSkills(skillID, freelancerID, jobsID, skill1, skill2, skill3, skill4, skill5, skill6, skill7, skill8, skill9, skill10)
+  VALUES (4, Null, 100, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1);
+
 
 -- Insert Three Job Records
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobDesc, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
