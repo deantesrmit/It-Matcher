@@ -12,6 +12,20 @@
     min-height: 720px;
 }
 
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+    @media }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+
+}
+
 .companyh1 {
     font-family: 'Candal', sans-serif;
     font-size: 75px;

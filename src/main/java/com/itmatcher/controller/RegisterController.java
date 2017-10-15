@@ -48,6 +48,8 @@ public class RegisterController {
             String password = getQueryParam(request, "password");
             String firstName = getQueryParam(request,"firstName");
             String lastName = getQueryParam(request,"lastName");
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
 
             if (isNullOrEmpty(user.getUsername()) || isNullOrEmpty(password)) {
                 model.put("error", "Please enter a username and password to register.");
@@ -57,9 +59,6 @@ public class RegisterController {
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
             } else {
                 final User newUser = authService.registerUser(user, password);
-                //Sets the new users first name and last name after registration
-                newUser.setFirstName(firstName);
-                newUser.setLastName(lastName);
                 request.session().attribute("currentUser", newUser);
                 return ViewUtil.render(request, model, Path.Template.PROFILE);
             }
