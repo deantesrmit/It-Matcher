@@ -83,8 +83,6 @@ public class FreeLancerRepository {
     params.put("education", profile.getEducation());
     params.put("bio", profile.getBio());
 
-
-    params.put("userID", userID);
     String userSql = "SELECT id FROM TblProfile WHERE userID:=userID";
     List<FreeLancer> result = template.query(userSql, params, userMapper);
 
