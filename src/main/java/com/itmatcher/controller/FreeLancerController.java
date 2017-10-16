@@ -7,6 +7,7 @@ import com.itmatcher.domain.FreeLancer;
 import com.itmatcher.repository.FreeLancerRepository;
 import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
+import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 import org.springframework.stereotype.Component;
 import spark.Request;
@@ -38,7 +39,10 @@ public class FreeLancerController {
     public Route handleEditProfile() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
-            final String userId = getQueryParam(request, "userID");
+            final User user = RequestUtil.getSessionCurrentUser(request);
+            Long userID = user.getId();
+
+
 
             return null;
         };

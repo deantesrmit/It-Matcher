@@ -13,6 +13,11 @@ import java.util.List;
 public class FreeLancer {
   private long id;
   private long userID;
+  private String location;
+  private String address1;
+  private String suburb;
+  private String state;
+  private String postCode;
   private List<Language> languages;
   private List<Skill> skills;
   private String experience;
@@ -20,12 +25,12 @@ public class FreeLancer {
   private String name;
   private String bio;
 
+
   public List<Language> getLanguages() {
     if(languages == null)
       languages = new ArrayList<>();
     return languages;
   }
-
   public void setLanguages(List<Language> languages) {
     this.languages = languages;
   }
@@ -35,7 +40,6 @@ public class FreeLancer {
       skills = new ArrayList<>();
     return skills;
   }
-
   public void setSkills(List<Skill> skills) {
     this.skills = skills;
   }
@@ -43,7 +47,6 @@ public class FreeLancer {
   public long getId() {
     return id;
   }
-
   public void setId(long id) {
     this.id = id;
   }
@@ -51,7 +54,6 @@ public class FreeLancer {
   public String getExperience() {
     return experience;
   }
-
   public void setExperience(String experience) {
     this.experience = experience;
   }
@@ -59,7 +61,6 @@ public class FreeLancer {
   public String getEducation() {
     return education;
   }
-
   public void setEducation(String education) {
     this.education = education;
   }
@@ -67,13 +68,11 @@ public class FreeLancer {
   public String getName() {
     return name;
   }
-
   public void setName(String name) {
     this.name = name;
   }
 
   public String getBio() {return bio;}
-
   public void setBio(String bio) {
     this.bio = bio;
   }
@@ -81,8 +80,23 @@ public class FreeLancer {
   public long getUserID() {
     return userID;
   }
-
   public void setUserID(long userID) {
     this.userID = userID;
   }
+
+  public String getLocation() {return location;}
+  public void setLocation(String location) {this.location = location;}
+
+  public String getAddress1() {return address1;}
+  public void setAddress1(String address1) {this.address1 = address1; }
+
+  public String getSuburb() {return suburb;}
+  public void setSuburb(String suburb) {this.suburb = suburb;}
+
+  public String getState() {return state;}
+  public void setState(String state) {this.state = state;}
+
+  public String getPostCode() {return postCode;}
+  public void setPostCode(String postcode) {this.postCode = postCode;}
+
 }
