@@ -87,8 +87,7 @@ public class FreeLancerRepository {
     List<FreeLancer> result = template.query(userSql, params, userMapper);
 
     if (result != null && !result.isEmpty()) {
-      FreeLancer returned = new FreeLancer();
-      returned = result.get(0);
+      FreeLancer returned = result.get(0);
       Long id = returned.getId();
 
       SQL = "update tblProfile SET (location, address1, suburb, state, postcode, languages, skills, experience, education," +
