@@ -12,19 +12,53 @@
     min-height: 720px;
 }
 
-/* Small devices (tablets, 768px and up) */
-@media (min-width: @screen-sm-min) {
-    @media }
+@media (max-width: 767px) {
+    .containerhome {
+    }
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md-min) {
+    a.navbar-brand{
+        display:block;
+        float:none;
+    }
+
+    div.container {
+        max-width:400px;
+        text-align:center;
+        max-height:600px;
+        width:50%;
+    }
+
+    h1.companyh1 {
+        text-align:center;
+    }
+
+    p.tagline {
+        text-align:center;
+    }
+
+    div.buttons {
+        text-align:center;
+    }
+
+    .navbar-brand {
+        float:none;
+        display:block;
+    }
+
+    a.navbar-brand {
+        float:none;
+        display:block;
+    }
+}
+
+
+@media (min-width:768 ) and (max-width: 1200px) {
 
 }
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width: @screen-lg-min) {
+@media(min-width: 1201px){
+    }
 
-}
 
 .companyh1 {
     font-family: 'Candal', sans-serif;
