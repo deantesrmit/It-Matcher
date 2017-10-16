@@ -5,6 +5,7 @@ import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.ViewUtil;
 import org.hsqldb.lib.StringUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
 import spark.Response;
@@ -16,6 +17,7 @@ import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.itmatcher.util.RequestUtil.getSessionRedirect;
 
@@ -26,7 +28,9 @@ import static com.itmatcher.util.RequestUtil.getSessionRedirect;
 @Component
 public class RegisterController {
 
+    @Autowired
     UserRepository userRepository;
+    @Autowired
     AuthService authService;
 
     public Route serveRegisterPage() {
@@ -37,40 +41,36 @@ public class RegisterController {
         };
     }
 
-    /*Returns null and redirects if user already exists bedehickey*/
     public Route handleRegisterPost() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
-            String username = getQueryParam(request, "username");
-            String password = getQueryParam(request,"password");
+            User user = populateUser(request);
+            String password = getQueryParam(request, "password");
+            String firstName = getQueryParam(request,"firstName");
+            String lastName = getQueryParam(request,"lastName");
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
 
-            if (isNullOrEmpty(username) || isNullOrEmpty(password)){
+            if (isNullOrEmpty(user.getUsername()) || isNullOrEmpty(password)) {
                 model.put("error", "Please enter a username and password to register.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
-            }
-            else {
-                try {
-                    User user = new User();
-                    user.setUsername(username);
-
-                    authService.registerUser(user,password);
-                    authService.authenticateUser(username,password);
-
-                    request.session().attribute("currentUser",userRepository.getUserByUserName(username).get());
-
-                    final String sessionRedirect = getSessionRedirect(request);
-
-                    if (!isNullOrEmpty(sessionRedirect)) {
-                        clearSessionRedirect(request);
-                        response.redirect(sessionRedirect);
-                    }
-
-                    return ViewUtil.render(request, model, Path.Template.INDEX);
-                } catch (Exception e) {
-                    model.put("error", "Username already exists.");
-                    return ViewUtil.render(request, model, Path.Template.REGISTER);
-                }
+            } else if (userRepository.getUserByUserName(user.getUsername()).isPresent()) {
+                model.put("error", "Username already exists.");
+                return ViewUtil.render(request, model, Path.Template.REGISTER);
+            } else {
+                final User newUser = authService.registerUser(user, password);
+                request.session().attribute("currentUser", newUser);
+                return ViewUtil.render(request, model, Path.Template.PROFILE);
             }
         };
+    }
+
+    private User populateUser(Request request) {
+        User user = new User();
+        String username = getQueryParam(request, "username");
+        String registrationType = getQueryParam(request, "registrationType");
+        user.setUsername(username);
+        user.setAccountType(registrationType);
+        return user;
     }
 }
