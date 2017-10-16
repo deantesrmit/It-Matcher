@@ -60,7 +60,7 @@ public class RegisterController {
             } else {
                 final User newUser = authService.registerUser(user, password);
                 request.session().attribute("currentUser", newUser);
-                return ViewUtil.render(request, model, Path.Template.PROFILE);
+                return ViewUtil.render(request, model, Path.Template.POSTER_PROFILE);
             }
         };
     }
