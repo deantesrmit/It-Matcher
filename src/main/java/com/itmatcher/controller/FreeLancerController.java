@@ -11,6 +11,7 @@ import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,27 +45,32 @@ public class FreeLancerController {
         };
     }
 
-    //public Route handleEditProfile() {
-     //   return (Request request, Response response) -> {
-     //       Map<String, Object> model = new HashMap<>();
-     //       final User user = RequestUtil.getSessionCurrentUser(request);
-     //       Long userID = user.getId();
-     //       FreeLancer profile = new FreeLancer();
+    public Route handleEditProfile() {
+        return (Request request, Response response) -> {
+            Map<String, Object> model = new HashMap<>();
+            final User user = RequestUtil.getSessionCurrentUser(request);
+            Long userID = user.getId();
+            FreeLancer profile = new FreeLancer();
 
-     //       profile.setLocation(getQueryParam(request, "location"));
-     //       profile.setAddress1(getQueryParam(request, "address1"));
-     //       profile.setSuburb(getQueryParam(request, "suburb"));
-     //       profile.setState(getQueryParam (request, "state"));
-     //       profile.setPostCode(getQueryParam (request, "Postcode"));
-     //       profile.setExperience(getQueryParam (request, "experience"));
-     //       profile.setEducation(getQueryParam (request, "education"));
-     //       profile.setBio(getQueryParam (request, "bio"));
+            profile.setLocation(getQueryParam(request, "location"));
+            profile.setAddress1(getQueryParam(request, "address1"));
+            profile.setSuburb(getQueryParam(request, "suburb"));
+            profile.setState(getQueryParam (request, "state"));
+            profile.setPostCode(getQueryParam (request, "Postcode"));
+            profile.setExperience(getQueryParam (request, "experience"));
+            profile.setEducation(getQueryParam (request, "education"));
+            profile.setBio(getQueryParam (request, "bio"));
+            //String Languages = getQueryParam(request, "languages");
+            //String Skills = getQueryParam (request, "skills");
 
-     //       createProfile(Long userID, FreeLancer profile);
+            FreeLancerRepository.createFreelancerProfile(userID, profile);
 
-     //       return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
-     //   };
-    //}
+
+            //       createProfile(Long userID, FreeLancer profile);
+
+            return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+        };
+    }
 
 
 }

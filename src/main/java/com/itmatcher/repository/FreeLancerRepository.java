@@ -53,8 +53,8 @@ public class FreeLancerRepository {
     Map<String, Object> params = new HashMap<>();
     String sql =
             "select * from tblFreelancer flancer "+
-            "JOIN tblProfile profile on flancer.userId = profile.userId " +
-            "JOIN tblUser u on u.id = flancer.userId";
+                    "JOIN tblProfile profile on flancer.userId = profile.userId " +
+                    "JOIN tblUser u on u.id = flancer.userId";
 
     List<FreeLancer> list = template.query(
             sql,
@@ -68,7 +68,7 @@ public class FreeLancerRepository {
     return Optional.empty();
   }
 
-  public void createProfile(Long userID, FreeLancer profile) {
+  public void createFreelancerProfile(Long userID, FreeLancer profile) {
     Map<String, Object> params = new HashMap<>();
     String SQL;
     params.put ("userID", userID);
@@ -77,8 +77,8 @@ public class FreeLancerRepository {
     params.put ("suburb", profile.getSuburb());
     params.put ("state", profile.getState());
     params.put ("postCode", profile.getPostCode());
-    params.put ("languages", profile.getLanguages());
-    params.put ("skills", profile.getSkills());
+    //params.put ("languages", profile.getLanguages());
+    //params.put ("skills", profile.getSkills());
     params.put("experience", profile.getExperience());
     params.put("education", profile.getEducation());
     params.put("bio", profile.getBio());
