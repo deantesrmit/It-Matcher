@@ -41,7 +41,7 @@ public class RegisterController {
         };
     }
 
-    /*
+
      public Route handleRegisterPost() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -65,7 +65,7 @@ public class RegisterController {
             }
         };
     }
-    */
+
 
     private User populateUser(Request request) {
         User user = new User();
