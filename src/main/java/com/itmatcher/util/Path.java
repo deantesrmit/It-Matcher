@@ -9,7 +9,7 @@ public class Path {
         public static final String LOGIN = "/login/";
         public static final String LOGOUT = "/logout/";
         public static final String REGISTER = "/register/";
-        public static final String FREELANCER_PROFILE = "/freelancer_profile/";
+        public static final String PROFILE = "/profile/";
         public static final String CREATE_JOB ="/create_job/";
         public static final String VIEW_MATCHES ="/viewMatches/";
         public static final String VIEW_FREELANCERS ="/viewFreelancers/:jobid/";
