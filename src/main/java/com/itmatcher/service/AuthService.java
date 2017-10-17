@@ -2,7 +2,6 @@ package com.itmatcher.service;
 
 import com.itmatcher.domain.User;
 import com.itmatcher.repository.UserRepository;
-import com.itmatcher.type.AccountType;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,13 +32,15 @@ public class AuthService {
         return hashedPassword.equals(user.getPassword());
     }
 
-    public void registerUser(User user, String password) {
+    public User registerUser(User user, String password) {
         //Check if exists. Should return error when register page exists
-        if(userRepository.getUserByUserName(user.getUsername()).isPresent()) return;
+        if(userRepository.getUserByUserName(user.getUsername()).isPresent()) return user;
 
         String salt = BCrypt.gensalt();
         user.setSalt(salt);
         user.setPassword(BCrypt.hashpw(password, salt));
         userRepository.registerUser(user);
+
+        return userRepository.getUserByUserName(user.getUsername()).get();
     }
 }

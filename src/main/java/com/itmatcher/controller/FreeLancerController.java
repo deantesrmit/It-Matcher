@@ -44,27 +44,27 @@ public class FreeLancerController {
         };
     }
 
-    public Route handleEditProfile() {
-        return (Request request, Response response) -> {
-            Map<String, Object> model = new HashMap<>();
-            final User user = RequestUtil.getSessionCurrentUser(request);
-            Long userID = user.getId();
-            FreeLancer profile = new FreeLancer();
+    //public Route handleEditProfile() {
+     //   return (Request request, Response response) -> {
+     //       Map<String, Object> model = new HashMap<>();
+     //       final User user = RequestUtil.getSessionCurrentUser(request);
+     //       Long userID = user.getId();
+     //       FreeLancer profile = new FreeLancer();
 
-            profile.setLocation(getQueryParam(request, "location"));
-            profile.setAddress1(getQueryParam(request, "address1"));
-            profile.setSuburb(getQueryParam(request, "suburb"));
-            profile.setState(getQueryParam (request, "state"));
-            profile.setPostCode(getQueryParam (request, "Postcode"));
-            profile.setExperience(getQueryParam (request, "experience"));
-            profile.setEducation(getQueryParam (request, "education"));
-            profile.setBio(getQueryParam (request, "bio"));
+     //       profile.setLocation(getQueryParam(request, "location"));
+     //       profile.setAddress1(getQueryParam(request, "address1"));
+     //       profile.setSuburb(getQueryParam(request, "suburb"));
+     //       profile.setState(getQueryParam (request, "state"));
+     //       profile.setPostCode(getQueryParam (request, "Postcode"));
+     //       profile.setExperience(getQueryParam (request, "experience"));
+     //       profile.setEducation(getQueryParam (request, "education"));
+     //       profile.setBio(getQueryParam (request, "bio"));
 
-            /* createProfile(Long userID, FreeLancer profile); */
+     //       createProfile(Long userID, FreeLancer profile);
 
-            return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
-        };
-    }
+     //       return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+     //   };
+    //}
 
 
 }
