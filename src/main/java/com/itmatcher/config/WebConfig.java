@@ -52,7 +52,7 @@ public class WebConfig {
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
         get(Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
-        get(Path.Web.PROFILE, profileController.serveProfilePage());
+//        get(Path.Web.PROFILE, profileController.serveProfilePage());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
