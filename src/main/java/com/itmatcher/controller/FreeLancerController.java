@@ -60,7 +60,7 @@ public class FreeLancerController {
             profile.setEducation(getQueryParam (request, "education"));
             profile.setBio(getQueryParam (request, "bio"));
 
-            createProfile(Long userID, FreeLancer profile);
+            /* createProfile(Long userID, FreeLancer profile); */
 
             return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
         };
