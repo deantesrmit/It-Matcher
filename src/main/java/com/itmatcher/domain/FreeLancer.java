@@ -11,92 +11,92 @@ import java.util.List;
  * @author Dean Tesoriero
  */
 public class FreeLancer {
-  private long id;
-  private long userID;
-  private String location;
-  private String address1;
-  private String suburb;
-  private String state;
-  private String postCode;
-  private List<Language> languages;
-  private List<Skill> skills;
-  private String experience;
-  private String education;
-  private String name;
-  private String bio;
+    private long id;
+    private long userID;
+    private String location;
+    private String address1;
+    private String suburb;
+    private String state;
+    private String postCode;
+    private List<Language> languages;
+    private List<Skill> skills;
+    private String experience;
+    private String education;
+    private String name;
+    private String bio;
 
 
-  public List<Language> getLanguages() {
-    if(languages == null)
-      languages = new ArrayList<>();
-    return languages;
-  }
-  public void setLanguages(List<Language> languages) {
-    this.languages = languages;
-  }
+    public List<Language> getLanguages() {
+        if(languages == null)
+            languages = new ArrayList<>();
+        return languages;
+    }
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
 
-  public List<Skill> getSkills() {
-    if(skills == null)
-      skills = new ArrayList<>();
-    return skills;
-  }
-  public void setSkills(List<Skill> skills) {
-    this.skills = skills;
-  }
+    public List<Skill> getSkills() {
+        if(skills == null)
+            skills = new ArrayList<>();
+        return skills;
+    }
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
 
-  public long getId() {
-    return id;
-  }
-  public void setId(long id) {
-    this.id = id;
-  }
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-  public String getExperience() {
-    return experience;
-  }
-  public void setExperience(String experience) {
-    this.experience = experience;
-  }
+    public String getExperience() {
+        return experience;
+    }
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
 
-  public String getEducation() {
-    return education;
-  }
-  public void setEducation(String education) {
-    this.education = education;
-  }
+    public String getEducation() {
+        return education;
+    }
+    public void setEducation(String education) {
+        this.education = education;
+    }
 
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getBio() {return bio;}
-  public void setBio(String bio) {
-    this.bio = bio;
-  }
+    public String getBio() {return bio;}
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
 
-  public long getUserID() {
-    return userID;
-  }
-  public void setUserID(long userID) {
-    this.userID = userID;
-  }
+    public long getUserID() {
+        return userID;
+    }
+    public void setUserID(long userID) {
+        this.userID = userID;
+    }
 
-  public String getLocation() {return location;}
-  public void setLocation(String location) {this.location = location;}
+    public String getLocation() {return location;}
+    public void setLocation(String location) {this.location = location;}
 
-  public String getAddress1() {return address1;}
-  public void setAddress1(String address1) {this.address1 = address1; }
+    public String getAddress1() {return address1;}
+    public void setAddress1(String address1) {this.address1 = address1; }
 
-  public String getSuburb() {return suburb;}
-  public void setSuburb(String suburb) {this.suburb = suburb;}
+    public String getSuburb() {return suburb;}
+    public void setSuburb(String suburb) {this.suburb = suburb;}
 
-  public String getState() {return state;}
-  public void setState(String state) {this.state = state;}
+    public String getState() {return state;}
+    public void setState(String state) {this.state = state;}
 
-  public String getPostCode() {return postCode;}
-  public void setPostCode(String postcode) {this.postCode = postCode;}
+    public String getPostCode() {return postCode;}
+    public void setPostCode(String postcode) {this.postCode = postCode;}
 
 }

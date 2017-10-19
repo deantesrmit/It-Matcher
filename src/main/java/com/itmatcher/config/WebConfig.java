@@ -48,8 +48,8 @@ public class WebConfig {
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
-        post(Path.Web.EDIT_FREELANCER_PROFILE, freeLancerController.handleEditProfile());
-        get (Path.Web.EDIT_FREELANCER_PROFILE, profileController.serveEditProfilePage());
+        post(Path.Web.EDIT_PROFILE, profileController.handleEditProfile());
+        get (Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
         get(Path.Web.FREELANCER_PROFILE, pageController.serverFreeLancerProfile());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());

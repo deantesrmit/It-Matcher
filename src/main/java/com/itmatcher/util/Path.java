@@ -18,7 +18,7 @@ public class Path {
 
 
         public static final String FREELANCER_PROFILE = "/freelancer_profile/";
-        public static final String EDIT_FREELANCER_PROFILE = "/edit_profile/";
+        public static final String EDIT_PROFILE = "/edit_profile/";
 
     }
 
@@ -33,8 +33,7 @@ public class Path {
         public final static String HOW_IT_WORKS = "/pages/howitworks.ftl";
         public static final String VIEW_FREELANCER = "/pages/list_freelancer.ftl";
 
-
-        public final static String EDIT_FREELANCER_PROFILE = "/pages/edit_freelancer_profile.ftl";
+        public final static String EDIT_PROFILE = "/pages/edit_profile.ftl";
         public final static String FREELANCER_PROFILE = "/pages/freelancer_profile.ftl";
     }
 
