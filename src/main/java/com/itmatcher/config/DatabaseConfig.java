@@ -22,6 +22,8 @@ public class DatabaseConfig {
                 .addScript("sql/insert-user-data.sql")
                 .addScript("sql/insert-profile-data.sql")
                 .addScript("sql/insert-job-data.sql")
+                .addScript("sql/insert-education-data.sql")
+                .addScript("sql/insert-workexperience-data.sql")
                 .build();
         return db;
     }
