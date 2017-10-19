@@ -1,10 +1,6 @@
 package com.itmatcher.config;
 
-import com.itmatcher.controller.IndexController;
-import com.itmatcher.controller.LoginController;
-import com.itmatcher.controller.ProfileController;
-import com.itmatcher.controller.RegisterController;
-import com.itmatcher.controller.PageController;
+import com.itmatcher.controller.*;
 import com.itmatcher.filters.Filters;
 import com.itmatcher.util.Path;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +28,8 @@ public class WebConfig {
     ProfileController profileController;
     @Autowired
     PageController pageController;
+    @Autowired
+    FreeLancerController freeLancerController;
 
 
     public void initApplication() {
@@ -46,19 +44,18 @@ public class WebConfig {
 
     private void initRoutes() {
         get(Path.Web.INDEX, indexController.serveIndexPage());
-
         get(Path.Web.LOGIN, loginController.serveLoginPage());
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
-        get(Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
+        post(Path.Web.EDIT_FREELANCER_PROFILE, freeLancerController.handleEditProfile());
+        get (Path.Web.EDIT_FREELANCER_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
+        get(Path.Web.FREELANCER_PROFILE, pageController.serverFreeLancerProfile());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
-
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
-
     }
 }

@@ -18,9 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 
 
 import static com.google.common.base.Strings.isNullOrEmpty;
@@ -38,13 +41,6 @@ public class FreeLancerController {
     @Autowired
     UserRepository userRepository;
 
-    public Route serverEditProfilePage() {
-        return (request, response) -> {
-            Map<String, Object> viewObjects = new HashMap<>();
-            return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
-        };
-    }
-
     public Route handleEditProfile() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -60,14 +56,13 @@ public class FreeLancerController {
             profile.setExperience(getQueryParam (request, "experience"));
             profile.setEducation(getQueryParam (request, "education"));
             profile.setBio(getQueryParam (request, "bio"));
+
             //String Languages = getQueryParam(request, "languages");
             //String Skills = getQueryParam (request, "skills");
 
-            FreeLancerRepository.createFreelancerProfile(userID, profile);
 
 
-            //       createProfile(Long userID, FreeLancer profile);
-
+            freelancerRepository.createFreelancerProfile(userID, profile);
             return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
         };
     }

@@ -37,7 +37,7 @@ public class ProfileController {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
                 Map<String, Object> viewObjects = new HashMap<>();
-                return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
+                return ViewUtil.render(request, viewObjects, Path.Template.EDIT_FREELANCER_PROFILE);
             };
     }
 }

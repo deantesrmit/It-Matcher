@@ -55,5 +55,12 @@ public class PageController {
         };
     }
 
+    public Route serverFreeLancerProfile() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.FREELANCER_PROFILE);
+        };
+    }
+
 
 }
