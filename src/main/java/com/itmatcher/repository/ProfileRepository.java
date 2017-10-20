@@ -57,7 +57,7 @@ public class ProfileRepository {
     }
 
     public <Optional>Profile profileByUserID (int userID) {
-        Profile profile = new Profile();
+        Profile profile;
         String userSql = "SELECT profileID FROM TblProfile WHERE userID=:userID";
         List<Profile> result = template.query(userSql, userMapper);
         profile = result.get(0);
