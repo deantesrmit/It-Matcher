@@ -20,7 +20,7 @@ public class DatabaseConfig {
                 .setType(EmbeddedDatabaseType.HSQL)
                 .addScript("sql/create-db.sql")
                 .addScript("sql/insert-user-data.sql")
-                .addScript("sql/insert-profile-data.sql")
+                //.addScript("sql/insert-profile-data.sql")
                 .addScript("sql/insert-job-data.sql")
                 .addScript("sql/insert-education-data.sql")
                 .addScript("sql/insert-workexperience-data.sql")
