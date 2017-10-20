@@ -24,7 +24,7 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public void createProfile(int userID, Profile profile) {
+    public void createProfile(long userID, Profile profile) {
         Map<String, Object> params = new HashMap<>();
         String SQL;
         params.put ("userID", userID);
@@ -56,7 +56,7 @@ public class ProfileRepository {
         template.update(SQL, params);
     }
 
-    public <Optional>Profile profileByUserID (int userID) {
+    public <Optional>Profile profileByUserID (long userID) {
         Profile profile;
         String userSql = "SELECT profileID FROM TblProfile WHERE userID=:userID";
         List<Profile> result = template.query(userSql, userMapper);

@@ -60,7 +60,7 @@ public class ProfileController {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
             final User user = RequestUtil.getSessionCurrentUser(request);
-            int userID = user.getId();
+            long userID = user.getId();
             Profile profile = new Profile();
             profile.setLocation(getQueryParam(request, "userID"));
             profile.setLocation(getQueryParam(request, "location"));

@@ -2,6 +2,7 @@ package com.itmatcher.util;
 
 import com.google.common.base.Strings;
 import com.itmatcher.domain.User;
+import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.type.AccountType;
 import spark.Request;
 import spark.Response;
@@ -11,6 +12,10 @@ import spark.Response;
  */
 public class RequestUtil {
     public static User getSessionCurrentUser(Request request) {
+        return request.session().attribute("currentUser");
+    }
+
+    public static User getSessionCurrentProfile(Request request) {
         return request.session().attribute("currentUser");
     }
 

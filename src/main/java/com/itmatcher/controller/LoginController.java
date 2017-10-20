@@ -3,6 +3,7 @@ package com.itmatcher.controller;
 import com.google.common.base.Strings;
 import com.itmatcher.domain.User;
 import com.itmatcher.repository.UserRepository;
+import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
@@ -30,6 +31,8 @@ public class LoginController {
     AuthService authService;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    ProfileRepository profileRepository;
 
 
     public Route serveLoginPage() {
@@ -48,6 +51,10 @@ public class LoginController {
                 return ViewUtil.render(request, model, Path.Template.LOGIN);
             }
             request.session().attribute("currentUser", userRepository.getUserByUserName(username).get());
+
+            final User user = RequestUtil.getSessionCurrentUser(request);
+            long userID = user.getId();
+            request.session().attribute("userProfile", profileRepository.profileByUserID(userID));
 
             handleRedirect(request, response);
 
