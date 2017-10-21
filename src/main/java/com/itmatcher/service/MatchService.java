@@ -5,6 +5,7 @@ package com.itmatcher.service;/*
 
 import com.itmatcher.domain.*;
 import com.itmatcher.repository.FreeLancerRepository;
+import com.itmatcher.repository.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +24,13 @@ public class MatchService {
 
   @Autowired
   private FreeLancerRepository lancerRepository;
+  @Autowired
+  private JobRepository jobRepository;
 
-  public List<ScoredFreeLancer> findFreelancersForJob(Job job) {
-    job = new Job();
-    job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
-    job.setSkills(asList(new Skill("Sql", CriteriaWeight.HIGH_PREFERENCE)));
+  public List<ScoredFreeLancer> findFreelancersForJob(long jobId) {
+    final Job job = jobRepository.getJobById(jobId).get();
+//    job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
+//    job.setSkills(asList(new Skill("Sql", CriteriaWeight.HIGH_PREFERENCE)));
     final List<Language> requiredLanguages = getRequiredFields(job.getLanguages(), Language.class);
     final List<Skill> requiredSkills = getRequiredFields(job.getSkills(), Skill.class);
     final List<FreeLancer> flByRequired = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);

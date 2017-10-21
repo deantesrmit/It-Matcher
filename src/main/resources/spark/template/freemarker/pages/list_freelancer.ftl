@@ -3,7 +3,7 @@
 <@layout.masterTemplate title="Login">
 <div class="container">
 
-    <h1>Matched Freelancers for JOB 1</h1>
+    <h1>Matched Freelancers for JOB ${job.id}</h1>
     <br/>
     <br/>
     <br/>
@@ -31,8 +31,8 @@
                                 </#list>
                             </span>
                         </li>
-                        <li><span>${freeLancer.education}</span></li>
-                        <li><span>${freeLancer.experience}</span></li>
+                        <#--<li><span>${freeLancer.education}</span></li>-->
+                        <#--<li><span>${freeLancer.experience}</span></li>-->
                         <li>
                             <span>
                                 <#list freeLancer.skills as skill>
@@ -51,6 +51,7 @@
                 <span class="clearfix borda"></span>
             </article>
         </#list>
+        <a href="/job/${job.id}/"><button class="btn btn-success">Back</button> </a>
     </section>
 
 </div>

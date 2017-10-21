@@ -16,7 +16,7 @@ public class Path {
         public static final String ABOUT_US ="/aboutus/";
         public static final String HOW_IT_WORKS ="/howitworks/";
         public static final String EDIT_PROFILE = "/edit_profile/";
-
+        public static final String VIEW_JOB = "/job/:jobid/";
     }
 
     public static class Template {
@@ -31,6 +31,7 @@ public class Path {
         public static final String VIEW_FREELANCER = "/pages/list_freelancer.ftl";
         public final static String EDIT_PROFILE = "/pages/edit_profile.ftl";
         public final static String FREELANCER_PROFILE = "/pages/freelancer_profile.ftl";
+        public static final String VIEW_JOB = "/pages/view_job.ftl";
     }
 
 }

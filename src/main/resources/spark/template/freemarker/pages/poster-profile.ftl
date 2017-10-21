@@ -21,8 +21,9 @@
                         <h4><strong>List of your Jobs/Applicants</strong></h4>
                     </div>
                     <div class="panel-body">
-                        <!-- Edit this to pull applied jobs from database -->
-                        <a href="/viewFreelancers/1/" <button class="btn btn-success">Your Jobs</button></a>
+                        <#list jobs as job>
+                            <a href="/job/${job.id}/" <button class="btn btn-success btn-block">${job.id}</button></a>
+                        </#list>
                     </div>
                 </div>
             </div>

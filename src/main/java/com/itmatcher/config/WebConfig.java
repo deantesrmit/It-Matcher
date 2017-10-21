@@ -1,19 +1,13 @@
 package com.itmatcher.config;
 
-import com.itmatcher.controller.IndexController;
-import com.itmatcher.controller.LoginController;
-import com.itmatcher.controller.ProfileController;
-import com.itmatcher.controller.RegisterController;
-import com.itmatcher.controller.PageController;
+import com.itmatcher.controller.*;
 import com.itmatcher.filters.Filters;
 import com.itmatcher.util.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Spark;
 
-import static spark.Spark.before;
-import static spark.Spark.get;
-import static spark.Spark.post;
+import static spark.Spark.*;
 
 /**
  * Created by deant on 10/4/17.
@@ -32,10 +26,13 @@ public class WebConfig {
     ProfileController profileController;
     @Autowired
     PageController pageController;
+    @Autowired
+    JobController jobController;
 
 
     public void initApplication() {
-        Spark.staticFiles.externalLocation("src/main/resources/public");
+        staticFileLocation("public");
+        port(getHerokuAssignedPort());
         initFilters();
         initRoutes();
     }
@@ -53,6 +50,7 @@ public class WebConfig {
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
         get(Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
+        get(Path.Web.VIEW_JOB, jobController.serveViewJobPage());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());

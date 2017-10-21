@@ -43,18 +43,15 @@ public class FreeLancerRepository {
     }
     final List<FreeLancer> freeLancers = maybeFreeLancers.get();
     freeLancers.stream()
-            .forEach(freeLancer -> {
-              freeLancer.setSkills(skillRepository.getSkillsByUserId(freeLancer.getUserID()).get());
-            });
+               .forEach(fl -> fl.setSkills(skillRepository.getSkillsByUserId(fl.getUserID()).get()));
     return freeLancers;
   }
 
   private Optional<List<FreeLancer>> getFreeLancers() {
     Map<String, Object> params = new HashMap<>();
     String sql =
-            "select * from tblFreelancer flancer "+
-            "JOIN tblProfile profile on flancer.userId = profile.userId " +
-            "JOIN tblUser u on u.id = flancer.userId";
+            "select * from tblProfile profile "+
+            "JOIN tblUser u on u.id = profile.userId";
 
     List<FreeLancer> list = template.query(
             sql,
@@ -107,8 +104,8 @@ public class FreeLancerRepository {
 
   private RowMapper<FreeLancer> userMapper = (rs, rowNum) -> {
     FreeLancer f = new FreeLancer();
+    f.setId(rs.getInt("id"));
     f.setUserID(rs.getInt("userID"));
-    f.setId(rs.getInt("freelancerID"));
     f.setBio(rs.getString("bio"));
     f.setEducation(rs.getString("education"));
     f.setExperience(rs.getString("workExperience"));
