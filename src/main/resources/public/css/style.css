@@ -73,6 +73,10 @@
     a.nav-link {
         float:left;
     }
+
+    #job-poster-col2{
+        padding-bottom:200px;
+    }
 }
 
 /* Code for Tablet viewpoints */
@@ -84,6 +88,9 @@
 
 }
 
+.how-it-works-2-col {
+    padding-bottom:200px;
+}
 
 .companyh1 {
     font-family: 'Candal', sans-serif;
@@ -122,10 +129,6 @@ h1 {
     background-color: #481d46;
     color: #fff;
     position:fixed;
-}
-
-.row.justify-content-center {
-    padding-bottom:200px;
 }
 
 .form-login, .form-register, .createjob {
