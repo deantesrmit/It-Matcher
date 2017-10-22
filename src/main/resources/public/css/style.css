@@ -10,15 +10,22 @@
 .containerhome .container {
     padding-top: 50px;
     min-height: 720px;
+    margin-right: auto;
+    margin-left:auto;
 }
 
 @media (max-width: 767px) {
     .containerhome {
+        background-size: 100% 50%;
+    }
+
+    .navbar-toggler navbar-toggler-right {
+        align-content:center;
     }
 
     a.navbar-brand{
         display:block;
-        float:none;
+        float:left;
     }
 
     div.nav.navbar-nav.navbar-right {
@@ -55,6 +62,10 @@
     a.navbar-brand {
         float:none;
         display:block;
+    }
+
+    a.nav-link {
+        float:left;
     }
 }
 
