@@ -14,6 +14,10 @@
     margin-left:auto;
 }
 
+.bannerimg {
+    width:100%;
+}
+
 @media (max-width: 767px) {
     .containerhome {
         background-size: 100% 100%;
