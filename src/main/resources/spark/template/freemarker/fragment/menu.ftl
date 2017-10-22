@@ -13,8 +13,8 @@
                 <a class="navbar-brand" href="/login">LOGIN</a>
             </div>
         <#else>
-             Account Type: ${userDetails.accountType}
-            <div class="nav navbar-nav navbar-right">
+             <div class = "d-none d-md-block">Account Type: ${userDetails.accountType}</div>
+            <div class="nav navbar-nav navbar-right d-none d-md-block">
                 <form method="post" action="/logout/">
                     <input  type="submit" class="navbar-brand" id="logout" value="logout" />
                 </form>
@@ -44,6 +44,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/profile">Profile</a>
                     </li>
+                    <#if !userDetails??>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <#else>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout/">
+                            <form method="post" action="/logout/">
+                                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+                            </form>
+                        </a>
+                    </li>
+                    </#if>
                 </ul>
             </div>
         </nav>
