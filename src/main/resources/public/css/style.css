@@ -21,7 +21,7 @@
 /* Code for mobile viewpoints */
 @media (max-width: 767px) {
     .containerhome {
-        background-size: 100% 100%;
+        background-size: 100% 75%;
         min-height:0px;
     }
 
