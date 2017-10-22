@@ -9,16 +9,16 @@
                 <h1 class="companyh1">IT MATCHER</h1>
                 <p class="tagline">Matching your IT project to someone who can get IT done</p>
                 <div class = "buttons d-none d-md-block" id="buttons-home">
-                    <a class="btn btn-default " href="/register.html" role="button">Join Now</a>
-                    <a class="btn btn-default" href="/howitworks.html" role="button">Discover More</a>
+                    <a class="btn btn-default " href="/register" role="button">Join Now</a>
+                    <a class="btn btn-default" href="/howitworks" role="button">Discover More</a>
                 </div>
             </div>
             <div class="col"></div>
             <div class = "row d-md-none d-lg-none d-xl-none">
                 <div class="col-sm-12">
                     <div class = "buttons" id="buttons-home-small">
-                        <ul><a class="btn btn-default" href="/register.html" role="button">Join Now</a></ul>
-                        <ul><a class="btn btn-default" href="/howitworks.html" role="button">Discover More</a></ul>
+                        <ul><a class="btn btn-default" href="/register" role="button">Join Now</a></ul>
+                        <ul><a class="btn btn-default" href="/howitworks" role="button">Discover More</a></ul>
                     </div>
                 </div>
             </div>
