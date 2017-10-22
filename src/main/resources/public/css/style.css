@@ -18,6 +18,7 @@
     width:100%;
 }
 
+/* Code for mobile viewpoints */
 @media (max-width: 767px) {
     .containerhome {
         background-size: 100% 100%;
@@ -74,12 +75,13 @@
     }
 }
 
-
+/* Code for Tablet viewpoints */
 @media (min-width:768 ) and (max-width: 1200px) {
 
 }
 
 @media(min-width: 1201px){
+
     }
 
 

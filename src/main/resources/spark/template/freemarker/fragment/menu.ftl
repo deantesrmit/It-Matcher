@@ -1,5 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
+        <!--Nav bar for Medium and up viewpoints -->
         <div class="navbar-header d-none d-md-block">
             <img height="50px" src="/img/logo.png">
             <a class="navbar-brand" href="/">Home</a>
@@ -21,6 +22,7 @@
             </div>
         </#if>
 
+        <!--Nav bar for Small and Extra Small viewpoints -->
         <nav class="navbar navbar-toggleable navbar-light bg-faded d-md-none d-lg-none d-xl-none">
             <img height="50px" src="/img/logo.png">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
