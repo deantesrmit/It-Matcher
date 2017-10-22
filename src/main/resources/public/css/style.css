@@ -29,6 +29,10 @@
         align-content:center;
     }
 
+    #outside-footer {
+        min-height:20%;
+    }
+
     a.navbar-brand{
         display:block;
         float:left;
@@ -129,6 +133,10 @@ h1 {
     background-color: #481d46;
     color: #fff;
     position:fixed;
+}
+
+#outside-footer {
+    height:200px;
 }
 
 .form-login, .form-register, .createjob {
