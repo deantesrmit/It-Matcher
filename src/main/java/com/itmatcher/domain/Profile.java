@@ -1,8 +1,8 @@
 package com.itmatcher.domain;
 
 public class Profile {
-    private long profileID;
-    private long userId;
+    private int id;
+    private int userId;
     private String location;
     private String address1;
     private String suburb;
@@ -13,18 +13,18 @@ public class Profile {
     private String workExperience;
 
     public long getProfileID() {
-        return profileID;
+        return id;
     }
 
-    public void setProfileID(long profileID) {
-        this.profileID = profileID;
+    public void setProfileID(int id) {
+        this.id = id;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

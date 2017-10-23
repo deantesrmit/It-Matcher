@@ -21,7 +21,7 @@ public class ProfileService {
   @Autowired
   ProfileRepository profileRepository;
 
-  public Profile getProfileByUserId(long userId) {
+  public Profile getProfileByUserId(int userId) {
     return profileRepository.getProfileByUserID(userId);
   }
 
