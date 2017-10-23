@@ -47,11 +47,6 @@
                   <option value="11">Doctoral Degree</option>
                 </select>
 
-
-                <label for "education">Education</label>
-                <input type="text" id="education" name="education" class="form-control input-sm chat-input"
-                value=<#if profile.education??>"${profile.education}"</#if> /><br/>
-
                 <label for "workExperience">WorkExperience</label>
                 <input type="text" id="workExperience" name="workExperience" class="form-control input-sm chat-input"
                 value=<#if profile.workExperience??>"${profile.workExperience}"</#if> /><br/>
