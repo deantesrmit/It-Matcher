@@ -56,8 +56,7 @@ public class ProfileController {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
-            int userId = 1;
-            final Profile profile = profileService.getProfileByUserId(userId);
+            final Profile profile = profileService.getProfileByUserId(getSessionCurrentUser(request).getId());
             viewObjects.put("profile", profile);
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
         };

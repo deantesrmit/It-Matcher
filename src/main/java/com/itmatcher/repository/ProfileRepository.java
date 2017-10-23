@@ -16,10 +16,10 @@ public class ProfileRepository {
       "update tblProfile SET (userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
       "values (:userId, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE id=:id";
 
-    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT id FROM tblProfile WHERE userId=:userId";
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM tblProfile WHERE userId=:userId";
     public static final String INSERT_NEW_PROFILE =
-      "insert into tblProfile(userId, location, address1, suburb, state, postcode, bio, education, workExperience) " +
-      "values (:userId, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
+      "insert into tblProfile(userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userId, :location, :address1, :suburb, :state, :postCode, :bio, :education, :workExperience)";
 
     @Autowired
     public ProfileRepository(DataSource ds) {
@@ -65,7 +65,7 @@ public class ProfileRepository {
         p.setAddress1 (rs.getString("address1"));
         p.setSuburb(rs.getString("suburb"));
         p.setState(rs.getString("state"));
-        p.setPostcode(rs.getString("postcode"));
+        p.setPostcode(rs.getString("postCode"));
         p.setBio(rs.getString("bio"));
         p.setEducation(rs.getString("education"));
         p.setWorkExperience(rs.getString("workExperience"));

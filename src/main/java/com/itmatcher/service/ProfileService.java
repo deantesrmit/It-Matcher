@@ -44,7 +44,7 @@ public class ProfileService {
     profile.setAddress1(getQueryParam(request, "address1"));
     profile.setSuburb(getQueryParam(request, "suburb"));
     profile.setState(getQueryParam (request, "state"));
-    profile.setPostcode(getQueryParam (request, "Postcode"));
+    profile.setPostcode(getQueryParam (request, "postCode"));
     profile.setWorkExperience(getQueryParam (request, "experience"));
     profile.setEducation(getQueryParam (request, "education"));
     profile.setBio(getQueryParam (request, "bio"));

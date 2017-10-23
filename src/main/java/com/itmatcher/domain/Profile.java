@@ -7,7 +7,7 @@ public class Profile {
     private String address1;
     private String suburb;
     private String state;
-    private String postcode;
+    private String postCode;
     private String bio;
     private String education;
     private String workExperience;
@@ -23,7 +23,6 @@ public class Profile {
     public int getUserId() {
         return userId;
     }
-
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -60,12 +59,10 @@ public class Profile {
         this.state = state;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
+    public String getPostcode() {return postCode;}
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostcode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getBio() {
