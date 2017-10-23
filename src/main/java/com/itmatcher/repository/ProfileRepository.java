@@ -1,73 +1,66 @@
 package com.itmatcher.repository;
-import com.itmatcher.domain.FreeLancer;
 import com.itmatcher.domain.Profile;
-import com.itmatcher.domain.User;
-import com.itmatcher.util.RequestUtil;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import static com.itmatcher.util.RequestUtil.getQueryParam;
-
 @Repository
 public class ProfileRepository {
     private NamedParameterJdbcTemplate template;
+    public static final String UPDATE_PROFILE_SQL =
+      "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE profileID =:profileID;";
+
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT profileID FROM TblProfile WHERE userId=:userId";
+    public static final String INSERT_NEW_PROFILE =
+      "insert into tblProfile(userID, location, address1, suburb, state, postcode, bio, education, workExperience) " +
+      "values (:userID, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
 
     @Autowired
     public ProfileRepository(DataSource ds) {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public void createProfile(long userID, Profile profile) {
+    public Profile getProfileByUserID(long userID) {
         Map<String, Object> params = new HashMap<>();
-        String SQL;
-        params.put ("userID", userID);
-        params.put ("location", profile.getLocation());
-        params.put ("address1", profile.getAddress1());
-        params.put ("suburb", profile.getSuburb());
-        params.put ("state", profile.getState());
-        params.put ("postCode", profile.getPostcode());
+        params.put ("userId", userID);
+        List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
+        return result.get(0);
+    }
+
+    public void updateProfile(Profile profile) {
+        Map<String, Object> params = mapProfileParams(profile);
+        template.query(UPDATE_PROFILE_SQL, params, profileRowMapper);
+    }
+
+    public void createProfile(Profile profile) {
+        Map<String, Object> params = mapProfileParams(profile);
+        template.query(INSERT_NEW_PROFILE, params, profileRowMapper);
+    }
+
+    private Map<String, Object> mapProfileParams(Profile profile) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userID", profile.getUserId());
+        params.put("location", profile.getLocation());
+        params.put("address1", profile.getAddress1());
+        params.put("suburb", profile.getSuburb());
+        params.put("state", profile.getState());
+        params.put("postCode", profile.getPostcode());
         params.put("bio", profile.getBio());
         params.put("education", profile.getEducation());
         params.put("workExperience", profile.getWorkExperience());
-
-        String userSql = "SELECT profileID FROM TblProfile WHERE userID=:userID";
-        List<Profile> result = template.query(userSql, params, userMapper);
-
-        if (result != null && !result.isEmpty()) {
-            Profile returned = result.get(0);
-            int profileID = returned.getProfileID();
-
-            SQL = "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
-                    "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE profileID =:profileID;";
-
-        }
-        else {
-            SQL = "insert into tblProfile(userID, location, address1, suburb, state, postcode, bio, education, workExperience) " +
-                    "values (:userID, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
-        }
-
-        template.update(SQL, params);
+        return params;
     }
 
-    public <Optional>Profile profileByUserID (long userID) {
-        Profile profile;
-        String userSql = "SELECT profileID FROM TblProfile WHERE userID=:userID";
-        List<Profile> result = template.query(userSql, userMapper);
-        profile = result.get(0);
-        return profile;
-    }
-
-    private RowMapper<Profile> userMapper = (rs, rowNum) -> {
+    private RowMapper<Profile> profileRowMapper = (rs, rowNum) -> {
         Profile p = new Profile();
         p.setProfileID(rs.getInt("profileID"));
-        p.setUserId(rs.getInt("userID"));
+        p.setUserId(rs.getInt("userId"));
         p.setLocation(rs.getString("location"));
         p.setAddress1 (rs.getString("address1"));
         p.setSuburb(rs.getString("suburb"));

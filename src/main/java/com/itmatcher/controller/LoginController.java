@@ -1,22 +1,18 @@
 package com.itmatcher.controller;
 
-import com.google.common.base.Strings;
 import com.itmatcher.domain.User;
-import com.itmatcher.repository.UserRepository;
 import com.itmatcher.repository.ProfileRepository;
+import com.itmatcher.repository.UserRepository;
 import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
-import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.itmatcher.util.RequestUtil.clearSessionRedirect;
 import static com.itmatcher.util.RequestUtil.getQueryParam;
@@ -50,12 +46,9 @@ public class LoginController {
                 model.put("error", "Incorrect username or password");
                 return ViewUtil.render(request, model, Path.Template.LOGIN);
             }
-            request.session().attribute("currentUser", userRepository.getUserByUserName(username).get());
-
-            final User user = RequestUtil.getSessionCurrentUser(request);
-            long userID = user.getId();
-            request.session().attribute("userProfile", profileRepository.profileByUserID(userID));
-
+            final User user = userRepository.getUserByUserName(username).get();
+            request.session().attribute("currentUser", user);
+            
             handleRedirect(request, response);
 
             return ViewUtil.render(request, model, Path.Template.INDEX);
