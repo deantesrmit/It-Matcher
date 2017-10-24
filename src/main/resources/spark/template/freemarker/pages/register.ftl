@@ -14,19 +14,19 @@
                                 ${error}
                                 </div>
                             </#if>
-                                <input type="text" id="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
+                                <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
                                 </br>
-                                <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" required />
+                                <input type="password" name="password" class="form-control input-sm chat-input" placeholder="Password" required />
 
                                 </br>
-                                <input type="text" id="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
+                                <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
                                 </br>
-                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" name="lastName" required/>
+                                <input type="text" name="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
                                 </br>
                                 <label for="registerType">Registration Type</label>
-                                <select class ="form-control" id = "registrationType">
-                                <option>Job Lister</option>
-                                <option>Freelancer</option>
+                                <select class ="form-control" name="registrationType">
+                                    <option value="POSTER">Job Poster</option>
+                                    <option value="FREELANCER">Freelancer</option>
                                 </select>
                                 </br>
                                 <div class="wrapper">
