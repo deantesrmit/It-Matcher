@@ -34,7 +34,7 @@
 
                 <label for "education">Education</label>
                 <select>
-                  <option value="1" >Senior Secondary</option>
+                  <option value="1">Senior Secondary</option>
                   <option value="2">Certificate I</option>
                   <option value="3">Certificate II</option>
                   <option value="4">Certificate III</option>
