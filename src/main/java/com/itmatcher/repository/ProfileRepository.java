@@ -3,6 +3,7 @@ import com.itmatcher.domain.Profile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -16,7 +17,7 @@ public class ProfileRepository {
       "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
       "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE profileID =:profileID;";
 
-    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT profileID FROM TblProfile WHERE userId=:userId";
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT id FROM TblProfile WHERE userId=:userId";
     public static final String INSERT_NEW_PROFILE =
       "insert into tblProfile(userID, location, address1, suburb, state, postcode, bio, education, workExperience) " +
       "values (:userID, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
@@ -26,11 +27,14 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Profile getProfileByUserID(long userID) {
+    public Optional<Profile> getProfileByUserID(long userID) {
         Map<String, Object> params = new HashMap<>();
         params.put ("userId", userID);
         List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
-        return result.get(0);
+        if(result != null && !result.isEmpty()) {
+            return Optional.of(result.get(0));
+        }
+        return Optional.empty();
     }
 
     public void updateProfile(Profile profile) {

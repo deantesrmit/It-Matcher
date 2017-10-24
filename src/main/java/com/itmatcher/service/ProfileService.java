@@ -10,6 +10,9 @@ import com.itmatcher.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spark.Request;
+
+import java.util.Optional;
+
 import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 /**
@@ -21,12 +24,12 @@ public class ProfileService {
   @Autowired
   ProfileRepository profileRepository;
 
-  public Profile getProfileByUserId(long userId) {
+  public Optional<Profile> getProfileByUserId(long userId) {
     return profileRepository.getProfileByUserID(userId);
   }
 
   public void updateProfile(Request request) {
-    Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId());
+    Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
     mapProfile(request, profile);
     profileRepository.updateProfile(profile);
   }

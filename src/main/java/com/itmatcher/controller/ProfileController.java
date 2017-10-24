@@ -1,7 +1,9 @@
 package com.itmatcher.controller;
 
 import com.itmatcher.domain.Profile;
+import com.itmatcher.service.EducationService;
 import com.itmatcher.service.JobService;
+import com.itmatcher.service.LookupService;
 import com.itmatcher.service.ProfileService;
 import com.itmatcher.type.AccountType;
 import com.itmatcher.util.Path;
@@ -9,11 +11,15 @@ import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+import spark.Spark;
+
 import static com.itmatcher.util.RequestUtil.getSessionCurrentUser;
 
 /**
@@ -25,23 +31,23 @@ public class ProfileController {
     JobService jobService;
     @Autowired
     ProfileService profileService;
+    @Autowired
+    LookupService lookupService;
     
     public Route serveProfilePage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             final AccountType accountType = RequestUtil.getAccountType(request);
-            return ViewUtil.render(request, getParams(accountType, request), getProfilePath(accountType));
-        };
-    }
-
-    private Map<String, Object> getParams(AccountType type, Request request) {
-        Map<String, Object> params = new HashMap<>();
-        if(AccountType.FREELANCER.equals(type)) {
-
-        } else {
+            Map<String, Object> params = new HashMap<>();
+            final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            if(!profile.isPresent()) {
+                response.redirect(Path.Web.EDIT_PROFILE);
+                return Spark.redirect;
+            }
+            params.put("profile", profile);
             params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
-        }
-        return params;
+            return ViewUtil.render(request, params, getProfilePath(accountType));
+        };
     }
 
     private String getProfilePath(AccountType type) {
@@ -56,9 +62,9 @@ public class ProfileController {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
-            //IF YOU NEED PROFILE DETAILS ON THIS PAGE NOT THE SESSION
-            final Profile profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
-            viewObjects.put("profile", profile);
+            viewObjects.put("educations", lookupService.getAllEducations());
+            profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId())
+                          .ifPresent( prof -> viewObjects.put("profile", prof));
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
         };
     }
