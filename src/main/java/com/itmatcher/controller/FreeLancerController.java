@@ -11,15 +11,19 @@ import com.itmatcher.service.AuthService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import spark.Request;
 import spark.Response;
 import spark.Route;
+
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
 
 
 import static com.google.common.base.Strings.isNullOrEmpty;
@@ -37,34 +41,7 @@ public class FreeLancerController {
     @Autowired
     UserRepository userRepository;
 
-    public Route serverEditProfilePage() {
-        return (request, response) -> {
-            Map<String, Object> viewObjects = new HashMap<>();
-            return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
-        };
-    }
 
-    //public Route handleEditProfile() {
-     //   return (Request request, Response response) -> {
-     //       Map<String, Object> model = new HashMap<>();
-     //       final User user = RequestUtil.getSessionCurrentUser(request);
-     //       Long userID = user.getId();
-     //       FreeLancer profile = new FreeLancer();
-
-     //       profile.setLocation(getQueryParam(request, "location"));
-     //       profile.setAddress1(getQueryParam(request, "address1"));
-     //       profile.setSuburb(getQueryParam(request, "suburb"));
-     //       profile.setState(getQueryParam (request, "state"));
-     //       profile.setPostCode(getQueryParam (request, "Postcode"));
-     //       profile.setExperience(getQueryParam (request, "experience"));
-     //       profile.setEducation(getQueryParam (request, "education"));
-     //       profile.setBio(getQueryParam (request, "bio"));
-
-     //       createProfile(Long userID, FreeLancer profile);
-
-     //       return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
-     //   };
-    //}
 
 
 }

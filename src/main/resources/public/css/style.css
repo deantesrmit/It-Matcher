@@ -29,6 +29,10 @@
         align-content:center;
     }
 
+    #outside-footer {
+        min-height:20%;
+    }
+
     a.navbar-brand{
         display:block;
         float:left;
@@ -73,6 +77,10 @@
     a.nav-link {
         float:left;
     }
+
+    #job-poster-col2{
+        padding-bottom:200px;
+    }
 }
 
 /* Code for Tablet viewpoints */
@@ -84,6 +92,9 @@
 
 }
 
+.how-it-works-2-col {
+    padding-bottom:200px;
+}
 
 .companyh1 {
     font-family: 'Candal', sans-serif;
@@ -124,8 +135,8 @@ h1 {
     position:fixed;
 }
 
-.row.justify-content-center {
-    padding-bottom:200px;
+#outside-footer {
+    height:200px;
 }
 
 .form-login, .form-register, .createjob {

@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-offset-5 col-md-4">
             <h4 id="login">Edit Your Profile</h4>
-            <form class="form-login" action="/editprofile/" method="POST">
+            <form class="form-login" action="/edit_profile/" method="POST">
                 <label for "bio">Bio</label>
                 <input type="text" id="bio" name="bio" class="form-control input-sm chat-input" placeholder="Bio"/>
                 </br>

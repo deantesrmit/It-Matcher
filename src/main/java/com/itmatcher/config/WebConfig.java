@@ -28,6 +28,8 @@ public class WebConfig {
     PageController pageController;
     @Autowired
     JobController jobController;
+    @Autowired
+    FreeLancerController freeLancerController;
 
 
     public void initApplication() {
@@ -43,21 +45,21 @@ public class WebConfig {
 
     private void initRoutes() {
         get(Path.Web.INDEX, indexController.serveIndexPage());
-
         get(Path.Web.LOGIN, loginController.serveLoginPage());
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
-        get(Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
+        post(Path.Web.REGISTER,registerController.handleRegisterPost());
+        post(Path.Web.EDIT_PROFILE, profileController.handleEditProfile());
+        get (Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
+        get(Path.Web.FREELANCER_PROFILE, pageController.serverFreeLancerProfile());
         get(Path.Web.VIEW_JOB, jobController.serveViewJobPage());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
-
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
-
     }
 
     static int getHerokuAssignedPort() {
