@@ -49,6 +49,7 @@ public class WebConfig {
         post(Path.Web.LOGIN, loginController.handleLoginPost());
         post(Path.Web.LOGOUT, loginController.handleLogoutPost());
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
+        post(Path.Web.REGISTER,registerController.handleRegisterPost());
         post(Path.Web.EDIT_PROFILE, profileController.handleEditProfile());
         get (Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());

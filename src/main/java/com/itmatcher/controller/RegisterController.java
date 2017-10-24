@@ -41,16 +41,13 @@ public class RegisterController {
         };
     }
 
-
      public Route handleRegisterPost() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
-            User user = populateUser(request);
-            String password = getQueryParam(request, "password");
-            String firstName = getQueryParam(request,"firstName");
-            String lastName = getQueryParam(request,"lastName");
-            user.setFirstName(firstName);
-            user.setLastName(lastName);
+            final User user = populateUser(request);
+            final String password = getQueryParam(request, "userPassword");
+            final String firstName = getQueryParam(request,"firstName");
+            final String lastName = getQueryParam(request,"lastName");
 
             if (isNullOrEmpty(user.getUsername()) || isNullOrEmpty(password)) {
                 model.put("error", "Please enter a username and password to register.");
@@ -59,18 +56,20 @@ public class RegisterController {
                 model.put("error", "Username already exists.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
             } else {
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
                 final User newUser = authService.registerUser(user, password);
                 request.session().attribute("currentUser", newUser);
-                return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+                return ViewUtil.render(request, model, Path.Template.INDEX);
             }
         };
     }
 
 
     private User populateUser(Request request) {
-        User user = new User();
-        String username = getQueryParam(request, "username");
-        String registrationType = getQueryParam(request, "registrationType");
+        final User user = new User();
+        final String username = getQueryParam(request, "username");
+        final String registrationType = getQueryParam(request, "registrationType");
         user.setUsername(username);
         user.setAccountType(registrationType);
         return user;
