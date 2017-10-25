@@ -39,12 +39,12 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             final AccountType accountType = RequestUtil.getAccountType(request);
             Map<String, Object> params = new HashMap<>();
-            Profile profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
-            //if(!profile.isPresent()) {
-            //    response.redirect(Path.Web.EDIT_PROFILE);
-            //    return Spark.redirect;
-            // }
-            params.put("profile", profile);
+            final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            if(!profile.isPresent()) {
+                response.redirect(Path.Web.EDIT_PROFILE);
+                return Spark.redirect;
+            }
+            params.put("profile", profile.get());
             params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
             return ViewUtil.render(request, params, getProfilePath(accountType));
         };

@@ -28,11 +28,14 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Profile getProfileByUserID(int userId) {
+    public Optional<Profile> getProfileByUserID(long userID) {
         Map<String, Object> params = new HashMap<>();
-        params.put ("userId", userId);
+        params.put ("userId", userID);
         List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
-        return result.get(0);
+        if(result != null && !result.isEmpty()) {
+            return Optional.of(result.get(0));
+        }
+        return Optional.empty();
     }
 
     public void updateProfile(Profile profile) {
