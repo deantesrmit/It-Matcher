@@ -25,4 +25,13 @@ public class JobController {
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_JOB);
         };
     }
+
+    public Route handleJobOffer() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+
+
+            return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
+        };
+    };
 }
