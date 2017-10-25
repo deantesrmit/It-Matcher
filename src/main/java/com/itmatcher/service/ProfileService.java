@@ -24,12 +24,13 @@ public class ProfileService {
   @Autowired
   ProfileRepository profileRepository;
 
-  public Optional<Profile> getProfileByUserId(long userId) {
+  public Profile getProfileByUserId(int userId) {
     return profileRepository.getProfileByUserID(userId);
   }
 
+
   public void updateProfile(Request request) {
-    Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
+    Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId());
     mapProfile(request, profile);
     profileRepository.updateProfile(profile);
   }
@@ -47,7 +48,7 @@ public class ProfileService {
     profile.setAddress1(getQueryParam(request, "address1"));
     profile.setSuburb(getQueryParam(request, "suburb"));
     profile.setState(getQueryParam (request, "state"));
-    profile.setPostcode(getQueryParam (request, "Postcode"));
+    profile.setPostcode(getQueryParam (request, "postCode"));
     profile.setWorkExperience(getQueryParam (request, "experience"));
     profile.setEducation(getQueryParam (request, "education"));
     profile.setBio(getQueryParam (request, "bio"));

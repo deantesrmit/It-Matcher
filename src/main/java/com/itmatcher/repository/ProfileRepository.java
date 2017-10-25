@@ -14,27 +14,25 @@ import org.springframework.stereotype.Repository;
 public class ProfileRepository {
     private NamedParameterJdbcTemplate template;
     public static final String UPDATE_PROFILE_SQL =
-      "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
-      "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE profileID =:profileID;";
+      "update tblProfile SET (userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userId, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE id=:id";
 
-    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT id FROM TblProfile WHERE userId=:userId";
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM tblProfile WHERE userId=:userId";
+
     public static final String INSERT_NEW_PROFILE =
-      "insert into tblProfile(userID, location, address1, suburb, state, postcode, bio, education, workExperience) " +
-      "values (:userID, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
+      "insert into tblProfile(userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userId, :location, :address1, :suburb, :state, :postCode, :bio, :education, :workExperience)";
 
     @Autowired
     public ProfileRepository(DataSource ds) {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Optional<Profile> getProfileByUserID(long userID) {
+    public Profile getProfileByUserID(int userId) {
         Map<String, Object> params = new HashMap<>();
-        params.put ("userId", userID);
+        params.put ("userId", userId);
         List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
-        if(result != null && !result.isEmpty()) {
-            return Optional.of(result.get(0));
-        }
-        return Optional.empty();
+        return result.get(0);
     }
 
     public void updateProfile(Profile profile) {
@@ -49,7 +47,7 @@ public class ProfileRepository {
 
     private Map<String, Object> mapProfileParams(Profile profile) {
         Map<String, Object> params = new HashMap<>();
-        params.put("userID", profile.getUserId());
+        params.put("userId", profile.getUserId());
         params.put("location", profile.getLocation());
         params.put("address1", profile.getAddress1());
         params.put("suburb", profile.getSuburb());
@@ -63,13 +61,13 @@ public class ProfileRepository {
 
     private RowMapper<Profile> profileRowMapper = (rs, rowNum) -> {
         Profile p = new Profile();
-        p.setProfileID(rs.getInt("profileID"));
+        p.setProfileID(rs.getInt("id"));
         p.setUserId(rs.getInt("userId"));
         p.setLocation(rs.getString("location"));
         p.setAddress1 (rs.getString("address1"));
         p.setSuburb(rs.getString("suburb"));
         p.setState(rs.getString("state"));
-        p.setPostcode(rs.getString("postcode"));
+        p.setPostcode(rs.getString("postCode"));
         p.setBio(rs.getString("bio"));
         p.setEducation(rs.getString("education"));
         p.setWorkExperience(rs.getString("workExperience"));

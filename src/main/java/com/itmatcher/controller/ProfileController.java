@@ -33,17 +33,17 @@ public class ProfileController {
     ProfileService profileService;
     @Autowired
     LookupService lookupService;
-    
+
     public Route serveProfilePage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             final AccountType accountType = RequestUtil.getAccountType(request);
             Map<String, Object> params = new HashMap<>();
-            final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
-            if(!profile.isPresent()) {
-                response.redirect(Path.Web.EDIT_PROFILE);
-                return Spark.redirect;
-            }
+            Profile profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            //if(!profile.isPresent()) {
+            //    response.redirect(Path.Web.EDIT_PROFILE);
+            //    return Spark.redirect;
+            // }
             params.put("profile", profile);
             params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
             return ViewUtil.render(request, params, getProfilePath(accountType));
@@ -63,8 +63,8 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             viewObjects.put("educations", lookupService.getAllEducations());
-            profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId())
-                          .ifPresent( prof -> viewObjects.put("profile", prof));
+            profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            //        .ifPresent( prof -> viewObjects.put("profile", prof));
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
         };
     }
@@ -77,4 +77,3 @@ public class ProfileController {
         };
     }
 }
-

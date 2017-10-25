@@ -1,30 +1,29 @@
 package com.itmatcher.domain;
 
 public class Profile {
-    private long profileID;
-    private long userId;
+    private int id;
+    private int userId;
     private String location;
     private String address1;
     private String suburb;
     private String state;
-    private String postcode;
+    private String postCode;
     private String bio;
     private String education;
     private String workExperience;
 
     public long getProfileID() {
-        return profileID;
+        return id;
     }
 
-    public void setProfileID(long profileID) {
-        this.profileID = profileID;
+    public void setProfileID(int id) {
+        this.id = id;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return userId;
     }
-
-    public void setUserId(long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -60,12 +59,10 @@ public class Profile {
         this.state = state;
     }
 
-    public String getPostcode() {
-        return postcode;
-    }
+    public String getPostcode() {return postCode;}
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public void setPostcode(String postCode) {
+        this.postCode = postCode;
     }
 
     public String getBio() {
