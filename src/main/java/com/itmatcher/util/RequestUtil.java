@@ -15,14 +15,6 @@ public class RequestUtil {
         return request.session().attribute("currentUser");
     }
 
-    public static User getSessionCurrentProfile(Request request) {
-        return request.session().attribute("currentUser");
-    }
-
-    public static void setSessionCurrentUser(Request request, String currentUsername) {
-        request.session().attribute("currentUser", currentUsername);
-    }
-
     public static void setSessionRedirect(Request request, String redirect) {
         request.session().attribute("loginRedirect", redirect);
     }

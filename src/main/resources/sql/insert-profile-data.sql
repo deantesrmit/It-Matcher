@@ -89,7 +89,7 @@ INSERT INTO tblSkills_User(ID, userID, skill_ID) VALUES (44, 5, 22);
 
 -- Insert a Profile for a Freelancer
 INSERT INTO tblProfile(id, userID, location, address1, suburb, state, postCode, bio, education, workExperience)
-VALUES (100, 1, 'Palm Cove', '22 Test Street', 'Testville', 'QLD', '4444', 'I like to write programs', Null, NULL );
+VALUES (100, 1, 'Palm Cove', '22 Test Street', 'Testville', 'QLD', '4444', 'I like to write programs', 1, NULL );
 INSERT INTO tblProfile(id, userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (101, 5, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
 
