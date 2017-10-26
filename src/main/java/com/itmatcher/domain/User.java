@@ -6,7 +6,7 @@ import com.itmatcher.type.AccountType;
  * Created by deant on 10/5/17.
  */
 public class User {
-    private long id;
+    private int id;
     private String username;
     private String firstName;
     private String lastName;
@@ -15,11 +15,11 @@ public class User {
     private String salt;
     private String accountType;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

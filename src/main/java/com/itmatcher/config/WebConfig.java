@@ -53,7 +53,6 @@ public class WebConfig {
         post(Path.Web.EDIT_PROFILE, profileController.handleEditProfile());
         get (Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
-        get(Path.Web.FREELANCER_PROFILE, pageController.serverFreeLancerProfile());
         get(Path.Web.VIEW_JOB, jobController.serveViewJobPage());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());

@@ -38,9 +38,6 @@
                         <a class="nav-link" href="/aboutus">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="/howitworks">How it Works</a>
                     </li>
                     <li class="nav-item">
@@ -49,6 +46,9 @@
                 <#if !userDetails??>
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Register</a>
                     </li>
                 <#else>
                     <li class="nav-item">
