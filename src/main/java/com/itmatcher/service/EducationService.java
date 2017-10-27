@@ -4,6 +4,7 @@ import com.itmatcher.domain.Education;
 import com.itmatcher.repository.LookupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class EducationService {
     @Autowired
     LookupRepository lookupRepository;
 
-    public List<Education> getAllEducations() {
+    public Optional <List<Education>> getAllEducations() {
         return lookupRepository.getAllEducations();
     }
 }

@@ -33,6 +33,14 @@
                 value=<#if profile.bio??>"${profile.bio}"</#if>/><br/>
 
                 <label for "education">Education</label>
+                <Select>
+                <List>
+                    <option value="${education.id}">${education.educationName}</option>
+                </List>
+                </Select>
+
+
+                <!--
                 <select>
                   <option value="1">Senior Secondary</option>
                   <option value="2">Certificate I</option>
@@ -46,6 +54,7 @@
                   <option value="10">Masters Degree</option>
                   <option value="11">Doctoral Degree</option>
                 </select>
+                -->
 
                 <label for "workExperience">WorkExperience</label>
                 <input type="text" id="workExperience" name="workExperience" class="form-control input-sm chat-input"
