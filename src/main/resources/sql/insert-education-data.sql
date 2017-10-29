@@ -2,7 +2,7 @@
 INSERT INTO tblEducation(id, educationName) VALUES (1, 'Senior Secondary');
 INSERT INTO tblEducation(id, educationName) VALUES (2, 'Certificate I');
 INSERT INTO tblEducation(id, educationName) VALUES (3, 'Certificate II');
-INSERT INTO tblEducation(id, educationMame) VALUES (4, 'Certificate III');
+INSERT INTO tblEducation(id, educationName) VALUES (4, 'Certificate III');
 INSERT INTO tblEducation(id, educationName) VALUES (5, 'Certificate IV');
 INSERT INTO tblEducation(id, educationName) VALUES (6, 'Diploma');
 INSERT INTO tblEducation(id, educationName) VALUES (7, 'Advanced Diploma, Associate Degree');
