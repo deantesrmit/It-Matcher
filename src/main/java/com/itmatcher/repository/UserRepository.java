@@ -65,7 +65,8 @@ public class UserRepository {
         u.setPassword(rs.getString("password"));
         u.setSalt(rs.getString("salt"));
         u.setAccountType(rs.getString("accountType"));
-
+        u.setFirstName(rs.getString("firstName"));
+        u.setLastName(rs.getString("lastName"));
         return u;
     };
 }

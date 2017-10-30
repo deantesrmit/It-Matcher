@@ -3,7 +3,10 @@ import com.itmatcher.domain.Profile;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.sql.DataSource;
+
+import com.itmatcher.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -16,7 +19,7 @@ public class ProfileRepository {
       "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
       "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE profileID =:profileID;";
 
-    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT profileID FROM TblProfile WHERE userId=:userId";
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM TblProfile WHERE userId=:userId";
     public static final String INSERT_NEW_PROFILE =
       "insert into tblProfile(userID, location, address1, suburb, state, postcode, bio, education, workExperience) " +
       "values (:userID, :location, :address1, :suburb, :state, :postcode, :bio, :education, :workExperience)";
@@ -42,6 +45,23 @@ public class ProfileRepository {
         Map<String, Object> params = mapProfileParams(profile);
         template.query(INSERT_NEW_PROFILE, params, profileRowMapper);
     }
+    public Optional<Profile> getProfileByUserName(long userID) {
+        Map<String, Object> params = new HashMap<>();
+        params.put ("userId", userID);
+
+        String sql = "SELECT * FROM tblProfile WHERE userId=:userId ";
+
+        List<Profile> list = template.query(
+                sql,
+                params,
+                profileRowMapper);
+
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list.get(0));
+        }
+
+        return Optional.empty();
+    }
 
     private Map<String, Object> mapProfileParams(Profile profile) {
         Map<String, Object> params = new HashMap<>();
@@ -59,7 +79,7 @@ public class ProfileRepository {
 
     private RowMapper<Profile> profileRowMapper = (rs, rowNum) -> {
         Profile p = new Profile();
-        p.setProfileID(rs.getInt("profileID"));
+
         p.setUserId(rs.getInt("userId"));
         p.setLocation(rs.getString("location"));
         p.setAddress1 (rs.getString("address1"));
