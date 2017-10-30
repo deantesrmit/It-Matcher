@@ -54,10 +54,8 @@ public class SkillRepository {
         String sql =
 
                 "select s.value, js.weight from tblJobs_Skills js " +
-                "JOIN tblSkills s on js.skillId = s.skill_id " +
-                "WHERE jobsID = :jobsID";
-
-
+                "JOIN tblSkills s on js.skillId = s.id " +
+                "WHERE :jobsID = js.jobID";
 
         List<Skill> list = template.query(
                 sql,
