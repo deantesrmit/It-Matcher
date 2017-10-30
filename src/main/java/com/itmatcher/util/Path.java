@@ -19,6 +19,7 @@ public class Path {
         public static final String EDIT_PROFILE = "/edit_profile/";
         public static final String VIEW_JOB = "/job/:jobid/";
         public static final String OFFER_JOB = "/offer_job/";
+        public static final String CREATE_PROFILE = "/create_profile/";
     }
 
     public static class Template {
