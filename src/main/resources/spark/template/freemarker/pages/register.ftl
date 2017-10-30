@@ -16,12 +16,15 @@
                             </#if>
                                 <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
                                 </br>
-                                <input type="password" name="password" class="form-control input-sm chat-input" placeholder="Password" required />
+                                <input  oninput= checkpassword(this)  type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+                                </br>
+                                <input type="password" id="repeatPassowrd" class="form-control input-sm chat-input" placeholder="Confirm Password"
 
+                                       oninput= check(this) required />
                                 </br>
-                                <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
-                                </br>
-                                <input type="text" name="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
+                            <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
+                            </br>
+                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" />
                                 </br>
                                 <label for="registerType">Registration Type</label>
                                 <select class ="form-control" name="registrationType">
