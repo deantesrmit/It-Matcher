@@ -57,8 +57,11 @@ public class WebConfig {
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
+        post(Path.Web.VIEW_FREELANCERS, jobController.handleJobOffer());
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
+        post(Path.Web.OFFER_JOB, pageController.serveOfferJob());
+
     }
 
     static int getHerokuAssignedPort() {

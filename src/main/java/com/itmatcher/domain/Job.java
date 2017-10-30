@@ -9,7 +9,7 @@ import java.util.List;
  * @author Dean Tesoriero
  */
 public class Job {
-  private long id;
+  private int id;
   private JobPoster jobPoster;
   private List<Language> languages = new ArrayList<>();
   private List<Skill> skills = new ArrayList<>();
@@ -44,11 +44,11 @@ public class Job {
     this.skills = skills;
   }
 
-  public long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(int id) {
     this.id = id;
   }
 

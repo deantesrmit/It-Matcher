@@ -24,7 +24,7 @@ public class MatchService {
   @Autowired
   private JobRepository jobRepository;
 
-  public List<ScoredFreeLancer> findFreelancersForJob(long jobId) {
+  public List<ScoredFreeLancer> findFreelancersForJob(int jobId) {
     final Job job = jobRepository.getJobById(jobId).get();
 //    job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
 //    job.setSkills(asList(new Skill("Sql", CriteriaWeight.HIGH_PREFERENCE)));

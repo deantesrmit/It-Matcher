@@ -41,8 +41,8 @@ public class PageController {
     public Route serveFreelancersPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
-            viewObjects.put("freelancers", matchService.findFreelancersForJob(Long.parseLong(request.params(":jobid"))));
-            viewObjects.put("job", jobService.getJobById(Long.parseLong(request.params(":jobid"))).get());
+            viewObjects.put("freelancers", matchService.findFreelancersForJob(Integer.parseInt(request.params(":jobid"))));
+            viewObjects.put("job", jobService.getJobById(Integer.parseInt(request.params(":jobid"))).get());
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_FREELANCER);
         };
     }
@@ -65,6 +65,14 @@ public class PageController {
             return ViewUtil.render(request, viewObjects, Path.Template.FREELANCER_PROFILE);
         };
     }
+
+    public Route serveOfferJob() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
+        };
+    }
+
 
 
 }

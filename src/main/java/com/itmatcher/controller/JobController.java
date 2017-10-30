@@ -21,8 +21,17 @@ public class JobController {
     public Route serveViewJobPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
-            viewObjects.put("job", jobService.getJobById(Long.parseLong(request.params(":jobid"))).get());
+            viewObjects.put("job", jobService.getJobById(Integer.parseInt(request.params(":jobid"))).get());
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_JOB);
         };
     }
+
+    public Route handleJobOffer() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+
+
+            return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
+        };
+    };
 }

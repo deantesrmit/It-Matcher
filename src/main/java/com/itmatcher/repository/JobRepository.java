@@ -26,7 +26,7 @@ public class JobRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Optional<List<Job>> getJobsByUserId(long id) {
+    public Optional<List<Job>> getJobsByUserId(int id) {
 
         String sql = "SELECT * FROM tblJobs";
 
@@ -43,10 +43,10 @@ public class JobRepository {
     }
 
 
-    public Optional<Job> getJobById(long jobId) {
+    public Optional<Job> getJobById(int jobId) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("jobId", jobId);
-        String sql = "SELECT * FROM tblJobs where id = :jobId";
+        String sql = "SELECT * FROM tblJobs where jobsid = :jobId";
 
         List<Job> list = template.query(
                 sql,
@@ -68,7 +68,7 @@ public class JobRepository {
     private RowMapper<Job> jobRowMapper = (rs, rowNum) -> {
         Job job = new Job();
 
-        job.setId(rs.getInt("id"));
+        job.setId(rs.getInt("jobsid"));
         job.setDescription(rs.getString("jobDescription"));
         job.setJobAccepted(rs.getBoolean("jobAccepted"));
         job.setJobCompleted(rs.getBoolean("jobCompleted"));
