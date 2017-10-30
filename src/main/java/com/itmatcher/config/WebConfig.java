@@ -51,6 +51,7 @@ public class WebConfig {
         get(Path.Web.REGISTER, registerController.serveRegisterPage());
         post(Path.Web.REGISTER,registerController.handleRegisterPost());
         post(Path.Web.EDIT_PROFILE, profileController.handleEditProfile());
+        post(Path.Web.CREATE_PROFILE, profileController.handleCreateProfile());
         get (Path.Web.EDIT_PROFILE, profileController.serveEditProfilePage());
         get(Path.Web.PROFILE, profileController.serveProfilePage());
         get(Path.Web.VIEW_JOB, jobController.serveViewJobPage());

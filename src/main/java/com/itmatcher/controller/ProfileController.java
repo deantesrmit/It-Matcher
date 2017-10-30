@@ -63,8 +63,8 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             viewObjects.put("educations", lookupService.getAllEducations());
-            profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
-            //        .ifPresent( prof -> viewObjects.put("profile", prof));
+            final Optional<Profile> profileByUserId = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            viewObjects.put("profile", profileByUserId.orElseGet(Profile::new));
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
         };
     }
@@ -73,6 +73,14 @@ public class ProfileController {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
+            return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+        };
+    }
+
+    public Route handleCreateProfile() {
+        return (Request request, Response response) -> {
+            Map<String, Object> model = new HashMap<>();
+            profileService.createProfile(request);
             return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
         };
     }
