@@ -26,9 +26,9 @@ public class SkillRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Optional<List<Skill>> getSkillsByUserId(long userId) {
+    public Optional<List<Skill>> getSkillsByUserId(int userID) {
         Map<String, Object> params = new HashMap<>();
-        params.put("userID", userId);
+        params.put("userID", userID);
 
         String sql =
                 "select skill.value from tblSkills_User skillUser " +
@@ -46,21 +46,24 @@ public class SkillRepository {
         return Optional.empty();
     }
 
-    public List<Skill> getWeightedSkills(long jobId) {
+    public List<Skill> getWeightedSkills(int jobsId) {
 
         Map<String, Object> params = new HashMap<>();
-        params.put("jobID", jobId);
+        params.put("jobsID", jobsId);
 
         String sql =
+
                 "select s.value, js.weight from tblJobs_Skills js " +
-                "JOIN tblSkills s on js.skillId = s.id " +
-                "WHERE jobID = :jobID";
+                "JOIN tblSkills s on js.skillId = s.skill_id " +
+                "WHERE jobsID = :jobsID";
+
+
 
         List<Skill> list = template.query(
                 sql,
                 params,
                 wsMapper);
-        return list;
+         return list;
 
 
     }

@@ -21,7 +21,7 @@ public class JobService {
         return jobRepository.getJobsByUserId(user.getId());
     }
 
-    public Optional<Job> getJobById(long jobId) {
+    public Optional<Job> getJobById(int jobId) {
         return jobRepository.getJobById(jobId);
     }
 }

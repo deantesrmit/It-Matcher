@@ -11,8 +11,8 @@ import java.util.List;
  * @author Dean Tesoriero
  */
 public class FreeLancer {
-    private long id;
-    private long userID;
+    private int id;
+    private int userID;
     private String location;
     private String address1;
     private String suburb;
@@ -44,10 +44,11 @@ public class FreeLancer {
         this.skills = skills;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
-    public void setId(long id) {
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -77,10 +78,10 @@ public class FreeLancer {
         this.bio = bio;
     }
 
-    public long getUserID() {
+    public int getUserID() {
         return userID;
     }
-    public void setUserID(long userID) {
+    public void setUserID(int userID) {
         this.userID = userID;
     }
 

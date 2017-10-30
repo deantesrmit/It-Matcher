@@ -85,7 +85,7 @@ public class FreeLancerRepository {
 
     if (result != null && !result.isEmpty()) {
       FreeLancer returned = result.get(0);
-      Long id = returned.getId();
+      int id = returned.getId();
 
       SQL = "update tblProfile SET (location, address1, suburb, state, postcode, languages, skills, experience, education," +
               " bio) values (:location, :address1, :suburb, :state, :postcode, :languages, :skills, :experience, :education, " +
