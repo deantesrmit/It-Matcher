@@ -1,7 +1,4 @@
-package com.itmatcher.service;/*
- * Copyright (c) 2013-2014 Allianz Australia Ltd. (Allianz) All Rights Reserved.
- * This work is a trade secret of Allianz and unauthorized use or copying is prohibited.
- */
+package com.itmatcher.service;
 
 import com.itmatcher.domain.*;
 import com.itmatcher.repository.FreeLancerRepository;

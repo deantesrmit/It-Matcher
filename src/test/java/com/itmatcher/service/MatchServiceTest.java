@@ -1,33 +1,33 @@
-///*
-// * Copyright (c) 2013-2014 Allianz Australia Ltd. (Allianz) All Rights Reserved.
-// * This work is a trade secret of Allianz and unauthorized use or copying is prohibited.
-// */
-//package com.itmatcher.service;
-//
-//import com.itmatcher.domain.CriteriaWeight;
-//import com.itmatcher.domain.FreeLancer;
-//import com.itmatcher.domain.Job;
-//import com.itmatcher.domain.Language;
-//import com.itmatcher.domain.ScoredFreeLancer;
-//import com.itmatcher.domain.Skill;
-//import com.itmatcher.domain.WeightedCriteria;
-//import java.util.List;
-//import org.junit.Assert;
-//import org.junit.Before;
-//import org.junit.Test;
-//import org.mockito.InjectMocks;
-//import org.mockito.MockitoAnnotations;
-//import org.mockito.Spy;
-//import com.itmatcher.repository.FreeLancerRepository;
-//import static java.util.Arrays.asList;
-//import static org.mockito.ArgumentMatchers.any;
-//import static org.mockito.Mockito.when;
-//
-///**
-// * @author Dean Tesoriero
-// */
-//public class MatchServiceTest {
-//  @Spy
+
+package com.itmatcher.service;
+
+import com.itmatcher.domain.CriteriaWeight;
+import com.itmatcher.domain.FreeLancer;
+import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Language;
+import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.domain.Skill;
+import com.itmatcher.domain.WeightedCriteria;
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+import com.itmatcher.repository.FreeLancerRepository;
+
+import static java.util.Arrays.asList;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+
+/**
+ * @author Dean Tesoriero
+ */
+public class MatchServiceTest {
+    //  @Spy
 //  private FreeLancerRepository lancerRepository;
 //  @InjectMocks
 //  private MatchService matchService;
@@ -62,6 +62,27 @@
 //    javaFreeLancer.setSkills(asList(new Skill(skill)));
 //    return javaFreeLancer;
 //  }
-//}
-//
-//
+    private static int longest(int[] A) {
+        int ans = 0;
+        int[] len = new int[A.length];
+
+        for (int i = 0; i < A.length; i++) {
+            len[i] = 1;
+            for (int j = 0; j < i; j++) {
+                if (A[i] >= A[j]) {
+                    len[i] = Math.max(len[i], len[j] + 1);
+                    ans = Math.max(ans, len[i]);
+                }
+            }
+        }
+
+        return ans;
+    }
+
+    @Test
+    public void test() {
+        final int longest = longest(new int[]{5, 3, 4, 8, 6, 7});
+    }
+}
+
+
