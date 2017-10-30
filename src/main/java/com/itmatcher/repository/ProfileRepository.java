@@ -14,14 +14,14 @@ import org.springframework.stereotype.Repository;
 public class ProfileRepository {
     private NamedParameterJdbcTemplate template;
     public static final String UPDATE_PROFILE_SQL =
-      "update tblProfile SET (userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
-      "values (:userId, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE id=:id";
+      "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE id=:id";
 
-    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM tblProfile WHERE userId=:userId";
+    public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM tblProfile WHERE userID=:userID";
 
     public static final String INSERT_NEW_PROFILE =
-      "insert into tblProfile(userId, location, address1, suburb, state, postCode, bio, education, workExperience) " +
-      "values (:userId, :location, :address1, :suburb, :state, :postCode, :bio, :education, :workExperience)";
+      "insert into tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
+      "values (:userID, :location, :address1, :suburb, :state, :postCode, :bio, :education, :workExperience)";
 
     @Autowired
     public ProfileRepository(DataSource ds) {
@@ -50,7 +50,7 @@ public class ProfileRepository {
 
     private Map<String, Object> mapProfileParams(Profile profile) {
         Map<String, Object> params = new HashMap<>();
-        params.put("userId", profile.getUserId());
+        params.put("userID", profile.getUserId());
         params.put("location", profile.getLocation());
         params.put("address1", profile.getAddress1());
         params.put("suburb", profile.getSuburb());
@@ -65,7 +65,7 @@ public class ProfileRepository {
     private RowMapper<Profile> profileRowMapper = (rs, rowNum) -> {
         Profile p = new Profile();
         p.setProfileID(rs.getInt("id"));
-        p.setUserId(rs.getInt("userId"));
+        p.setUserId(rs.getInt("userID"));
         p.setLocation(rs.getString("location"));
         p.setAddress1 (rs.getString("address1"));
         p.setSuburb(rs.getString("suburb"));

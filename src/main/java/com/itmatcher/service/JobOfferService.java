@@ -13,6 +13,8 @@ import spark.Request;
 import java.util.Date;
 
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.itmatcher.util.RequestUtil.getQueryParam;
@@ -26,20 +28,13 @@ public class JobOfferService {
   @Autowired
   JobOfferRepository jobOfferRepository;
 
-  public void CreateJobOffer(Request request) {
-    JobOffer jobOffer = new JobOffer();
-    mapNewJobOffer(request, jobOffer);
-    jobOfferRepository.createJobOffer(jobOffer);
-  }
-
-  private void mapNewJobOffer(Request request, JobOffer jobOffer) {
-    String jobID = getQueryParam(request, "jobID");
-    String freelancerID = getQueryParam(request, "freelancerID");
+    public Map<String, Object> mapNewJobOffer(String jobID, String freeLancerId) {
+    Map<String, Object> params = new HashMap<>();
     Date now = new Date();
-
-    jobOffer.setJobID(Integer.parseInt(jobID.trim()));
-    jobOffer.setFreelancerID(Integer.parseInt(freelancerID.trim()));
-    jobOffer.setOfferStatus(0);
-    jobOffer.setLastUpdated(now);
+    params.put("jobId", jobID);
+    params.put("freeLancerId", freeLancerId);
+    params.put("offerStatus", 0);
+    params.put("timeDate", now);
+    return params;
   }
 }

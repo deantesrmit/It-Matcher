@@ -1,8 +1,10 @@
 package com.itmatcher.controller;
 
 import com.itmatcher.service.JobService;
+import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.ViewUtil;
+import static com.itmatcher.util.RequestUtil.getQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Route;
@@ -17,6 +19,7 @@ import java.util.Map;
 public class JobController {
     @Autowired
     JobService jobService;
+    JobOfferRepository jobOfferRepository;
 
     public Route serveViewJobPage() {
         return (request, response) -> {
@@ -28,10 +31,14 @@ public class JobController {
 
     public Route handleJobOffer() {
         return (request, response) -> {
-            Map<String, Object> viewObjects = new HashMap<>();
+            Map<String, Object> model = new HashMap<>();
+            final String jobId = getQueryParam (request, "jobId" );
+            final String freeLancerId = getQueryParam(request, "freeLancerId");
+            jobOfferRepository.createJobOffer(jobId, freeLancerId);
 
-
-            return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
+            //model.put(jobId, "jobId");
+            //model.put(freeLancerId, "freeLancerId");
+            return ViewUtil.render(request, model, Path.Template.OFFER_JOB);
         };
     };
 }
