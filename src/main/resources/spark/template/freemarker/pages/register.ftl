@@ -16,7 +16,7 @@
                             </#if>
                                 <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
                                 </br>
-                                <input  oninput= checkpassword(this)  type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="Password" />
+                                <input type="password"  oninput= checkpassword(this)   id="userPassword" class="form-control input-sm chat-input" placeholder="Password" required/>
                                 </br>
                                 <input type="password" id="repeatPassowrd" class="form-control input-sm chat-input" placeholder="Confirm Password"
 
@@ -24,7 +24,7 @@
                                 </br>
                             <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
                             </br>
-                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" />
+                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
                                 </br>
                                 <label for="registerType">Registration Type</label>
                                 <select class ="form-control" name="registrationType">

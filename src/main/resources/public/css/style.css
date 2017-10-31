@@ -210,3 +210,9 @@ input:in-range {
 .search-result span.plus a:hover { background-color: #414141; }
 .search-result span.plus a i { color: #fff !important; }
 .search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
+
+/*make sure the options are not too long */
+select{
+    width: 200px;
+    text-overflow: ellipsis;
+}
