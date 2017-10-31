@@ -1,8 +1,6 @@
 package com.itmatcher.repository;
 
-import com.itmatcher.domain.Job;
 import com.itmatcher.domain.JobOffer;
-import com.itmatcher.service.JobOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -21,10 +19,8 @@ import java.util.Date;
 @Repository
 public class JobOfferRepository {
 
-    JobOfferService jobOfferService;
     private NamedParameterJdbcTemplate template;
-    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate)" +
-            "values (:jobID, :freelancerID, :offerStatus, :timeDate)";
+    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate) values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
 
     public static final String ACCEPT_JOB_OFFER = "update tblJob_Offers (offerStatus, timeDate) values (1, :timeDate) "+
@@ -53,11 +49,15 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    public void createJobOffer(String jobID, String freeLancerId) {
-        JobOffer jobOffer = new JobOffer();
-        jobOffer.setJobID(Integer.parseInt(jobID));
-        Map<String, Object> params = jobOfferService.mapNewJobOffer(jobID, freeLancerId);
-        template.query(CREATE_NEW_JOB_OFFER, params, jobRowMapper);
+    public void createJobOffer(String jobID, String freelancerID) {
+        Map<String, Object> params = new HashMap<>();
+        Date now = new Date();
+        params.put("jobID", Integer.parseInt(jobID));
+        params.put("freelancerID", Integer.parseInt(freelancerID));
+        params.put("offerStatus", 0);
+        params.put("timeDate", now);
+
+        template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
 

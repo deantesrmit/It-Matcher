@@ -32,12 +32,9 @@ public class JobController {
     public Route handleJobOffer() {
         return (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            final String jobId = getQueryParam (request, "jobId" );
-            final String freeLancerId = getQueryParam(request, "freeLancerId");
-            jobOfferRepository.createJobOffer(jobId, freeLancerId);
-
-            //model.put(jobId, "jobId");
-            //model.put(freeLancerId, "freeLancerId");
+            final String jobID = getQueryParam (request, "jobID" );
+            final String freelancerID = getQueryParam(request, "freelancerID");
+            jobOfferRepository.createJobOffer(jobID, freelancerID);
             return ViewUtil.render(request, model, Path.Template.OFFER_JOB);
         };
     };

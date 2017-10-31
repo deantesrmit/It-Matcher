@@ -31,12 +31,12 @@
                                 </#list>
                             </span>
                         </li>
-                        <#--<li><span>${freeLancer.education}</span></li>-->
-                        <#--<li><span>${freeLancer.experience}</span></li>-->
+                        <#--<li><span>${freeLancer.education!}</span></li>-->
+                        <#--<li><span>${freeLancer.experience!}</span></li>-->
                         <li>
                             <span>
                                 <#list freeLancer.skills as skill>
-                                ${skill.value},
+                                ${skill.value!},
                                 </#list>
                             </span>
                         </li>
@@ -44,11 +44,11 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
-                    <h3><a href="#" title="">${freeLancer.name}</a></h3>
+                    <h3><a href="#" title="">${freeLancer.name!}</a></h3>
                     <p>${freeLancer.bio}</p>
-                    <form class="form-login" action="/offer_job/" method="POST">
-                        <input type="hidden" name="jobId" value="${job.id}">
-                        <input type="hidden" name="freeLancerId" value="${freeLancer.id}">
+                    <form class="form-login" action="/viewFreelancers/${job.id}/" method="POST">
+                        <input type="hidden" name="jobID" value="${job.id!}">
+                        <input type="hidden" name="freelancerID" value="${freeLancer.id!}">
                     <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
                     </form>
                 </div>
