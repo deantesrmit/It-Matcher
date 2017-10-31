@@ -45,7 +45,7 @@ public class ProfileRepository {
 
     public void createProfile(Profile profile) {
         Map<String, Object> params = mapProfileParams(profile);
-        template.query(INSERT_NEW_PROFILE, params, profileRowMapper);
+        template.update(INSERT_NEW_PROFILE, params);
     }
 
     private Map<String, Object> mapProfileParams(Profile profile) {

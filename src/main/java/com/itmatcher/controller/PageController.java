@@ -1,19 +1,16 @@
 package com.itmatcher.controller;
 
-import com.itmatcher.domain.ScoredFreeLancer;
-import com.itmatcher.repository.FreeLancerRepository;
-import com.itmatcher.repository.SkillRepository;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.MatchService;
 import com.itmatcher.util.Path;
+import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Route;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 @Component
 public class PageController {
     @Autowired
@@ -23,12 +20,14 @@ public class PageController {
 
     public Route serveCreateJobPage() {
         return (request, response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
         };
     }
     public Route serveMatchesPage() {
         return (request, response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
 /**
@@ -40,6 +39,7 @@ public class PageController {
 
     public Route serveFreelancersPage() {
         return (request, response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             viewObjects.put("freelancers", matchService.findFreelancersForJob(Integer.parseInt(request.params(":jobid"))));
             viewObjects.put("job", jobService.getJobById(Integer.parseInt(request.params(":jobid"))).get());
@@ -74,5 +74,11 @@ public class PageController {
     }
 
 
-
+    public Route handleCreateJob() {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            jobService.createJob(request);
+            return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
+        };
+    }
 }

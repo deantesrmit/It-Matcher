@@ -69,7 +69,10 @@ public class JobRepository {
         Job job = new Job();
 
         job.setId(rs.getInt("jobsid"));
-        job.setDescription(rs.getString("jobDescription"));
+        job.setTitle(rs.getString("jobTitle"));
+        job.setEducation(rs.getString("education"));
+        job.setDueDate(rs.getDate("dueDate"));
+        job.setBudget(rs.getString("budget"));
         job.setJobAccepted(rs.getBoolean("jobAccepted"));
         job.setJobCompleted(rs.getBoolean("jobCompleted"));
         job.setDeleteStatus(rs.getBoolean("deleteStatus"));

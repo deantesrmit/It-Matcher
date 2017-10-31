@@ -13,7 +13,11 @@ public class Job {
   private JobPoster jobPoster;
   private List<Language> languages = new ArrayList<>();
   private List<Skill> skills = new ArrayList<>();
+  private String title;
   private String description;
+  private String budget;
+  private Date dueDate;
+  private String education;
   private boolean jobAccepted = false;
   private Date jobAcceptedDate;
   private boolean jobCompleted = false;
@@ -98,5 +102,37 @@ public class Job {
 
   public void setDeleteStatus(boolean deleteStatus) {
     this.deleteStatus = deleteStatus;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getBudget() {
+    return budget;
+  }
+
+  public void setBudget(String budget) {
+    this.budget = budget;
+  }
+
+  public Date getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(Date dueDate) {
+    this.dueDate = dueDate;
+  }
+
+  public String getEducation() {
+    return education;
+  }
+
+  public void setEducation(String education) {
+    this.education = education;
   }
 }
