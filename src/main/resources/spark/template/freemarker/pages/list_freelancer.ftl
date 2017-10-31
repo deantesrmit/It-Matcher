@@ -17,7 +17,7 @@
             <#assign freeLancer = scoredFreelancer.freeLancer>
             <article class="search-result row">
                 <div class="col-xs-11 col-md-1">
-                    <span>Score:${scoredFreelancer.score} </span>
+                    <span>Score:${scoredFreelancer.score!} </span>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-3">
                     <a href="#" title="no photo" class="thumbnail"><img src="../img/no-photo.jpg" alt="NO PHOTO"/></a>
@@ -27,16 +27,16 @@
                         <li>
                             <span>
                                 <#list freeLancer.languages as language>
-                                    <span>${language.value}</span>
+                                    <span>${language.value!}</span>
                                 </#list>
                             </span>
                         </li>
-                        <#--<li><span>${freeLancer.education}</span></li>-->
-                        <#--<li><span>${freeLancer.experience}</span></li>-->
+                        <#--<li><span>${freeLancer.education!}</span></li>-->
+                        <#--<li><span>${freeLancer.experience!}</span></li>-->
                         <li>
                             <span>
                                 <#list freeLancer.skills as skill>
-                                ${skill.value},
+                                ${skill.value!},
                                 </#list>
                             </span>
                         </li>
@@ -44,7 +44,7 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
-                    <h3><a href="#" title="">${freeLancer.name}</a></h3>
+                    <h3><a href="#" title="">${freeLancer.name!}</a></h3>
                     <p>${freeLancer.bio}</p>
                     <form class="form-login" action="/offer_job/" method="POST">
                         <input type="hidden" name="jobId" value="${job.id}">
