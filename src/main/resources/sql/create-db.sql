@@ -36,7 +36,7 @@ create table tblJobs (
   jobDescription VARCHAR(250) NOT NULL,
   dueDate VARCHAR(250),
   education VARCHAR(250),
-  budget VARCHAR(250), 
+  budget VARCHAR(250),
   jobAccepted bit,
   jobAcceptedDate DATETIME,
   jobCompleted bit,

@@ -35,15 +35,15 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull user info from database -->
-                        Phone 1: <br>
-                        Phone 2: <br>
-                        Email Address: <br>
-                        Address: <br>
-                        State: <br>
-                        Suburb: <br>
-                        Post Code: <br>
-                        Education History: <br>
-                        Bio: <br>
+                        <p>User ID:<#if users.id??>${users.id}</#if></p>
+                        <p>User Name: <#if users.username??>${users.username}</#if></p>
+                        <p>First Name: <#if users.firstName??>${users.firstName}</#if></p>
+                        <p>Last Name: <#if users.lastName??>${users.lastName}</#if> </p>
+                        <p>Address: <#if profile.address1??>${profile.address1}</#if> </p>
+                        <p>Suburb: <#if profile.suburb??>${profile.suburb}</#if> </p>
+                        <p>State: <#if profile.state??>${profile.state}</#if> </p>
+                        <p>Postcode: <#if profile.postcode??>${profile.postcode}</#if> </p>
+                        <p>Bio: <#if profile.bio??>${profile.bio}</#if> </p>
                         <button class="btn btn-success">Edit User Information</button>
                     </div>
                 </div>

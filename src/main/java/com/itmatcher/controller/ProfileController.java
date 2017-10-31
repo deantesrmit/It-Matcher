@@ -1,6 +1,9 @@
 package com.itmatcher.controller;
 
 import com.itmatcher.domain.Profile;
+import com.itmatcher.domain.User;
+import com.itmatcher.repository.UserRepository;
+import com.itmatcher.service.EducationService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.LookupService;
 import com.itmatcher.service.ProfileService;
@@ -30,17 +33,21 @@ public class ProfileController {
     ProfileService profileService;
     @Autowired
     LookupService lookupService;
-
+    @Autowired
+    UserRepository userRepository;
     public Route serveProfilePage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             final AccountType accountType = RequestUtil.getAccountType(request);
             Map<String, Object> params = new HashMap<>();
             final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
+            String username1 = getSessionCurrentUser(request).getUsername();
+            User test = (userRepository.getUserByUserName(username1)).get();
             if(!profile.isPresent()) {
                 response.redirect(Path.Web.EDIT_PROFILE);
                 return Spark.redirect;
             }
+            params.put("users",test);
             params.put("profile", profile.get());
             params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
             return ViewUtil.render(request, params, getProfilePath(accountType));
