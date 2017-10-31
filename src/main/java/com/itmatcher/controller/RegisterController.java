@@ -49,10 +49,10 @@ public class RegisterController {
             final User user = populateUser(request);
             final String password = getQueryParam(request, "password");
             if (isNullOrEmpty(user.getUsername()) || isNullOrEmpty(password)) {
-                model.put("error", "Please enter a username and password to register.");
+                model.put("error", "Please enter an email and password to register.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
             } else if (userRepository.getUserByUserName(user.getUsername()).isPresent()) {
-                model.put("error", "Username already exists.");
+                model.put("error", "Email already exists.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
             } else {
                 final User newUser = authService.registerUser(user, password);
