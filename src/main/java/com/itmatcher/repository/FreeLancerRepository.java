@@ -5,18 +5,16 @@ package com.itmatcher.repository;
 import com.itmatcher.domain.FreeLancer;
 import com.itmatcher.domain.Language;
 import com.itmatcher.domain.Skill;
-import com.itmatcher.domain.User;
-import com.itmatcher.util.RequestUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
-
-import javax.sql.DataSource;
-import java.util.*;
-import java.util.Optional;
-
-import static java.util.Arrays.asList;
 
 /**
  * @author Dean Tesoriero
@@ -40,7 +38,7 @@ public class FreeLancerRepository {
     }
     final List<FreeLancer> freeLancers = maybeFreeLancers.get();
     freeLancers.stream()
-               .forEach(fl -> fl.setSkills(skillRepository.getSkillsByUserId(fl.getUserID()).get()));
+               .forEach(fl -> fl.setSkills(skillRepository.getSkillsByUserId(fl.getUserID()).orElse(null)));
     return freeLancers;
   }
 

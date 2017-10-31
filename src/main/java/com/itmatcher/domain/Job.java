@@ -11,12 +11,13 @@ import java.util.List;
 public class Job {
   private int id;
   private JobPoster jobPoster;
+  private int jobPosterId;
   private List<Language> languages = new ArrayList<>();
   private List<Skill> skills = new ArrayList<>();
   private String title;
   private String description;
   private String budget;
-  private Date dueDate;
+  private String dueDate;
   private String education;
   private boolean jobAccepted = false;
   private Date jobAcceptedDate;
@@ -120,11 +121,11 @@ public class Job {
     this.budget = budget;
   }
 
-  public Date getDueDate() {
+  public String getDueDate() {
     return dueDate;
   }
 
-  public void setDueDate(Date dueDate) {
+  public void setDueDate(String dueDate) {
     this.dueDate = dueDate;
   }
 
@@ -134,5 +135,13 @@ public class Job {
 
   public void setEducation(String education) {
     this.education = education;
+  }
+
+  public int getJobPosterId() {
+    return jobPosterId;
+  }
+
+  public void setJobPosterId(int jobPosterId) {
+    this.jobPosterId = jobPosterId;
   }
 }

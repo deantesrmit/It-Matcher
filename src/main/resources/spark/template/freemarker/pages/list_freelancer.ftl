@@ -5,6 +5,19 @@
 
     <h1>Matched Freelancers for JOB ${job.id}</h1>
     <br/>
+    <ul>
+      <li>Title: ${job.title!}</li>
+      <li>Description:${job.description!}</li>
+      <li>Due: ${job.dueDate!}</li>
+      <li>Education: ${job.education!}</li>
+      <li>Budget: ${job.budget!}</li>
+      <li>Looking for skills:
+      <#list job.skills! as skill>
+          ${skill.value},
+      </#list>
+      </li>
+    </ul>
+
     <br/>
     <br/>
     <h2 class="lead"><strong class="text-danger">3</strong> IT proffesionals were found for the search for <strong
@@ -19,20 +32,22 @@
                 <div class="col-xs-11 col-md-1">
                     <span>Score:${scoredFreelancer.score} </span>
                 </div>
+              <div class="col-xs-12 col-sm-12 col-md-3">
+                Matched skills
+                  <ul class="meta-search">
+                      <li>
+                          <span>
+                              <#list freeLancer.matchedSkills as skill>
+                              <strong>${skill.value},</strong>
+                              </#list>
+                          </span>
+                      </li>
+
+                  </ul>
+              </div>
                 <div class="col-xs-12 col-sm-12 col-md-3">
-                    <a href="#" title="no photo" class="thumbnail"><img src="../img/no-photo.jpg" alt="NO PHOTO"/></a>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
+                  Skills
                     <ul class="meta-search">
-                        <li>
-                            <span>
-                                <#list freeLancer.languages as language>
-                                    <span>${language.value}</span>
-                                </#list>
-                            </span>
-                        </li>
-                        <#--<li><span>${freeLancer.education}</span></li>-->
-                        <#--<li><span>${freeLancer.experience}</span></li>-->
                         <li>
                             <span>
                                 <#list freeLancer.skills as skill>
@@ -55,7 +70,7 @@
                 <span class="clearfix borda"></span>
             </article>
         </#list>
-        <a href="/job/${job.id}/"><button class="btn btn-success">Back</button> </a>
+        <a href="/viewFreelancers/${job.id}/"><button class="btn btn-success">Back</button> </a>
     </section>
 
 </div>

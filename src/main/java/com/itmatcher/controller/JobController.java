@@ -29,8 +29,6 @@ public class JobController {
     public Route handleJobOffer() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
-
-
             return ViewUtil.render(request, viewObjects, Path.Template.OFFER_JOB);
         };
     };

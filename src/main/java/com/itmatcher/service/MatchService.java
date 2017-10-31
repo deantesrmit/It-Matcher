@@ -1,17 +1,19 @@
 package com.itmatcher.service;
 
-import com.itmatcher.domain.*;
+import com.itmatcher.domain.FreeLancer;
+import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Language;
+import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.domain.Skill;
+import com.itmatcher.domain.WeightedCriteria;
 import com.itmatcher.repository.FreeLancerRepository;
 import com.itmatcher.repository.JobRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import static com.itmatcher.domain.CriteriaWeight.REQUIRED;
-import static java.util.Arrays.asList;
 
 /**
  * @author Dean Tesoriero
@@ -38,19 +40,20 @@ public class MatchService {
   private List<ScoredFreeLancer> calculateFLWeight(Job job, List<FreeLancer> flByRequired) {
     List<ScoredFreeLancer> scoredFreeLancers = new ArrayList<>(flByRequired.size());
     for (FreeLancer freeLancer : flByRequired) {
-      final int langScore = calculatePoints(job.getLanguages(), freeLancer.getLanguages());
-      final int skillScore = calculatePoints(job.getSkills(), freeLancer.getSkills());
+      final int langScore = calculatePoints(job.getLanguages(), freeLancer.getLanguages(), freeLancer);
+      final int skillScore = calculatePoints(job.getSkills(), freeLancer.getSkills(), freeLancer);
       scoredFreeLancers.add(new ScoredFreeLancer(freeLancer, langScore + skillScore));
     }
     return scoredFreeLancers;
   }
 
-  private int calculatePoints(List<? extends WeightedCriteria> jobCriterias, List<? extends WeightedCriteria> flCriterias) {
+  private int calculatePoints(List<? extends WeightedCriteria> jobCriterias, List<? extends WeightedCriteria> flCriterias, FreeLancer freeLancer) {
     int weight = 0;
     for (WeightedCriteria jobCriteria : jobCriterias) {
       final boolean containsJobCriteria = flCriterias.stream().anyMatch(fc -> jobCriteria.getValue().equalsIgnoreCase(fc.getValue()));
       if(flCriterias != null && containsJobCriteria){
         weight += jobCriteria.getWeight().score;
+        freeLancer.getMatchedSkills().add((Skill)jobCriteria);
       }
     }
     return weight;

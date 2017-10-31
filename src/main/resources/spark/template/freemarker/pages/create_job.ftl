@@ -19,28 +19,9 @@
         <div class="form-group">
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
           <select multiple name="skills" class="form-control" id="skillsRequiredInput">
-            <option value="1">HTML/CSS</option>
-            <option value="2">PHP</option>
-            <option value="3">Java</option>
-            <option value="4">Javascript</option>
-            <option value="5">Ruby</option>
-            <option value="6">C++</option>
-            <option value="7">Python</option>
-            <option value="8">Perl</option>
-            <option value="9">C#</option>
-            <option value="10">C</option>
-            <option value="11">Go</option>
-            <option value="12">R</option>
-            <option value="13">SQL</option>
-            <option value="14">iOS: Swift</option>
-            <option value="15">iOS: C Objective</option>
-            <option value="16">Wordpress</option>
-            <option value="17">SEO</option>
-            <option value="18">Mobile Phone</option>
-            <option value="19">Android</option>
-            <option value="20">Graphic Design</option>
-            <option value="21">Internet Marketing</option>
-            <option value="22">Database Design</option>
+            <#list skills as skill>
+                    <option value="${skill.id}">${skill.value}</option>
+            </#list>
           </select>
         </div>
         <div class="form-group">
