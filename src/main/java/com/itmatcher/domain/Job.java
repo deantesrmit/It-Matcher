@@ -11,9 +11,14 @@ import java.util.List;
 public class Job {
   private int id;
   private JobPoster jobPoster;
+  private int jobPosterId;
   private List<Language> languages = new ArrayList<>();
   private List<Skill> skills = new ArrayList<>();
+  private String title;
   private String description;
+  private String budget;
+  private String dueDate;
+  private String education;
   private boolean jobAccepted = false;
   private Date jobAcceptedDate;
   private boolean jobCompleted = false;
@@ -98,5 +103,45 @@ public class Job {
 
   public void setDeleteStatus(boolean deleteStatus) {
     this.deleteStatus = deleteStatus;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public String getBudget() {
+    return budget;
+  }
+
+  public void setBudget(String budget) {
+    this.budget = budget;
+  }
+
+  public String getDueDate() {
+    return dueDate;
+  }
+
+  public void setDueDate(String dueDate) {
+    this.dueDate = dueDate;
+  }
+
+  public String getEducation() {
+    return education;
+  }
+
+  public void setEducation(String education) {
+    this.education = education;
+  }
+
+  public int getJobPosterId() {
+    return jobPosterId;
+  }
+
+  public void setJobPosterId(int jobPosterId) {
+    this.jobPosterId = jobPosterId;
   }
 }

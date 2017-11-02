@@ -2,7 +2,6 @@ package com.itmatcher.util;
 
 import com.google.common.base.Strings;
 import com.itmatcher.domain.User;
-import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.type.AccountType;
 import spark.Request;
 import spark.Response;
@@ -30,6 +29,9 @@ public class RequestUtil {
 
     public static String getQueryParam(Request request, String param) {
         return request.queryParams(param);
+    }
+    public static String getQueryParams(Request request, String param) {
+        return request.params(param);
     }
 
     public static void ensureUserIsLoggedIn(Request request, Response response) {

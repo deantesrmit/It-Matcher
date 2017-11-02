@@ -10,13 +10,13 @@ public class Path {
         public static final String LOGOUT = "/logout/";
         public static final String REGISTER = "/register/";
         public static final String PROFILE = "/profile/";
-        public static final String CREATE_JOB ="/create_job/";
         public static final String VIEW_MATCHES ="/viewMatches/";
         public static final String VIEW_FREELANCERS ="/viewFreelancers/:jobid/";
         public static final String ABOUT_US ="/aboutus/";
         public static final String HOW_IT_WORKS ="/howitworks/";
         public static final String FREELANCER_PROFILE = "/freelancer_profile/";
         public static final String EDIT_PROFILE = "/edit_profile/";
+        public static final String CREATE_JOB ="/create_job/";
         public static final String VIEW_JOB = "/job/:jobid/";
         public static final String OFFER_JOB = "/offer_job/";
         public static final String CREATE_PROFILE = "/create_profile/";

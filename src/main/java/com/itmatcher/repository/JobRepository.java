@@ -1,15 +1,19 @@
 package com.itmatcher.repository;
 
 import com.itmatcher.domain.Job;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-import javax.sql.DataSource;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by deant on 10/21/17.
@@ -18,12 +22,15 @@ import java.util.Optional;
 public class JobRepository {
     @Autowired
     SkillRepository skillRepository;
+    JdbcTemplate mJdbcTemplate;
 
     private NamedParameterJdbcTemplate template;
 
     @Autowired
     public JobRepository(DataSource ds) {
+
         template = new NamedParameterJdbcTemplate(ds);
+        mJdbcTemplate = new JdbcTemplate(ds);
     }
 
     public Optional<List<Job>> getJobsByUserId(int id) {
@@ -67,9 +74,11 @@ public class JobRepository {
 
     private RowMapper<Job> jobRowMapper = (rs, rowNum) -> {
         Job job = new Job();
-
         job.setId(rs.getInt("jobsid"));
-        job.setDescription(rs.getString("jobDescription"));
+        job.setTitle(rs.getString("jobTitle"));
+        job.setEducation(rs.getString("education"));
+        job.setDueDate(rs.getString("dueDate"));
+        job.setBudget(rs.getString("budget"));
         job.setJobAccepted(rs.getBoolean("jobAccepted"));
         job.setJobCompleted(rs.getBoolean("jobCompleted"));
         job.setDeleteStatus(rs.getBoolean("deleteStatus"));
@@ -78,5 +87,25 @@ public class JobRepository {
 
         return job;
     };
+
+
+
+    public Optional<Job> saveJob(Job job) {
+        KeyHolder holder = new GeneratedKeyHolder();
+        String SQL =
+           "INSERT INTO tblJobs(jobPosterID, jobTitle, jobDescription, dueDate, education, budget) " +
+           "values ( ?, ?, ?, ?, ?, ?)";
+        mJdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setLong(1, job.getJobPosterId());
+            ps.setString(2, job.getTitle());
+            ps.setString(3, job.getDescription());
+            ps.setString(4, job.getDueDate());
+            ps.setString(5, job.getBudget());
+            ps.setString(6, job.getEducation());
+            return ps;
+        }, holder);
+        return getJobById(holder.getKey().intValue());
+    }
 
 }
