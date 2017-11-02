@@ -28,7 +28,7 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Optional<Profile> getProfileByUserID(long userID) {
+    public Optional<Profile> getProfileByUserID(int userID) {
         Map<String, Object> params = new HashMap<>();
         params.put ("userId", userID);
         List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
