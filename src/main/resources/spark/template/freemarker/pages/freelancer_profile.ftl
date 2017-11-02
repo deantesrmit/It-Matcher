@@ -42,7 +42,7 @@
                         <p>State: ${profile.state!}</p>
                         <p>Postcode: ${profile.postcode!}</p>
                         <p>Bio: ${profile.bio!}</p>
-                        <button class="btn btn-success">Edit User Information</button>
+                        <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>
                     </div>
                 </div>
             </div>
