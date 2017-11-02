@@ -34,7 +34,6 @@ public class ProfileService {
 
   public void createProfile(Request request) {
     Profile profile = new Profile();
-
     mapProfile(request, profile);
     profileRepository.createProfile(profile);
   }
