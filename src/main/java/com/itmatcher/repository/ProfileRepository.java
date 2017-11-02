@@ -15,7 +15,7 @@ public class ProfileRepository {
     private NamedParameterJdbcTemplate template;
     public static final String UPDATE_PROFILE_SQL =
       "update tblProfile SET (userID, location, address1, suburb, state, postCode, bio, education, workExperience) " +
-      "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE id=:id";
+      "values (:userID, :location, :address1, :suburb, :state, :postCode, bio, education, workExperience) WHERE userID=:userID";
 
     public static final String SELECT_PROFILE_BY_ID_SQL = "SELECT * FROM tblProfile WHERE userID=:userID";
 
