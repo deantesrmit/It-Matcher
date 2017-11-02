@@ -1,13 +1,21 @@
 package com.itmatcher.config;
 
-import com.itmatcher.controller.*;
+import com.itmatcher.controller.FreeLancerController;
+import com.itmatcher.controller.IndexController;
+import com.itmatcher.controller.JobController;
+import com.itmatcher.controller.LoginController;
+import com.itmatcher.controller.PageController;
+import com.itmatcher.controller.ProfileController;
+import com.itmatcher.controller.RegisterController;
 import com.itmatcher.filters.Filters;
 import com.itmatcher.util.Path;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import spark.Spark;
-
-import static spark.Spark.*;
+import static spark.Spark.before;
+import static spark.Spark.get;
+import static spark.Spark.port;
+import static spark.Spark.post;
+import static spark.Spark.staticFileLocation;
 
 /**
  * Created by deant on 10/4/17.
@@ -56,6 +64,7 @@ public class WebConfig {
         get(Path.Web.PROFILE, profileController.serveProfilePage());
         get(Path.Web.VIEW_JOB, jobController.serveViewJobPage());
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
+        post(Path.Web.CREATE_JOB, pageController.handleCreateJob());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
         post(Path.Web.VIEW_FREELANCERS, jobController.handleJobOffer());

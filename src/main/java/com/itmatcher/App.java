@@ -16,5 +16,8 @@ public class App {
     AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(App.class);
     WebConfig config = ctx.getBean(WebConfig.class);
     config.initApplication();
+    org.hsqldb.util.DatabaseManagerSwing.main(new String[] {
+      "--url",  "jdbc:hsqldb:mem:testdb", "--noexit"
+    });
   }
 }

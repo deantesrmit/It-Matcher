@@ -16,6 +16,7 @@ public class FreeLancer {
     private String postCode;
     private List<Language> languages;
     private List<Skill> skills;
+    private List<Skill> matchedSkills;
     private String experience;
     private String education;
     private String name;
@@ -96,4 +97,13 @@ public class FreeLancer {
     public String getPostCode() {return postCode;}
     public void setPostCode(String postcode) {this.postCode = postCode;}
 
+    public List<Skill> getMatchedSkills() {
+        if(matchedSkills == null)
+            this.matchedSkills = new ArrayList<>();
+        return matchedSkills;
+    }
+    
+    public void setMatchedSkills(List<Skill> matchedSkills) {
+        this.matchedSkills = matchedSkills;
+    }
 }

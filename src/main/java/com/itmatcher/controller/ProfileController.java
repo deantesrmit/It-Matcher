@@ -14,14 +14,12 @@ import com.itmatcher.util.ViewUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 import spark.Spark;
-
 import static com.itmatcher.util.RequestUtil.getSessionCurrentUser;
 
 /**
@@ -77,6 +75,7 @@ public class ProfileController {
 
     public Route handleEditProfile() {
         return (Request request, Response response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
             return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
@@ -85,6 +84,7 @@ public class ProfileController {
 
     public Route handleCreateProfile() {
         return (Request request, Response response) -> {
+            RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.createProfile(request);
             return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);

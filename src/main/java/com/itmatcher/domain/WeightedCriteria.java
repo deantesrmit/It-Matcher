@@ -8,6 +8,14 @@ public class WeightedCriteria {
   String value;
   CriteriaWeight weight;
 
+  public WeightedCriteria() {
+  }
+
+  public WeightedCriteria(String value, CriteriaWeight weight) {
+    this.value = value;
+    this.weight = weight;
+  }
+
   public CriteriaWeight getWeight() {
     return weight;
   }

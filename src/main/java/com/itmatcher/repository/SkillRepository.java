@@ -31,7 +31,7 @@ public class SkillRepository {
         params.put("userID", userID);
 
         String sql =
-                "select skill.value from tblSkills_User skillUser " +
+                "select skill.id, skill.value from tblSkills_User skillUser " +
                 "JOIN tblSkills skill on  skill.id = skillUser.skillID " +
                 "WHERE userID = :userID";
 
@@ -46,6 +46,17 @@ public class SkillRepository {
         return Optional.empty();
     }
 
+    public List<Skill> getAllSkills() {
+        Map<String, Object> params = new HashMap<>();
+              String sql = "select * from tblSkills";
+
+              List<Skill> list = template.query(
+                      sql,
+                      params,
+                skillMapper);
+               return list;
+    }
+
     public List<Skill> getWeightedSkills(int jobsId) {
 
         Map<String, Object> params = new HashMap<>();
@@ -53,7 +64,7 @@ public class SkillRepository {
 
         String sql =
 
-                "select s.value, js.weight from tblJobs_Skills js " +
+                "select s.value, js.weight from tblJob_Skills js " +
                 "JOIN tblSkills s on js.skillId = s.id " +
                 "WHERE :jobsID = js.jobID";
 
@@ -66,6 +77,18 @@ public class SkillRepository {
 
     }
 
-    private RowMapper<Skill> skillMapper = (rs, rowNum) -> new Skill(rs.getString("value"));
+    public void saveAllSkills(int job, List<Skill> skills) {
+        for (Skill skill : skills) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("jobID", job);
+            params.put("skillID", skill.getId());
+            params.put("weight", skill.getWeight().score);
+            template.update("insert into TBLJOB_SKILLS(jobID, skillID, weight) values (:jobID, :skillID, :weight) ", params);
+        }
+    }
+    private RowMapper<Skill> skillMapper = (rs, rowNum) -> new Skill(rs.getInt("id"), rs.getString("value"));
     private RowMapper<Skill> wsMapper = (rs, rowNum) -> new Skill(rs.getString("value"), fromScore(rs.getInt("weight")));
+
+
+
 }
