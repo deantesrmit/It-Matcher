@@ -56,7 +56,6 @@ public class JobOfferRepository {
         params.put("freelancerID", Integer.parseInt(freelancerID));
         params.put("offerStatus", 0);
         params.put("timeDate", now);
-
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 

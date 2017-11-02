@@ -28,9 +28,9 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-    public Optional<Profile> getProfileByUserID(long userID) {
+    public Optional<Profile> getProfileByUserID(int userID) {
         Map<String, Object> params = new HashMap<>();
-        params.put ("userId", userID);
+        params.put ("userID", userID);
         List<Profile> result = template.query(SELECT_PROFILE_BY_ID_SQL, params, profileRowMapper);
         if(result != null && !result.isEmpty()) {
             return Optional.of(result.get(0));

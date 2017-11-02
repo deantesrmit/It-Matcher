@@ -66,9 +66,9 @@ public class ProfileController {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
-            viewObjects.put("educations", lookupService.getAllEducations());
             final Optional<Profile> profileByUserId = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
             viewObjects.put("profile", profileByUserId.orElseGet(Profile::new));
+            //viewObjects.put("educations", lookupService.getAllEducations());
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
         };
     }
