@@ -1,6 +1,7 @@
 package com.itmatcher.repository;
 
 import com.itmatcher.domain.Education;
+import com.itmatcher.domain.WorkExp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -19,6 +20,7 @@ import java.util.List;
 public class LookupRepository {
     private NamedParameterJdbcTemplate template;
     public static final String LIST_ALL_EDUCATION = "SELECT*FROM tblEducation";
+    public static final String LIST_ALL_WORK_EXP = "SELECT*FROM tblWorkExp";
     @Autowired
     public LookupRepository(DataSource ds) {
         template = new NamedParameterJdbcTemplate(ds);
@@ -37,6 +39,23 @@ public class LookupRepository {
 
     private RowMapper<Education> educationRowMapper = (rs, rowNum) -> {
         Education p = new Education();
+        p.setId(rs.getInt("id"));
+        p.setValue(rs.getString("value"));
+        return p;
+    };
+
+    public Optional <List<WorkExp>> getAllWorkExp() {
+        Map<String, Object> params = new HashMap<>();
+        List<WorkExp> list = template.query(LIST_ALL_WORK_EXP, params, WorkExpRowMapper);
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list);
+        }
+
+        return Optional.empty();
+    }
+
+    private RowMapper<WorkExp> WorkExpRowMapper = (rs, rowNum) -> {
+        WorkExp p = new WorkExp();
         p.setId(rs.getInt("id"));
         p.setValue(rs.getString("value"));
         return p;

@@ -33,11 +33,13 @@
                        value="${profile.bio!}"/><br/>
 
                 <label for "education">Education</label>
-                <Select>
-                <List>
-                    <option value="${education.id}">${education.educationName}</option>
-                </List>
-                </Select>
+                <div class="form-control">
+                    <Select>
+                        <List>
+                            <option value="${education.id}">${education.educationName}</option>
+                        </List>
+                    </Select>
+                </div>
 
 
                 <!--
@@ -57,8 +59,18 @@
                 -->
 
                 <label for "workExperience">WorkExperience</label>
+                <div class="form-control">
+                    <Select>
+                        <List>
+                            <option value="${WorkExp.id}">${WorkExp.workexpName}</option>
+                        </List>
+                    </Select>
+                </div>
+
+                <!--
                 <input type="text" id="workExperience" name="workExperience" class="form-control input-sm chat-input"
                       value="${profile.workExperience!}" /><br/>
+                -->
 
                 <div class="wrapper">
                     <input type="submit" class="btn btn-primary btn-md"
