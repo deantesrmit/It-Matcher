@@ -14,7 +14,7 @@ import java.util.List;
 public class LookupService {
     @Autowired
     LookupRepository lookupRepository;
-    public Optional <List<Education>> getAllEducations() {
+    public List <Education> getAllEducations() {
         return lookupRepository.getAllEducations();
     }
 }
