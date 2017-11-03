@@ -33,16 +33,16 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull user info from database -->
-                        <p>User ID:<#if users.id??>${users.id}</#if></p>
-                        <p>User Name: <#if users.username??>${users.username}</#if></p>
-                        <p>First Name: <#if users.firstName??>${users.firstName}</#if></p>
-                        <p>Last Name: <#if users.lastName??>${users.lastName}</#if> </p>
-                        <p>Address: <#if profile.address1??>${profile.address1}</#if> </p>
-                        <p>Suburb: <#if profile.suburb??>${profile.suburb}</#if> </p>
-                        <p>State: <#if profile.state??>${profile.state}</#if> </p>
-                        <p>Postcode: <#if profile.postcode??>${profile.postcode}</#if> </p>
-                        <p>Bio: <#if profile.bio??>${profile.bio}</#if> </p>
-                        <button class="btn btn-success">Edit User Information</button>
+                        <p>User ID:${users.id!}</p>
+                        <p>User Name: ${users.username!}</p>
+                        <p>First Name: ${users.firstName!}</p>
+                        <p>Last Name: ${users.lastName!}</p>
+                        <p>Address: ${profile.address1!}</p>
+                        <p>Suburb: ${profile.suburb!}</p>
+                        <p>State: ${profile.state!}</p>
+                        <p>Postcode: ${profile.postcode!}</p>
+                        <p>Bio: ${profile.bio!}</p>
+                        <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>
                     </div>
                 </div>
             </div>

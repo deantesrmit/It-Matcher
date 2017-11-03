@@ -24,7 +24,7 @@
                                 </br>
                             <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
                             </br>
-                                <input type="text" id="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
+                                <input type="text" name="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
                                 </br>
                                 <label for="registerType">Registration Type</label>
                                 <select class ="form-control" name="registrationType">
