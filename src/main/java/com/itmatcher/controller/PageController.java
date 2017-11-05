@@ -15,8 +15,13 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import spark.Request;
+import spark.Response;
 import spark.Route;
 import spark.Spark;
+
+import static com.google.common.base.Strings.isNullOrEmpty;
+import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 @Component
 public class PageController {
@@ -80,12 +85,26 @@ public class PageController {
         };
     }
 
-
     public Route handleCreateJob() {
         return (request, response) -> {
-            final Job job = jobService.createJob(request).get();
-            response.redirect("/viewFreelancers/" + job.getId() + "/");
-            return Spark.redirect;
+            Map<String, Object> model = new HashMap<>();
+
+            final String jobTitle = getQueryParam(request, "title");
+            final String jobDescription = getQueryParam(request,"description");
+            final String education = getQueryParam(request, "education");
+            final String dueDate = getQueryParam(request, "dueDate");
+            final String budget = getQueryParam(request,"budget");
+
+            if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
+                model.put("error","Noob");
+                return Spark.redirect;
+            }
+            else {
+
+                final Job job = jobService.createJob(request).get();
+                /*response.redirect("/viewFreelancers/" + job.getId() + "/"); */
+                return Spark.redirect;
+            }
         };
     }
 }
