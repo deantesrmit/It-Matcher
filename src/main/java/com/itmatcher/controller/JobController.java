@@ -1,5 +1,7 @@
 package com.itmatcher.controller;
 
+import com.itmatcher.domain.Job;
+import com.itmatcher.repository.JobRepository;
 import com.itmatcher.repository.UserRepository;
 import com.itmatcher.service.JobService;
 import com.itmatcher.util.Path;
@@ -25,7 +27,7 @@ public class JobController {
     @Autowired
     JobService jobService;
     @Autowired
-    UserRepository userRepository;
+    JobRepository jobRepository;
 
     public Route serveViewJobPage() {
         return (request, response) -> {
@@ -46,23 +48,27 @@ public class JobController {
         return (Request request, Response response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
+            final Job job = populateJob(request);
 
-            final String jobTitle = getQueryParam(request,"title");
-            final String jobDescription = getQueryParam(request, "description");
-            final String jobDate = getQueryParam(request, "date");
-            final String skills = getQueryParam(request, "skills");
-
-            if isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription || isNullOrEmpty(jobDate) || isNullOrEmpty(skills)) {
+            if isNullOrEmpty(job.getTitle()) || isNullOrEmpty(job.getDescription() || isNullOrEmpty(job.getDueDate()) || isNullOrEmpty(job.getSkills())) {
                 model.put("error","Please fill out all required job details");
                 return ViewUtil.render(request, model, Path.Template.POSTER_PROFILE);
             }
-            else {
-
+            else{
+                jobService.createJob(request);
+                return ViewUtil.render(request, model, Path.Template.INDEX);
             }
-
-            jobService.createJob(request);
-            return ViewUtil.render(request, model, Path.Template.INDEX);
-
         };
+    }
+
+    private Job populateJob(Request request) {
+        final Job job = new Job();
+        job.setTitle(getQueryParam(request, "title"));
+        job.setDescription(getQueryParam(request, "description"));
+        job.setDueDate(getQueryParam(request, "date"));
+        job.setSkills(getQueryParam(request, "skills"));
+        job.setEducation(getQueryParam(request, "education"));
+        job.setBudget(getQueryParam(request, "budget"));
+        return job;
     }
 }
