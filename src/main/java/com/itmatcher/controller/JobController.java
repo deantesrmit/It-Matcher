@@ -50,7 +50,7 @@ public class JobController {
             Map<String, Object> model = new HashMap<>();
             final Job job = populateJob(request);
 
-            if isNullOrEmpty(job.getTitle()) || isNullOrEmpty(job.getDescription() || isNullOrEmpty(job.getDueDate()) || isNullOrEmpty(job.getSkills())) {
+            if (isNullOrEmpty(job.getTitle()) || isNullOrEmpty(job.getDescription()) || isNullOrEmpty(job.getDueDate()) || job.getSkills() == null) {
                 model.put("error","Please fill out all required job details");
                 return ViewUtil.render(request, model, Path.Template.POSTER_PROFILE);
             }
@@ -66,7 +66,7 @@ public class JobController {
         job.setTitle(getQueryParam(request, "title"));
         job.setDescription(getQueryParam(request, "description"));
         job.setDueDate(getQueryParam(request, "date"));
-        job.setSkills(getQueryParam(request, "skills"));
+        /*job.setSkills(getQueryParam(request, "skills")); */
         job.setEducation(getQueryParam(request, "education"));
         job.setBudget(getQueryParam(request, "budget"));
         return job;
