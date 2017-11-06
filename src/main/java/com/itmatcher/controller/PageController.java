@@ -96,7 +96,7 @@ public class PageController {
             final String budget = getQueryParam(request,"budget");
 
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
-                model.put("error","Noob");
+                model.put("error","Please fill in all required details");
                 return Spark.redirect;
             }
             else {

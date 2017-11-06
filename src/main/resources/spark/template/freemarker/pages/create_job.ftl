@@ -7,6 +7,11 @@
     <div class="col">
       <h4 id="login">Create your Job</h4>
       <form class="createjob" class="form-login" action="/create_job/" method="POST">
+        <#if error??>
+            <div class="alert alert-danger">
+            ${error}
+            </div>
+        </#if>
         <div class="form-group">
           <label for="jobNameInput">Job Name</label>
           <input type="text" name="title" class="form-control" id="jobNameInput" placeholder="Job Title">
@@ -20,7 +25,7 @@
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
           <select multiple name="skills" class="form-control" id="skillsRequiredInput">
             <#list skills as skill>
-                    <option value="${skill.id}">${skill.value}</option>
+                    <option value="${skill.id?}">${skill.value?}</option>
             </#list>
           </select>
         </div>
