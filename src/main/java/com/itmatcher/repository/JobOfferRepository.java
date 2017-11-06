@@ -20,9 +20,8 @@ import java.util.Optional;
 public class JobOfferRepository {
 
     private NamedParameterJdbcTemplate template;
-    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate)" +
-            "values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
+    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID) values (:jobID, :freelancerID)";
 
     public static final String ACCEPT_JOB_OFFER = "update tblJob_Offers (offerStatus, timeDate) values (1, :timeDate) "+
             "WHERE jobID=:jobID AND freelancerID=:freelancerID";
@@ -33,12 +32,8 @@ public class JobOfferRepository {
             "WHERE jobID=:jobID AND freelancerID=:freelancerID";
 
 
-
-
     @Autowired
-    public JobOfferRepository(DataSource ds) {
-        template = new NamedParameterJdbcTemplate(ds);
-    }
+    public JobOfferRepository(DataSource ds) {template = new NamedParameterJdbcTemplate(ds);}
 
     public Optional<List<JobOffer>> getJobOffers() {
         String sql = "SELECT * FROM tblJobs_Offers";
@@ -52,20 +47,12 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    public void createJobOffer(JobOffer jobOffer) {
-        Map<String, Object> params = mapJobOfferParams(jobOffer);
-        template.query(CREATE_NEW_JOB_OFFER, params, jobRowMapper);
-    }
-
-    private Map<String, Object> mapJobOfferParams(JobOffer jobOffer) {
+    public void createJobOffer(int jobID, int freelancerID) {
         Map<String, Object> params = new HashMap<>();
-        params.put("jobID", jobOffer.getJobID());
-        params.put("freelancerID", jobOffer.getFreelancerID());
-        params.put("offerStatus", jobOffer.getOfferStatus());
-        params.put("timeDate", jobOffer.getLastUpdated());
-        return params;
+        params.put("jobID", 100);
+        params.put("freelancerID", 100);
+        template.update(CREATE_NEW_JOB_OFFER, params);
     }
-
 
 
     private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {
