@@ -2,6 +2,7 @@ package com.itmatcher.controller;
 
 import com.itmatcher.domain.Job;
 import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.domain.Skill;
 import com.itmatcher.repository.SkillRepository;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.LookupService;
@@ -9,6 +10,8 @@ import com.itmatcher.service.MatchService;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,16 +98,18 @@ public class PageController {
             final String dueDate = getQueryParam(request, "dueDate");
             final String budget = getQueryParam(request,"budget");
 
+
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");
-                return Spark.redirect;
+                return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
             else {
 
                 final Job job = jobService.createJob(request).get();
-                /*response.redirect("/viewFreelancers/" + job.getId() + "/"); */
+                response.redirect("/viewFreelancers/" + job.getId() + "/");
                 return Spark.redirect;
             }
         };
     }
+
 }
