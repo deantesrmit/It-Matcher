@@ -100,6 +100,7 @@ public class PageController {
             final String budget = getQueryParam(request,"budget");
             model.put("skills", skillRepository.getAllSkills());
 
+            /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
 
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");
