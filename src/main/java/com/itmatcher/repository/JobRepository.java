@@ -76,6 +76,7 @@ public class JobRepository {
         Job job = new Job();
         job.setId(rs.getInt("jobsid"));
         job.setTitle(rs.getString("jobTitle"));
+        job.setDescription(rs.getString("jobdescription"));         // Added SC 07 Nov 2017
         job.setEducation(rs.getString("education"));
         job.setDueDate(rs.getString("dueDate"));
         job.setBudget(rs.getString("budget"));
