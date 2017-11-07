@@ -41,7 +41,7 @@ public class JobService {
       job.setDescription(getQueryParam(request, "description"));
       job.setEducation(getQueryParam(request, "education"));
       job.setDueDate(getQueryParam(request, "dueDate"));
-      job.setBudget(getQueryParam(request, "title"));
+      job.setBudget(getQueryParam(request, "budget"));
       job.setTitle(getQueryParam(request, "title"));
       final Optional<Job> savedJob = jobRepository.saveJob(job);
       mSkillRepository.saveAllSkills(savedJob.get().getId(), mapSkills(request));

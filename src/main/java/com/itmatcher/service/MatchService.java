@@ -28,8 +28,6 @@ public class MatchService {
 
   public List<ScoredFreeLancer> findFreelancersForJob(int jobId) {
     final Job job = jobRepository.getJobById(jobId).get();
-//    job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
-//    job.setSkills(asList(new Skill("Sql", CriteriaWeight.HIGH_PREFERENCE)));
     final List<Language> requiredLanguages = getRequiredFields(job.getLanguages(), Language.class);
     final List<Skill> requiredSkills = getRequiredFields(job.getSkills(), Skill.class);
     final List<FreeLancer> flByRequired = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
