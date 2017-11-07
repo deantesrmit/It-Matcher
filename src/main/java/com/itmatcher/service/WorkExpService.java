@@ -16,7 +16,8 @@ public class WorkExpService {
     @Autowired
     LookupRepository lookupRepository;
 
-    public Optional <List<WorkExp>> getAllWorkExp() {
+    public List<WorkExp> getAllWorkExp() {
+
         return lookupRepository.getAllWorkExp();
     }
 }

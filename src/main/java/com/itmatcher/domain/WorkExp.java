@@ -2,22 +2,26 @@ package com.itmatcher.domain;
 
 
 public class WorkExp {
-    long id;
-    String value;
+    int id;
+    String workepxName;
 
-    public long getId() {
+    public int getId() {
+
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
+
         this.id = id;
     }
 
     public String getValue() {
-        return value;
+
+        return workepxName;
     }
 
     public void setValue(String value) {
-        this.value = value;
+
+        this.workepxName = workepxName;
     }
 }

@@ -16,7 +16,7 @@ public class EducationService {
     @Autowired
     LookupRepository lookupRepository;
 
-    public Optional <List<Education>> getAllEducations() {
+    public List <Education> getAllEducations() {
         return lookupRepository.getAllEducations();
     }
 }

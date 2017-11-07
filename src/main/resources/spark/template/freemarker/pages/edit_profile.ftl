@@ -32,14 +32,18 @@
                 <input type="text" id="bio" name="bio" class="form-control input-sm chat-input"
                        value="${profile.bio!}"/><br/>
 
+
                 <label for "education">Education</label>
-                <div class="form-control">
+
                     <Select>
-                        <List>
+                        <#list education as edu>
+                            <option value= "${edu.id}">${edu.educationName}</option>
+                            <!--
                             <option value="${education.id}">${education.educationName}</option>
-                        </List>
+                            -->
+                        </#list>
                     </Select>
-                </div>
+
 
 
                 <!--
@@ -58,12 +62,13 @@
                 </select>
                 -->
 
+
                 <label for "workExperience">WorkExperience</label>
-                <div class="form-control">
+
                     <Select>
-                        <List>
-                            <option value="${WorkExp.id}">${WorkExp.workexpName}</option>
-                        </List>
+                        <#list WorkExp as work>
+                            <option value="${work.id}">${work.workexpName}</option>
+                        </#list>
                     </Select>
                 </div>
 
