@@ -128,9 +128,6 @@ public class PageController {
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
             else {
-                System.err.println(format.parse(dueDate));
-                System.err.println(today);
-                System.err.println("LOL NOU");
                 final Job job = jobService.createJob(request).get();
                 response.redirect("/viewFreelancers/" + job.getId() + "/");
                 return Spark.redirect;
