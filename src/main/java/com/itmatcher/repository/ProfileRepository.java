@@ -50,6 +50,7 @@ public class ProfileRepository {
 
     private Map<String, Object> mapProfileParams(Profile profile) {
         Map<String, Object> params = new HashMap<>();
+        params.put("id", profile.getProfileID());
         params.put("userID", profile.getUserId());
         params.put("location", profile.getLocation());
         params.put("address1", profile.getAddress1());

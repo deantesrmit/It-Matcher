@@ -33,7 +33,6 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull user info from database -->
-                        <p>User ID:${users.id!}</p>
                         <p>User Name: ${users.username!}</p>
                         <p>First Name: ${users.firstName!}</p>
                         <p>Last Name: ${users.lastName!}</p>
@@ -42,7 +41,7 @@
                         <p>State: ${profile.state!}</p>
                         <p>Postcode:${profile.postcode!}</p>
                         <p>Bio:${profile.bio!}</p>
-                        <button class="btn btn-success">Edit User Information</button>
+                        <a href="/edit_profile/" <button class="btn btn-default">Edit User Information</button></a>
                     </div>
                 </div>
             </div>
