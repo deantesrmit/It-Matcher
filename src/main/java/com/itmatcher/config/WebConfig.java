@@ -1,6 +1,5 @@
 package com.itmatcher.config;
 
-import com.itmatcher.controller.FreeLancerController;
 import com.itmatcher.controller.IndexController;
 import com.itmatcher.controller.JobController;
 import com.itmatcher.controller.LoginController;
@@ -36,9 +35,6 @@ public class WebConfig {
     PageController pageController;
     @Autowired
     JobController jobController;
-    @Autowired
-    FreeLancerController freeLancerController;
-
 
     public void initApplication() {
         staticFileLocation("public");
@@ -71,7 +67,6 @@ public class WebConfig {
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
         post(Path.Web.OFFER_JOB, pageController.serveOfferJob());
-
     }
 
     static int getHerokuAssignedPort() {
