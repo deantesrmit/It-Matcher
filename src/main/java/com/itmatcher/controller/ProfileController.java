@@ -78,7 +78,7 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
-            return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+            return ViewUtil.render(request, model, Path.Template.INDEX);
         };
     }
 
@@ -87,7 +87,8 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.createProfile(request);
-            return ViewUtil.render(request, model, Path.Template.FREELANCER_PROFILE);
+            return ViewUtil.render(request, model, Path.Template.INDEX);
+
         };
     }
 }

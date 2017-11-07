@@ -4,22 +4,22 @@ package com.itmatcher.domain;
  * Created by deant on 10/24/17.
  */
 public class Education {
-    long id;
-    String value;
+    int id;
+    String educationName;
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     public String getValue() {
-        return value;
+        return educationName;
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this.educationName = educationName;
     }
 }
