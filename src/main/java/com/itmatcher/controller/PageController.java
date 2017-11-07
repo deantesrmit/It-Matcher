@@ -42,6 +42,7 @@ public class PageController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             viewObjects.put("skills", skillRepository.getAllSkills());
+
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
         };
     }
@@ -97,10 +98,15 @@ public class PageController {
             final String education = getQueryParam(request, "education");
             final String dueDate = getQueryParam(request, "dueDate");
             final String budget = getQueryParam(request,"budget");
+            model.put("skills", skillRepository.getAllSkills());
 
 
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");
+                return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
+            }
+            else if (isDouble(budget)  == false) {
+                model.put("error","Budget must be entered correctly");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
             else {
@@ -110,6 +116,16 @@ public class PageController {
                 return Spark.redirect;
             }
         };
+    }
+
+    private boolean isDouble(String str) {
+        try {
+            Double.parseDouble(str); 
+            return true;
+        }
+        catch(NumberFormatException e) {
+            return false;
+        }
     }
 
 }
