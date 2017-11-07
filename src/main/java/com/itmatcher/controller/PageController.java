@@ -11,11 +11,12 @@ import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import freemarker.template.SimpleDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
@@ -54,7 +55,6 @@ public class PageController {
 /**
  * Created by deant on 10/4/17.
  */
-
         };
     }
 
@@ -98,6 +98,15 @@ public class PageController {
             final String education = getQueryParam(request, "education");
             final String dueDate = getQueryParam(request, "dueDate");
             final String budget = getQueryParam(request,"budget");
+            final Date today = new Date();
+
+            SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+
+            /*Todays date */
+            today.setHours(0);
+            today.setMinutes(0);
+            today.setSeconds(0);
+
             model.put("skills", skillRepository.getAllSkills());
 
             /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
@@ -114,8 +123,14 @@ public class PageController {
                 model.put("error","Budget must be a positive number");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
+            else if (today.after(format.parse(dueDate)) == true) {
+                model.put("error","Due date must be set in the future");
+                return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
+            }
             else {
-
+                System.err.println(format.parse(dueDate));
+                System.err.println(today);
+                System.err.println("LOL NOU");
                 final Job job = jobService.createJob(request).get();
                 response.redirect("/viewFreelancers/" + job.getId() + "/");
                 return Spark.redirect;
