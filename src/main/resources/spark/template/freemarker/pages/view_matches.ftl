@@ -46,10 +46,10 @@
                     $7500
                 </div>
                 <div class="col-sm-1">
-                    <a href="#" class="">Accept<i class="fa fa-sign-in"></i></a>
+                    <a href="#" class="btn btn-success">Accept<i class="fa fa-sign-in"></i></a>
                 </div>
                 <div class="col-sm-1">
-                    <a href="#" class="">Decline<i class="fa fa-sign-in"></i></a>
+                    <a href="#" class="btn btn-danger">Decline<i class="fa fa-sign-in"></i></a>
                 </div>
             </div>
             <hr/>
@@ -70,10 +70,10 @@
                     $7500
                 </div>
                 <div class="col-sm-1">
-                    <a href="#" class="">Accept<i class="fa fa-sign-in"></i></a>
+                    <a href="#" class="btn btn-success">Accept<i class="fa fa-sign-in"></i></a>
                 </div>
                 <div class="col-sm-1">
-                    <a href="#" class="">Decline<i class="fa fa-sign-in"></i></a>
+                    <a href="#" class="btn btn-danger">Decline<i class="fa fa-sign-in"></i></a>
                 </div>
             </div>
         </div>
