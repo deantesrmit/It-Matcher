@@ -76,6 +76,7 @@ public class JobRepository {
         Job job = new Job();
         job.setId(rs.getInt("jobsid"));
         job.setTitle(rs.getString("jobTitle"));
+        job.setDescription(rs.getString("jobdescription"));         // Added SC 07 Nov 2017
         job.setEducation(rs.getString("education"));
         job.setDueDate(rs.getString("dueDate"));
         job.setBudget(rs.getString("budget"));
@@ -101,8 +102,8 @@ public class JobRepository {
             ps.setString(2, job.getTitle());
             ps.setString(3, job.getDescription());
             ps.setString(4, job.getDueDate());
-            ps.setString(5, job.getBudget());
-            ps.setString(6, job.getEducation());
+            ps.setString(5, job.getEducation());
+            ps.setString(6, job.getBudget());
             return ps;
         }, holder);
         return getJobById(holder.getKey().intValue());

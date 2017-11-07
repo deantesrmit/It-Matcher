@@ -2,13 +2,13 @@
 
 <@layout.masterTemplate title="Profile">
 <#include "../fragment/banner.html">
-    <div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
         <div class="row justify-content-center">
             <div class = "row">
                 <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
                     <!-- Edit this to pull Freelancer name from database -->
-                    <h4>Freelancer Profile</h4>
+                    <h2>Freelancer Profile</h2>
                 </div>
                 <div class = "col"></div>
             </div>
@@ -33,15 +33,49 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull user info from database -->
-                        <p>User ID:${users.id!}</p>
-                        <p>User Name: ${users.username!}</p>
-                        <p>First Name: ${users.firstName!}</p>
-                        <p>Last Name: ${users.lastName!}</p>
-                        <p>Address: ${profile.address1!}</p>
-                        <p>Suburb: ${profile.suburb!}</p>
-                        <p>State: ${profile.state!}</p>
-                        <p>Postcode: ${profile.postcode!}</p>
-                        <p>Bio: ${profile.bio!}</p>
+                        <table class="table">
+
+                            </br>
+                            <tbody>
+                            <tr>
+                                <td>User ID:</td>
+                                <td>${users.id!}</td>
+                            </tr>
+                            <tr>
+                                <td>User Name:</td>
+                                <td>${users.username!}</td>
+                            </tr>
+                            <tr>
+                                <td>First Name:</td>
+                                <td>${users.firstName!}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name:</td>
+                                <td>${users.lastName!}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td>${profile.address1!}</td>
+                            </tr>
+                            <tr>
+                                <td>Suburb:</td>
+                                <td>${profile.suburb!}</td>
+                            </tr>
+                            <tr>
+                                <td>State:</td>
+                                <td>${profile.state!}</td>
+                            </tr>
+                            <tr>
+                                <td>Postcode:</td>
+                                <td>${profile.postcode!}</td>
+                            </tr>
+                            <tr>
+                                <td>Bio:</td>
+                                <td>${profile.bio!}</td>
+                            </tr>
+
+                            </tbody>
+                            </table>
                         <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>
                     </div>
                 </div>

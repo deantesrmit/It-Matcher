@@ -42,7 +42,6 @@ public class PageController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
-
         };
     }
 
