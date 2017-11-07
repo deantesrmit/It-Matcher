@@ -38,7 +38,7 @@ public class JobOfferRepository {
     }
 
     public Optional<List<JobOffer>> getJobOffers() {
-        String sql = "SELECT * FROM tblJobs_Offers";
+        String sql = "SELECT * FROM tblJob_Offers";
         List<JobOffer> list = template.query(
                 sql,
                 new HashMap<>(),
