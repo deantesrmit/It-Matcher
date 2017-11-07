@@ -120,7 +120,7 @@ public class PageController {
 
     private boolean isDouble(String str) {
         try {
-            Double.parseDouble(str); 
+            Double.parseDouble(str);
             return true;
         }
         catch(NumberFormatException e) {
