@@ -24,7 +24,7 @@
         <div class="form-group">
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
           <select multiple name="skills" class="form-control" id="skillsRequiredInput">
-              <#list skills as skill>
+              <#list skills! as skill>
                     <option value="${skill.id}">${skill.value}</option>
               </#list>
           </select>
