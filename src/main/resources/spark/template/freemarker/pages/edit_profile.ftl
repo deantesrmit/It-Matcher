@@ -35,14 +35,19 @@
 
                 <label for "education">Education</label>
 
+                <div class="form-control">
                     <Select>
                         <#list educations as edu>
                             <option value= "${edu.id}">${edu.value}</option>
                         </#list>
                     </Select>
+                </div>
+                <br/>
 
 
                 <label for "workExperience">WorkExperience</label>
+
+                <div class="form-control">
                     <Select>
                         <#list workExperiences as exp>
                             <option value="${exp.id}">${exp.value}</option>
@@ -54,6 +59,8 @@
                     <input type="submit" class="btn btn-primary btn-md"
                            value="${profile.id?? ? then('Edit Your', 'Create')}  Profile"/>
                 </div>
+                <br/>
+
             </form>
         </div>
     </div>
