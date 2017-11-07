@@ -8,7 +8,7 @@
                 <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
                     <!-- Edit this to pull Freelancer name from database -->
-                    <h4>Job Poster Profile</h4>
+                    <h2>Job Poster Profile</h2>
                 </div>
                 <div class = "col"></div>
             </div>
@@ -35,15 +35,49 @@
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull user info from database -->
-                        <p>User ID:<#if users.id??>${users.id}</#if></p>
-                        <p>User Name: <#if users.username??>${users.username}</#if></p>
-                        <p>First Name: <#if users.firstName??>${users.firstName}</#if></p>
-                        <p>Last Name: <#if users.lastName??>${users.lastName}</#if> </p>
-                        <p>Address: <#if profile.address1??>${profile.address1}</#if> </p>
-                        <p>Suburb: <#if profile.suburb??>${profile.suburb}</#if> </p>
-                        <p>State: <#if profile.state??>${profile.state}</#if> </p>
-                        <p>Postcode: <#if profile.postcode??>${profile.postcode}</#if> </p>
-                        <p>Bio: <#if profile.bio??>${profile.bio}</#if> </p>
+                        <table class="table">
+
+                            </br>
+                            <tbody>
+                            <tr>
+                                <td>User ID:</td>
+                                <td>${users.id!}</td>
+                            </tr>
+                            <tr>
+                                <td>User Name:</td>
+                                <td>${users.username!}</td>
+                            </tr>
+                            <tr>
+                                <td>First Name:</td>
+                                <td>${users.firstName!}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name:</td>
+                                <td>${users.lastName!}</td>
+                            </tr>
+                            <tr>
+                                <td>Address:</td>
+                                <td>${profile.address1!}</td>
+                            </tr>
+                            <tr>
+                                <td>Suburb:</td>
+                                <td>${profile.suburb!}</td>
+                            </tr>
+                            <tr>
+                                <td>State:</td>
+                                <td>${profile.state!}</td>
+                            </tr>
+                            <tr>
+                                <td>Postcode:</td>
+                                <td>${profile.postcode!}</td>
+                            </tr>
+                            <tr>
+                                <td>Bio:</td>
+                                <td>${profile.bio!}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
                         <button class="btn btn-success">Edit User Information</button>
                     </div>
                 </div>

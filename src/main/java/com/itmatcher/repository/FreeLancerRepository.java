@@ -46,7 +46,8 @@ public class FreeLancerRepository {
     Map<String, Object> params = new HashMap<>();
     String sql =
             "select * from tblProfile profile "+
-            "JOIN tblUser u on u.id = profile.userId";
+            "JOIN tblUser u on u.id = profile.userId " +
+            "where u.accountType = 'FREELANCER'";
 
     List<FreeLancer> list = template.query(
             sql,
