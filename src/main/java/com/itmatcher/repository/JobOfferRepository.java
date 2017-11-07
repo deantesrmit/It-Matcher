@@ -18,8 +18,13 @@ import java.util.Date;
  */
 @Repository
 public class JobOfferRepository {
-
     private NamedParameterJdbcTemplate template;
+
+    @Autowired
+    public JobOfferRepository(DataSource ds) {
+        template = new NamedParameterJdbcTemplate(ds);
+    }
+
     public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate) values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
 
@@ -32,10 +37,7 @@ public class JobOfferRepository {
             "WHERE jobID=:jobID AND freelancerID=:freelancerID";
 
 
-    @Autowired
-    public JobOfferRepository(DataSource ds) {
-        template = new NamedParameterJdbcTemplate(ds);
-    }
+
 
     public Optional<List<JobOffer>> getJobOffers() {
         String sql = "SELECT * FROM tblJob_Offers";
