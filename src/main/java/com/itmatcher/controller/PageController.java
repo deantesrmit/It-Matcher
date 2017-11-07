@@ -110,6 +110,10 @@ public class PageController {
                 model.put("error","Budget must be entered correctly");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
+            else if ((isDouble(budget) == true) && (Double.parseDouble(budget) < 0)) {
+                model.put("error","Budget must be a positive number");
+                return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
+            }
             else {
 
                 final Job job = jobService.createJob(request).get();
