@@ -36,46 +36,19 @@
                 <label for "education">Education</label>
 
                     <Select>
-                        <#list education as edu>
-                            <option value= "${edu.id}">${edu.educationName}</option>
-                            <!--
-                            <option value="${education.id}">${education.educationName}</option>
-                            -->
+                        <#list educations as edu>
+                            <option value= "${edu.id}">${edu.value}</option>
                         </#list>
                     </Select>
-
-
-
-                <!--
-                <select>
-                    <option value="1">Senior Secondary</option>
-                    <option value="2">Certificate I</option>
-                    <option value="3">Certificate II</option>
-                    <option value="4">Certificate III</option>
-                    <option value="5">Certificate IV</option>
-                    <option value="6">Diploma</option>
-                    <option value="7">Advanced Diploma, Associate Degree</option>
-                    <option value="8">Bachelor Degree</option>
-                    <option value="9">Bachelor Honors Degree, Graduate Certificate, Graduate Diploma</option>
-                    <option value="10">Masters Degree</option>
-                    <option value="11">Doctoral Degree</option>
-                </select>
-                -->
 
 
                 <label for "workExperience">WorkExperience</label>
-
                     <Select>
-                        <#list WorkExp as work>
-                            <option value="${work.id}">${work.workexpName}</option>
+                        <#list workExperiences as exp>
+                            <option value="${exp.id}">${exp.value}</option>
                         </#list>
                     </Select>
                 </div>
-
-                <!--
-                <input type="text" id="workExperience" name="workExperience" class="form-control input-sm chat-input"
-                      value="${profile.workExperience!}" /><br/>
-                -->
 
                 <div class="wrapper">
                     <input type="submit" class="btn btn-primary btn-md"

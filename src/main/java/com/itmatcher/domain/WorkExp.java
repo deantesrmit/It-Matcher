@@ -3,7 +3,7 @@ package com.itmatcher.domain;
 
 public class WorkExp {
     int id;
-    String workepxName;
+    String value;
 
     public int getId() {
 
@@ -17,11 +17,10 @@ public class WorkExp {
 
     public String getValue() {
 
-        return workepxName;
+        return value;
     }
 
     public void setValue(String value) {
-
-        this.workepxName = workepxName;
+        this.value = value;
     }
 }

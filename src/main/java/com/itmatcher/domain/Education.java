@@ -5,7 +5,7 @@ package com.itmatcher.domain;
  */
 public class Education {
     int id;
-    String educationName;
+    String value;
 
     public int getId() {
         return id;
@@ -16,10 +16,10 @@ public class Education {
     }
 
     public String getValue() {
-        return educationName;
+        return value;
     }
 
-    public void setValue(String educationName) {
-        this.educationName = educationName;
+    public void setValue(String value) {
+        this.value = value;
     }
 }
