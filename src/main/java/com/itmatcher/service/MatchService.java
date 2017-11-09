@@ -36,7 +36,7 @@ public class MatchService {
     final List<FreeLancer> freeLancers = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
     final List<ScoredFreeLancer> scoredFreeLancers = calculateFLWeight(job, freeLancers);
     scoredFreeLancers.stream().forEach(
-            f -> f.setHasOffer(offerRepository.hasJobOffer(f.getFreeLancer().getId(), 0).isPresent())
+            f -> f.setHasOffer(offerRepository.hasJobOffer(f.getFreeLancer().getId(), 0, jobId).isPresent())
     );
     return scoredFreeLancers;
   }

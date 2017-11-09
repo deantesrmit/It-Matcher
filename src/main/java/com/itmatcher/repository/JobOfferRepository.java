@@ -59,20 +59,22 @@ public class JobOfferRepository {
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
-    public Optional<JobOffer> hasJobOffer(int freeLancerId, int status) {
+    public Optional<JobOffer> hasJobOffer(int freeLancerId, int status, int jobId) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerId", freeLancerId);
         paramMap.put("offerStatus", status);
+        paramMap.put("jobID", jobId);
         String sql =
                 "Select * " +
                 "From TBLJOB_OFFERS As o " +
                 "Inner Join (" +
-                "  Select max(timeDate) as timeDate, freelancerId " +
+                "  Select max(timeDate) as timeDate, freelancerId, jobId " +
                 "  From TBLJOB_OFFERS " +
-                "  Group By freelancerId) As u " +
+                "  Group By freelancerId, jobId) As u " +
                 "On o.freelancerId = u.freelancerId " +
                 "and o.timeDate = u.timeDate " +
                 "and o.freelancerId = :freelancerId " +
+                "and o.jobId = :jobID " +
                 "and o.offerStatus = :offerStatus ";
         List<JobOffer> list = template.query(
                 sql,
