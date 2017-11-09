@@ -79,15 +79,6 @@ public class PageController {
     }
 
 
-    public Route handleOfferJob() {
-        return (request, response) -> {
-            jobOfferService.createJobOffer(request);
-            response.redirect("/viewFreelancers/" + getQueryParam(request, "jobId"));
-            return Spark.redirect;
-        };
-    }
-
-
     public Route handleCreateJob() {
         return (request, response) -> {
             final Job job = jobService.createJob(request).get();

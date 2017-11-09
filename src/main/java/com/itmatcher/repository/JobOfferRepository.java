@@ -38,11 +38,6 @@ public class JobOfferRepository {
     public static final String DECLINE_JOB_OFFER = "update tblJob_Offers (offerStatus, timeDate) values (2, :timeDate) "+
             "WHERE jobID=:jobID AND freelancerID=:freelancerID";
 
-
-
-
-
-
     public Optional<List<JobOffer>> getJobOffers() {
         String sql = "SELECT * FROM tblJob_Offers";
         List<JobOffer> list = template.query(
@@ -56,28 +51,13 @@ public class JobOfferRepository {
     }
 
     public void createJobOffer(JobOffer jobOffer) {
-        Map<String, Object> params = mapJobOfferParams(jobOffer);
-        template.update(CREATE_NEW_JOB_OFFER, params);
-    }
-
-    private Map<String, Object> mapJobOfferParams(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());
         params.put("freelancerID", jobOffer.getFreelancerID());
         params.put("offerStatus", jobOffer.getOfferStatus());
         params.put("timeDate", jobOffer.getLastUpdated());
-        return params;
+        template.update(CREATE_NEW_JOB_OFFER, params);
     }
-
-
-    private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {
-        JobOffer jobOffer = new JobOffer();
-        jobOffer.setJobID(rs.getInt("jobID"));
-        jobOffer.setFreelancerID(rs.getInt("freelancerID"));
-        jobOffer.setOfferStatus(rs.getInt("offerStatus"));
-        jobOffer.setLastUpdated(rs.getDate("timeDate"));
-        return jobOffer;
-    };
 
     public Optional<JobOffer> hasJobOffer(int freeLancerId, int status) {
         final HashMap<String, Object> paramMap = new HashMap<>();
@@ -104,4 +84,14 @@ public class JobOfferRepository {
         return Optional.empty();
 
     }
+
+    private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {
+        JobOffer jobOffer = new JobOffer();
+        jobOffer.setJobID(rs.getInt("jobID"));
+        jobOffer.setFreelancerID(rs.getInt("freelancerID"));
+        jobOffer.setOfferStatus(rs.getInt("offerStatus"));
+        jobOffer.setLastUpdated(rs.getDate("timeDate"));
+        return jobOffer;
+    };
+
 }

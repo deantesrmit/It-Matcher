@@ -1,6 +1,7 @@
 package com.itmatcher.controller;
 
 import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.util.Path;
@@ -10,6 +11,7 @@ import static com.itmatcher.util.RequestUtil.getQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Route;
+import spark.Spark;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,9 +26,7 @@ public class JobController {
     @Autowired
     JobService jobService;
     @Autowired
-    JobOfferRepository jobOfferRepository;
-    @Autowired
-    MatchService matchService;
+    JobOfferService offerService;
 
     public Route serveViewJobPage() {
         return (request, response) -> {
@@ -36,17 +36,13 @@ public class JobController {
         };
     }
 
-    public Route handleJobOffer() {
+
+    public Route handleOfferJob() {
         return (request, response) -> {
-            Map<String, Object> viewObjects = new HashMap<>();
-            final String jobid = getQueryParam (request, "jobID" );
-            final String freelancerID = getQueryParam(request, "freelancerID");
-            jobOfferRepository.createJobOffer(jobid, freelancerID);
-            final List<ScoredFreeLancer> freelancersForJob = matchService.findFreelancersForJob(Integer.parseInt(request.params(":jobid")));
-            final List<ScoredFreeLancer> sortedLancers = freelancersForJob.stream().sorted((f1, f2) -> Integer.compare(f2.getScore(), f1.getScore())).collect(Collectors.toList());
-            viewObjects.put("freelancers", sortedLancers);
-            viewObjects.put("job", jobService.getJobById(Integer.parseInt(request.params(":jobid"))).get());
-            return ViewUtil.render(request, viewObjects, Path.Template.VIEW_FREELANCER);
+            offerService.createJobOffer(request);
+            response.redirect("/viewFreelancers/" + getQueryParam(request, "jobId") + "/");
+            return Spark.redirect;
         };
-    };
+    }
+
 }
