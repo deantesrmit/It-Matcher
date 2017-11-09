@@ -55,8 +55,13 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    public void createJobOffer(JobOffer jobOffer) {
-        Map<String, Object> params = mapJobOfferParams(jobOffer);
+    public void createJobOffer(String jobID, String freelancerID) {
+        Map<String, Object> params = new HashMap<>();
+        Date now = new Date();
+        params.put("jobID", Integer.parseInt(jobID));
+        params.put("freelancerID", Integer.parseInt(freelancerID));
+        params.put("offerStatus", 0);
+        params.put("timeDate", now);
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
