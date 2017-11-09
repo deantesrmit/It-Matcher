@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Date;
 
 /**
  * Created by deant on 10/21/17.
@@ -19,7 +20,13 @@ import java.util.Optional;
 public class JobOfferRepository {
 
     private NamedParameterJdbcTemplate template;
-    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate)" +
+
+    @Autowired
+    public JobOfferRepository(DataSource ds) {
+        template = new NamedParameterJdbcTemplate(ds);
+    }
+
+    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate) " +
             "values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
 
@@ -34,13 +41,10 @@ public class JobOfferRepository {
 
 
 
-    @Autowired
-    public JobOfferRepository(DataSource ds) {
-        template = new NamedParameterJdbcTemplate(ds);
-    }
+
 
     public Optional<List<JobOffer>> getJobOffers() {
-        String sql = "SELECT * FROM tblJobs_Offers";
+        String sql = "SELECT * FROM tblJob_Offers";
         List<JobOffer> list = template.query(
                 sql,
                 new HashMap<>(),
@@ -64,7 +68,6 @@ public class JobOfferRepository {
         params.put("timeDate", jobOffer.getLastUpdated());
         return params;
     }
-
 
 
     private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {

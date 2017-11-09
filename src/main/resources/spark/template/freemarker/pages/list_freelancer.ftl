@@ -21,7 +21,7 @@
     <br/>
     <br/>
     <h2 class="lead"><strong class="text-danger">3</strong> IT proffesionals were found for the search for <strong
-            class="text-danger">building a website</strong></h2>
+            class="text-danger">${job.title!}</strong></h2>
     <br/>
     <br/>
 
@@ -58,12 +58,12 @@
 
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
+                <div class="col-xs-12 col-sm-12 col-md-5">
                     <h3><a href="#" title="">${freeLancer.name}</a></h3>
                     <p>${freeLancer.bio}</p>
-                    <form class="form-login" action="/offer_job/" method="POST">
-                        <input type="hidden" name="jobId" value="${job.id}">
-                        <input type="hidden" name="freeLancerId" value="${freeLancer.id}">
+                     <form class="form-login" action="/viewFreelancers/${job.id}/" method="POST">
+                        <input type="hidden" name="jobID" value="${job.id}" />
+                        <input type="hidden" name="freelancerID" value="${freeLancer.id}" />
                         <#if !scoredFreelancer.hasOffer>
                             <input type="hidden" name="offerStatus" value="0">
                             <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
@@ -71,7 +71,7 @@
                             <input type="hidden" name="offerStatus" value="3">
                             <input type="submit" class="btn btn-primary btn-md btn-danger" value="Cancel Offer" />
                         </#if>
-                    </form>
+                     </form>
                 </div>
                 <span class="clearfix borda"></span>
             </article>

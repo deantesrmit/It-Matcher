@@ -78,7 +78,7 @@
 
                             </tbody>
                         </table>
-                        <button class="btn btn-success">Edit User Information</button>
+                        <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>
                     </div>
                 </div>
             </div>
