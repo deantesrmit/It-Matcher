@@ -12,7 +12,7 @@ public class Profile {
     private String education;
     private String workExperience;
 
-    public long getProfileID() {
+    public int getProfileID() {
         return id;
     }
 

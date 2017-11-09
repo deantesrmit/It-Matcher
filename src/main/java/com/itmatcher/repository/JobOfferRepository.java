@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Date;
 
 /**
  * Created by deant on 10/21/17.
@@ -20,7 +21,13 @@ import java.util.Optional;
 public class JobOfferRepository {
 
     private NamedParameterJdbcTemplate template;
-    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate)" +
+
+    @Autowired
+    public JobOfferRepository(DataSource ds) {
+        template = new NamedParameterJdbcTemplate(ds);
+    }
+
+    public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate) " +
             "values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
 
@@ -35,13 +42,10 @@ public class JobOfferRepository {
 
 
 
-    @Autowired
-    public JobOfferRepository(DataSource ds) {
-        template = new NamedParameterJdbcTemplate(ds);
-    }
+
 
     public Optional<List<JobOffer>> getJobOffers() {
-        String sql = "SELECT * FROM tblJobs_Offers";
+        String sql = "SELECT * FROM tblJob_Offers";
         List<JobOffer> list = template.query(
                 sql,
                 new HashMap<>(),
@@ -52,20 +56,15 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    public void createJobOffer(JobOffer jobOffer) {
-        Map<String, Object> params = mapJobOfferParams(jobOffer);
-        template.query(CREATE_NEW_JOB_OFFER, params, jobRowMapper);
-    }
-
-    private Map<String, Object> mapJobOfferParams(JobOffer jobOffer) {
+    public void createJobOffer(String jobID, String freelancerID) {
         Map<String, Object> params = new HashMap<>();
-        params.put("jobID", jobOffer.getJobID());
-        params.put("freelancerID", jobOffer.getFreelancerID());
-        params.put("offerStatus", jobOffer.getOfferStatus());
-        params.put("timeDate", jobOffer.getLastUpdated());
-        return params;
+        Date now = new Date();
+        params.put("jobID", Integer.parseInt(jobID));
+        params.put("freelancerID", Integer.parseInt(freelancerID));
+        params.put("offerStatus", 0);
+        params.put("timeDate", now);
+        template.update(CREATE_NEW_JOB_OFFER, params);
     }
-
 
 
     private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {
