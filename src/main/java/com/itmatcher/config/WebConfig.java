@@ -66,7 +66,7 @@ public class WebConfig {
         post(Path.Web.VIEW_FREELANCERS, jobController.handleJobOffer());
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());
         get(Path.Web.HOW_IT_WORKS, pageController.serveHowItWorksPage());
-        post(Path.Web.OFFER_JOB, pageController.serveOfferJob());
+        post(Path.Web.OFFER_JOB, pageController.handleOfferJob());
     }
 
     static int getHerokuAssignedPort() {

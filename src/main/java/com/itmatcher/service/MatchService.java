@@ -7,6 +7,7 @@ import com.itmatcher.domain.ScoredFreeLancer;
 import com.itmatcher.domain.Skill;
 import com.itmatcher.domain.WeightedCriteria;
 import com.itmatcher.repository.FreeLancerRepository;
+import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.repository.JobRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,19 @@ public class MatchService {
   private FreeLancerRepository lancerRepository;
   @Autowired
   private JobRepository jobRepository;
+  @Autowired
+  private JobOfferRepository offerRepository;
 
   public List<ScoredFreeLancer> findFreelancersForJob(int jobId) {
     final Job job = jobRepository.getJobById(jobId).get();
     final List<Language> requiredLanguages = getRequiredFields(job.getLanguages(), Language.class);
     final List<Skill> requiredSkills = getRequiredFields(job.getSkills(), Skill.class);
-    final List<FreeLancer> flByRequired = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
-
-    return calculateFLWeight(job, flByRequired);
+    final List<FreeLancer> freeLancers = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
+    final List<ScoredFreeLancer> scoredFreeLancers = calculateFLWeight(job, freeLancers);
+    scoredFreeLancers.stream().forEach(
+            f -> f.setHasOffer(offerRepository.hasJobOffer(f.getFreeLancer().getId(), 0).isPresent())
+    );
+    return scoredFreeLancers;
   }
 
   private List<ScoredFreeLancer> calculateFLWeight(Job job, List<FreeLancer> flByRequired) {

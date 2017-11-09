@@ -1,6 +1,5 @@
 package com.itmatcher.repository;
 
-import com.itmatcher.domain.Job;
 import com.itmatcher.domain.JobOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -54,7 +53,7 @@ public class JobOfferRepository {
 
     public void createJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = mapJobOfferParams(jobOffer);
-        template.query(CREATE_NEW_JOB_OFFER, params, jobRowMapper);
+        template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
     private Map<String, Object> mapJobOfferParams(JobOffer jobOffer) {
@@ -77,4 +76,29 @@ public class JobOfferRepository {
         return jobOffer;
     };
 
+    public Optional<JobOffer> hasJobOffer(int freeLancerId, int status) {
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("freelancerId", freeLancerId);
+        paramMap.put("offerStatus", status);
+        String sql =
+                "Select * " +
+                "From TBLJOB_OFFERS As o " +
+                "Inner Join (" +
+                "  Select max(timeDate) as timeDate, freelancerId " +
+                "  From TBLJOB_OFFERS " +
+                "  Group By freelancerId) As u " +
+                "On o.freelancerId = u.freelancerId " +
+                "and o.timeDate = u.timeDate " +
+                "and o.freelancerId = :freelancerId " +
+                "and o.offerStatus = :offerStatus ";
+        List<JobOffer> list = template.query(
+                sql,
+                paramMap,
+                jobRowMapper);
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list.get(0));
+        }
+        return Optional.empty();
+
+    }
 }

@@ -64,7 +64,13 @@
                     <form class="form-login" action="/offer_job/" method="POST">
                         <input type="hidden" name="jobId" value="${job.id}">
                         <input type="hidden" name="freeLancerId" value="${freeLancer.id}">
-                    <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
+                        <#if !scoredFreelancer.hasOffer>
+                            <input type="hidden" name="offerStatus" value="0">
+                            <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
+                        <#else>
+                            <input type="hidden" name="offerStatus" value="3">
+                            <input type="submit" class="btn btn-primary btn-md btn-danger" value="Cancel Offer" />
+                        </#if>
                     </form>
                 </div>
                 <span class="clearfix borda"></span>

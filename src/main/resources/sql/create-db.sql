@@ -103,4 +103,13 @@ create table tblJob_Offers (
   offerStatus INT,             -- 0 = pending, 1 = accepted, 2 = declined
   timeDate DATETIME            -- Last Update Date Time
 );
-
+--
+-- Select o.id, o.jobID,o.FREELANCERID, o.timeDate
+-- From TBLJOB_OFFERS As o
+-- Inner Join (
+--   Select max(timeDate) as timeDate, FREELANCERID
+--   From TBLJOB_OFFERS
+--   Group By FREELANCERID) As u
+-- On o.FREELANCERID = u.FREELANCERID
+-- and o.timeDate = u.timeDate
+-- and o.FREELANCERID = :FREELANCERID ;

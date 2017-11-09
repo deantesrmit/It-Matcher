@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Optional;
 
 import static com.itmatcher.util.RequestUtil.getQueryParam;
+import static java.lang.Integer.parseInt;
 
 /**
  * @author Dean Tesoriero
@@ -22,20 +23,16 @@ public class JobOfferService {
   @Autowired
   JobOfferRepository jobOfferRepository;
 
-  public void CreateJobOffer(Request request) {
-    JobOffer jobOffer = new JobOffer();
-    mapNewJobOffer(request, jobOffer);
-    jobOfferRepository.createJobOffer(jobOffer);
+  public void createJobOffer(Request request) {
+    jobOfferRepository.createJobOffer(mapJobOffer(request));
   }
 
-  private void mapNewJobOffer(Request request, JobOffer jobOffer) {
-    String jobID = getQueryParam(request, "jobID");
-    String freelancerID = getQueryParam(request, "freelancerID");
-    Date now = new Date();
-
-    jobOffer.setJobID(Integer.parseInt(jobID.trim()));
-    jobOffer.setFreelancerID(Integer.parseInt(freelancerID.trim()));
-    jobOffer.setOfferStatus(0);
-    jobOffer.setLastUpdated(now);
+  private JobOffer mapJobOffer(Request request) {
+    JobOffer jobOffer = new JobOffer();
+    jobOffer.setFreelancerID(parseInt(getQueryParam(request, "freeLancerId")));
+    jobOffer.setJobID(parseInt(getQueryParam(request, "jobId")));
+    jobOffer.setLastUpdated(new Date());
+    jobOffer.setOfferStatus(parseInt(getQueryParam(request, "offerStatus")));
+    return jobOffer;
   }
 }

@@ -20,3 +20,7 @@ INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (101, 7, 5);
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (102, 8, 5);
 
+
+INSERT INTO TBLJOB_OFFERS(ID,JOBID,FREELANCERID,OFFERSTATUS,TIMEDATE)
+VALUES (100,100,100, 0, current_timestamp)
+

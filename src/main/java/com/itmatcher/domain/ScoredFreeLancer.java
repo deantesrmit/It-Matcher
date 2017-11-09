@@ -7,6 +7,7 @@ package com.itmatcher.domain;
 public class ScoredFreeLancer {
   FreeLancer freeLancer;
   int score;
+  boolean hasOffer;
 
   public ScoredFreeLancer(FreeLancer freeLancer, int weight) {
     this.freeLancer = freeLancer;
@@ -27,5 +28,13 @@ public class ScoredFreeLancer {
 
   public void setScore(int score) {
     this.score = score;
+  }
+
+  public boolean isHasOffer() {
+    return hasOffer;
+  }
+
+  public void setHasOffer(boolean hasOffer) {
+    this.hasOffer = hasOffer;
   }
 }
