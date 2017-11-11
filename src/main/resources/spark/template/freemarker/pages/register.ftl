@@ -14,7 +14,7 @@
                                 ${error}
                                 </div>
                             </#if>
-                                <input type="text" name="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
+                                <input type="email" name="username" class="form-control input-sm chat-input" placeholder="Email Address" required />
                                 </br>
                                 <input type="password" name="password"  oninput= checkpassword(this)   id="userPassword" class="form-control input-sm chat-input" placeholder="Password" required/>
                                 </br>
