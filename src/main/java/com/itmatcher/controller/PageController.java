@@ -14,6 +14,8 @@ import com.itmatcher.util.ViewUtil;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import freemarker.template.SimpleDate;
@@ -99,6 +101,9 @@ public class PageController {
             final String dueDate = getQueryParam(request, "dueDate");
             final String budget = getQueryParam(request,"budget");
             final Date today = new Date();
+            Pattern pattern = Pattern.compile("^[a-zA-Z0-9]*$");
+            Matcher matcher = pattern.matcher(jobTitle);
+
 
             SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
 
@@ -125,6 +130,10 @@ public class PageController {
             }
             else if (today.after(format.parse(dueDate)) == true) {
                 model.put("error","Due date must be set in the future");
+                return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
+            }
+            else if (matcher.matches() == false) {
+                model.put("error","Title can only contain numbers and alphanumerical characters");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
             else {
