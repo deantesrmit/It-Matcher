@@ -18,6 +18,34 @@
     width:100%;
 }
 
+p.navbar-separator {
+    float:right;
+    margin-left:15px;
+    color:#923a8d; !important;
+    font-size:20px;
+    font-weight:bold;
+}
+
+p.navbar-separator-md {
+    float:right;
+    margin-left:15px;
+    color:#923a8d; !important;
+    font-size:16px;
+    font-weight:bold;
+}
+
+div.nav.navbar-nav.navbar-right.d-none.d-lg-block {
+    padding-bottom:14px;
+}
+
+div.navbar-header.d-none.d-md-block.d-lg-none a {
+    font-size:16px;
+}
+
+a.navbar-brand {
+    color:black;
+}
+
 /* Code for mobile viewpoints */
 @media (max-width: 767px) {
     .containerhome {
