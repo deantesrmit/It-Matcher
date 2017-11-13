@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
+import sun.java2d.pipe.hw.AccelDeviceEventListener;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -30,18 +31,11 @@ public class JobOfferRepository {
     public static final String CREATE_NEW_JOB_OFFER = "insert into tblJob_Offers (jobID, freelancerID, offerStatus, timeDate) " +
             "values (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
+    public static final String ACCEPT_JOB_OFFER = "update tblJob_Offers SET offerStatus = 1, timeDate = :timeDate " +
+            "WHERE jobID = :jobID AND freelancerID = :freelancerID";
 
-    public static final String ACCEPT_JOB_OFFER = "update tblJob_Offers (offerStatus, timeDate) values (1, :timeDate) "+
-            "WHERE jobID=:jobID AND freelancerID=:freelancerID";
-    public static final String NOTIFY_JOBS_ACCEPTED = "update tblJob (jobAccepted) values (1)";
-
-
-    public static final String DECLINE_JOB_OFFER = "update tblJob_Offers (offerStatus, timeDate) values (2, :timeDate) "+
-            "WHERE jobID=:jobID AND freelancerID=:freelancerID";
-
-
-
-
+    public static final String DECLINE_JOB_OFFER = "update tblJob_Offers SET offerStatus = 2, timeDate = :timeDate " +
+            "WHERE jobID = :jobID AND freelancerID = :freelancerID";
 
 
     public Optional<List<JobOffer>> getJobOffers() {
@@ -64,6 +58,18 @@ public class JobOfferRepository {
         params.put("offerStatus", 0);
         params.put("timeDate", now);
         template.update(CREATE_NEW_JOB_OFFER, params);
+    }
+
+    public void respondJobOffer(String jobID, String freelancerID, String answer) {
+
+        Map<String, Object> params = new HashMap<>();
+        Date now = new Date();
+        int response = Integer.parseInt(answer);
+        params.put("jobID", Integer.parseInt(jobID));
+        params.put("freelancerID", Integer.parseInt(freelancerID));
+        params.put("timeDate", now);
+        if (response == 1) {template.update(ACCEPT_JOB_OFFER, params);}
+        else if (response == 2) {template.update(DECLINE_JOB_OFFER, params);}
     }
 
 

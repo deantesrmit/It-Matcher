@@ -62,6 +62,7 @@ public class WebConfig {
         get(Path.Web.CREATE_JOB, pageController.serveCreateJobPage());
         post(Path.Web.CREATE_JOB, pageController.handleCreateJob());
         get(Path.Web.VIEW_MATCHES, pageController.serveMatchesPage());
+        post(Path.Web.VIEW_MATCHES, jobController.handerJobAcceptDecline());
         get(Path.Web.VIEW_FREELANCERS, pageController.serveFreelancersPage());
         post(Path.Web.VIEW_FREELANCERS, jobController.handleJobOffer());
         get(Path.Web.ABOUT_US, pageController.serveAboutUsPage());

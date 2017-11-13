@@ -49,4 +49,15 @@ public class JobController {
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_FREELANCER);
         };
     };
+
+    public Route handerJobAcceptDecline () {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            final String answer = getQueryParam (request, "answer");
+            final String jobID = getQueryParam (request, "jobID");
+            final String freelancerID = getQueryParam(request, "freelancerID");
+            jobOfferRepository.respondJobOffer(jobID, freelancerID, answer);
+            return ViewUtil.render(request, viewObjects, Path.Template.INDEX);
+        };
+    }
 }
