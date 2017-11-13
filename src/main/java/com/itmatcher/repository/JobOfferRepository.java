@@ -53,6 +53,11 @@ public class JobOfferRepository {
     public Optional <List<JobOffer>> getJobOfferByProfile(int freelancerID) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerID", freelancerID);
+
+        //select J.jobTitle, J.jobDescription, J.duedate, J.budget from tblJobs as J
+        //left outer join tbljob_offers as JO on JO.jobid = J.jobsid
+        //where JO.offerstatus = 0 and JO.jobid = :jobsid and JO.freelancerid = :freelancer
+
         String sql = "SELECT * FROM tblJobs_Offers WHERE freelancerID = :freelancerID";
         List <JobOffer> list = template.query(sql, paramMap, jobRowMapper);
         if (list != null && !list.isEmpty()) {
