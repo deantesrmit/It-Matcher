@@ -50,6 +50,17 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
+    public Optional <List<JobOffer>> getJobOfferByProfile(int freelancerID) {
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("freelancerID", freelancerID);
+        String sql = "SELECT * FROM tblJobs_Offers WHERE freelancerID = :freelancerID";
+        List <JobOffer> list = template.query(sql, paramMap, jobRowMapper);
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list);
+        }
+        return Optional.empty();
+    }
+
     public void createJobOffer(String jobID, String freelancerID) {
         Map<String, Object> params = new HashMap<>();
         Date now = new Date();

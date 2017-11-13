@@ -52,7 +52,6 @@
                         <input type="hidden" name="freelancerID" value="100" />
                         <input type="submit" class="btn btn-primary btn-md" value="Accept Job" />
                     </form>
-
                 </div>
                 <div class="col-sm-1">
                     <a href="#" class="btn btn-danger">Decline<i class="fa fa-sign-in"></i></a>

@@ -1,8 +1,12 @@
 package com.itmatcher.controller;
 
 import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Profile;
 import com.itmatcher.domain.ScoredFreeLancer;
+import com.itmatcher.domain.JobOffer;
 import com.itmatcher.repository.SkillRepository;
+import com.itmatcher.repository.JobOfferRepository;
+import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.LookupService;
 import com.itmatcher.service.MatchService;
@@ -28,6 +32,10 @@ public class PageController {
     LookupService lookupService;
     @Autowired
     SkillRepository skillRepository;
+    @Autowired
+    JobOfferRepository jobOfferRepository;
+    @Autowired
+    ProfileRepository profileRepository;
 
     public Route serveCreateJobPage() {
         return (request, response) -> {
@@ -37,10 +45,14 @@ public class PageController {
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
         };
     }
+
     public Route serveMatchesPage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
+            Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
+            int freelancerID = profile.getProfileID();
+            viewObjects.put("jobOffers", jobOfferRepository.getJobOfferByProfile(freelancerID));
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }
