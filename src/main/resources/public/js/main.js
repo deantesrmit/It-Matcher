@@ -20,3 +20,15 @@ function check(input) {
         }
     }
 }
+
+function checkname(input) {
+    var reg = /^[A-Za-z]+$/;
+    if ( reg.test(input.value) == false) {
+        input.setCustomValidity('characters only');
+        return false;
+    } else {
+
+        input.setCustomValidity('');
+        return true;
+    }
+}

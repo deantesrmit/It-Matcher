@@ -22,9 +22,9 @@
 
                                        oninput= check(this) required />
                                 </br>
-                            <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" required/>
+                            <input type="text" name="firstName" class="form-control input-sm chat-input" placeholder="First Name" oninput=checkname(this) required/>
                             </br>
-                                <input type="text" name="lastName" class="form-control input-sm chat-input" placeholder="Last Name" required/>
+                                <input type="text" name="lastName" class="form-control input-sm chat-input" placeholder="Last Name" oninput=checkname(this) required/>
                                 </br>
                                 <label for="registerType">Registration Type</label>
                                 <select class ="form-control" name="registrationType">
