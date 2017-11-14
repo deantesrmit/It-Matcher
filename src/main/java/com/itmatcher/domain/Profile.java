@@ -12,12 +12,20 @@ public class Profile {
     private String education;
     private String workExperience;
 
-    public int getProfileID() {
+    public int getId() {
         return id;
     }
 
-    public void setProfileID(int id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPostCode() {
+        return postCode;
+    }
+
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     public int getUserId() {

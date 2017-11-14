@@ -40,7 +40,6 @@
                             <option value="${exp.id}">${exp.value}</option>
                         </#list>
                     </Select>
-                </div>
 
                 <div class="wrapper">
                     <input type="submit" class="btn btn-primary btn-md"

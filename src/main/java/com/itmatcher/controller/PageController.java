@@ -61,7 +61,7 @@ public class PageController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
-            int freelancerID = profile.getProfileID();
+            int freelancerID = profile.getId();
             viewObjects.put("jobOffers", jobOfferRepository.getJobOfferByProfile(freelancerID));
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };

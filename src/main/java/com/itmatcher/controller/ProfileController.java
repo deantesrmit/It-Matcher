@@ -67,7 +67,7 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             final Optional<Profile> profileByUserId = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
-            viewObjects.put("profile", profileByUserId.orElseGet(Profile::new));
+            viewObjects.put("profile", profileByUserId.get());
             viewObjects.put("educations", lookupService.getAllEducations());
             viewObjects.put("workExperiences", lookupService.getAllWorkExp());
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
@@ -79,7 +79,8 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
-            return ViewUtil.render(request, model, Path.Template.INDEX);
+            response.redirect("/profile/");
+            return Spark.redirect;
         };
     }
 
