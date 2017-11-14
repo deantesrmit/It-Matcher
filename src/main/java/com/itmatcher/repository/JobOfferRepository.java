@@ -19,6 +19,18 @@ import org.springframework.stereotype.Repository;
 public class JobOfferRepository {
 
     private NamedParameterJdbcTemplate template;
+    public static final String GET_LATEST_JOB_OFFERS_FOR_FREELANCER =
+      "Select * " +
+      "From TBLJOB_OFFERS As o " +
+      "Inner Join (" +
+      "  Select max(timeDate) as timeDate, freelancerId, jobId " +
+      "  From TBLJOB_OFFERS " +
+      "  Group By freelancerId, jobId) As u " +
+      "On o.freelancerId = u.freelancerId " +
+      "and o.timeDate = u.timeDate " +
+      "and o.freelancerId = :freelancerId " +
+      "and o.jobId = :jobID " +
+      "and o.offerStatus = :offerStatus ";
 
     @Autowired
     public JobOfferRepository(DataSource ds) {
@@ -76,21 +88,12 @@ public class JobOfferRepository {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerId", freeLancerId);
         paramMap.put("offerStatus", status);
+        final StringBuilder sb = new StringBuilder(GET_LATEST_JOB_OFFERS_FOR_FREELANCER);
         paramMap.put("jobID", jobId);
-        String sql =
-                "Select * " +
-                "From TBLJOB_OFFERS As o " +
-                "Inner Join (" +
-                "  Select max(timeDate) as timeDate, freelancerId, jobId " +
-                "  From TBLJOB_OFFERS " +
-                "  Group By freelancerId, jobId) As u " +
-                "On o.freelancerId = u.freelancerId " +
-                "and o.timeDate = u.timeDate " +
-                "and o.freelancerId = :freelancerId " +
-                "and o.jobId = :jobID " +
-                "and o.offerStatus = :offerStatus ";
+        sb.append("and o.jobId = :jobID ");
+
         List<JobOffer> list = template.query(
-                sql,
+                sb.toString(),
                 paramMap,
                 jobRowMapper);
         if (list != null && !list.isEmpty()) {
@@ -98,6 +101,19 @@ public class JobOfferRepository {
         }
         return Optional.empty();
 
+    }
+
+    public List<JobOffer> getJobOffers(int freeLancerId, int status) {
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("freelancerId", freeLancerId);
+        paramMap.put("offerStatus", status);
+        final String sql = GET_LATEST_JOB_OFFERS_FOR_FREELANCER;
+
+        List<JobOffer> list = template.query(
+                sql,
+                paramMap,
+                jobRowMapper);
+        return list;
     }
 
   public void respondJobOffer(String jobID, String freelancerID, String answer) {
