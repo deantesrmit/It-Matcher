@@ -1,22 +1,16 @@
 package com.itmatcher.controller;
 
-import com.itmatcher.domain.ScoredFreeLancer;
 import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
-import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.ViewUtil;
-import com.itmatcher.service.MatchService;
-import static com.itmatcher.util.RequestUtil.getQueryParam;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Route;
 import spark.Spark;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 /**
  * Created by deant on 10/21/17.

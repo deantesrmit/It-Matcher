@@ -1,27 +1,9 @@
 
 package com.itmatcher.service;
 
-import com.itmatcher.domain.CriteriaWeight;
-import com.itmatcher.domain.FreeLancer;
-import com.itmatcher.domain.Job;
-import com.itmatcher.domain.Language;
-import com.itmatcher.domain.ScoredFreeLancer;
-import com.itmatcher.domain.Skill;
-import com.itmatcher.domain.WeightedCriteria;
-
-import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
-import com.itmatcher.repository.FreeLancerRepository;
 
-import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
 /**
  * @author Dean Tesoriero
@@ -45,7 +27,7 @@ public class MatchServiceTest {
 //    job.setLanguages(asList(new Language("Java", CriteriaWeight.REQUIRED)));
 //    job.setSkills(asList(new Skill("Sql", CriteriaWeight.HIGH_PREFERENCE)));
 //
-//    final List<ScoredFreeLancer> scoredFreeLancers = matchService.findFreelancersForJob(1);
+//    final List<FreelancerDto> scoredFreeLancers = matchService.findFreelancersForJob(1);
 //    Assert.assertEquals(1, scoredFreeLancers.size());
 //    Assert.assertTrue(hasCriteria(scoredFreeLancers.get(0).getFreeLancer().getLanguages(), "Java"));
 //    Assert.assertEquals(5, scoredFreeLancers.get(0).getScore());

@@ -4,12 +4,12 @@ package com.itmatcher.domain;
 /**
  * @author Dean Tesoriero
  */
-public class ScoredFreeLancer {
+public class FreelancerDto {
   FreeLancer freeLancer;
   int score;
   boolean hasOffer;
 
-  public ScoredFreeLancer(FreeLancer freeLancer, int weight) {
+  public FreelancerDto(FreeLancer freeLancer, int weight) {
     this.freeLancer = freeLancer;
     this.score = weight;
   }
