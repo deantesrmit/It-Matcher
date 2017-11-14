@@ -44,12 +44,6 @@ public class LookupRepository {
         return p;
     };
 
-
-
-
-
-
-
     public List<WorkExp> getAllWorkExp() {
         Map<String, Object> params = new HashMap<>();
 

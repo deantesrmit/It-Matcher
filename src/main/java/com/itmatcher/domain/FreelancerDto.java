@@ -7,7 +7,7 @@ package com.itmatcher.domain;
 public class FreelancerDto {
   FreeLancer freeLancer;
   int score;
-  boolean hasOffer;
+  JobOffer offer;
 
   public FreelancerDto(FreeLancer freeLancer, int weight) {
     this.freeLancer = freeLancer;
@@ -30,11 +30,11 @@ public class FreelancerDto {
     this.score = score;
   }
 
-  public boolean isHasOffer() {
-    return hasOffer;
+  public JobOffer getOffer() {
+    return offer;
   }
 
-  public void setHasOffer(boolean hasOffer) {
-    this.hasOffer = hasOffer;
+  public void setOffer(JobOffer offer) {
+    this.offer = offer;
   }
 }

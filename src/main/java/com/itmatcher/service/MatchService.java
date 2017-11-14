@@ -1,11 +1,6 @@
 package com.itmatcher.service;
 
-import com.itmatcher.domain.FreeLancer;
-import com.itmatcher.domain.FreelancerDto;
-import com.itmatcher.domain.Job;
-import com.itmatcher.domain.Language;
-import com.itmatcher.domain.Skill;
-import com.itmatcher.domain.WeightedCriteria;
+import com.itmatcher.domain.*;
 import com.itmatcher.repository.FreeLancerRepository;
 import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.repository.JobRepository;
@@ -36,7 +31,7 @@ public class MatchService {
     final List<FreeLancer> freeLancers = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
     final List<FreelancerDto> freelancerDtos = calculateFLWeight(job, freeLancers);
     freelancerDtos.stream().forEach(
-            f -> f.setHasOffer(offerRepository.hasJobOffer(f.getFreeLancer().getId(), 0, jobId).isPresent())
+        f -> f.setOffer(offerRepository.findOfferByFreeLancerIdJobId(f.getFreeLancer().getId(), jobId).orElse(null))
     );
     return freelancerDtos;
   }

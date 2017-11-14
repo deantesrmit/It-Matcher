@@ -3,10 +3,9 @@
 <@layout.masterTemplate title="Login">
 <div class="container">
 
-    <h1>Matched Freelancers for JOB ${job.id}</h1>
+    <h1>Matched Freelancers for ${job.title}</h1>
     <br/>
     <ul>
-      <li>Title: ${job.title!}</li>
       <li>Description:${job.description!}</li>
       <li>Due: ${job.dueDate!}</li>
       <li>Education: ${job.education!}</li>
@@ -58,25 +57,28 @@
 
                     </ul>
                 </div>
+                <#assign offer = scoredFreelancer.offer!>
+                <#assign offerStatus = offer.offerStatus!>
                 <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
                     <h3><a href="#" title="">${freeLancer.name}</a></h3>
                     <p>${freeLancer.bio}</p>
                     <form class="form-login" action="/offer_job/" method="POST">
                         <input type="hidden" name="jobId" value="${job.id}">
                         <input type="hidden" name="freeLancerId" value="${freeLancer.id}">
-                        <#if !scoredFreelancer.hasOffer>
-                              <input type="hidden" name="offerStatus" value="0">
-                            <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
-                        <#else>
+
+                        <#if offerStatus + '' == '0'>
                             <input type="hidden" name="offerStatus" value="3">
                             <input type="submit" class="btn btn-primary btn-md btn-danger" value="Cancel Offer" />
+                        <#else>
+                            <input type="hidden" name="offerStatus" value="0">
+                            <input type="submit" class="btn btn-primary btn-md" value="Offer Job" />
                         </#if>
                     </form>
                 </div>
                 <span class="clearfix borda"></span>
             </article>
         </#list>
-        <a href="/viewFreelancers/${job.id}/"><button class="btn btn-success">Back</button> </a>
+        <a href=/profile/><button class="btn btn-success">Back</button> </a>
     </section>
 
 </div>

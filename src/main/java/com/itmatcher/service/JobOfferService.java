@@ -3,6 +3,8 @@ package com.itmatcher.service;
 import com.itmatcher.domain.JobOffer;
 import com.itmatcher.repository.JobOfferRepository;
 import java.util.Date;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import spark.Request;
@@ -18,8 +20,18 @@ public class JobOfferService {
   @Autowired
   JobOfferRepository jobOfferRepository;
 
-  public void createJobOffer(Request request) {
-    jobOfferRepository.createJobOffer(mapJobOffer(request));
+  public void createOrUpdateJobOffer(Request request) {
+    final int freeLancerId = parseInt(getQueryParam(request, "freeLancerId"));
+    final int jobId = parseInt(getQueryParam(request, "jobId"));
+    final int offerStatus = parseInt(getQueryParam(request, "offerStatus"));
+    final Optional<JobOffer> maybeOffer = jobOfferRepository.findOfferByFreeLancerIdJobId(freeLancerId, jobId);
+    if(!maybeOffer.isPresent()) {
+      jobOfferRepository.createJobOffer(mapJobOffer(request));
+    } else {
+      final JobOffer jobOffer = maybeOffer.get();
+      jobOffer.setOfferStatus(offerStatus);
+      jobOfferRepository.updateJobOffer(jobOffer);
+    }
   }
 
   private JobOffer mapJobOffer(Request request) {
