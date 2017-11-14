@@ -1,6 +1,5 @@
 package com.itmatcher.repository;
 
-import com.itmatcher.domain.Job;
 import com.itmatcher.domain.JobOffer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -68,26 +67,52 @@ public class JobOfferRepository {
 
     public void createJobOffer(String jobID, String freelancerID) {
         Map<String, Object> params = new HashMap<>();
-        Date now = new Date();
-        params.put("jobID", Integer.parseInt(jobID));
-        params.put("freelancerID", Integer.parseInt(freelancerID));
-        params.put("offerStatus", 0);
-        params.put("timeDate", now);
+        params.put("jobID", jobOffer.getJobID());
+        params.put("freelancerID", jobOffer.getFreelancerID());
+        params.put("offerStatus", jobOffer.getOfferStatus());
+        params.put("timeDate", jobOffer.getLastUpdated());
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
-    public void respondJobOffer(String jobID, String freelancerID, String answer) {
+    public Optional<JobOffer> hasJobOffer(int freeLancerId, int status, int jobId) {
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("freelancerId", freeLancerId);
+        paramMap.put("offerStatus", status);
+        paramMap.put("jobID", jobId);
+        String sql =
+                "Select * " +
+                "From TBLJOB_OFFERS As o " +
+                "Inner Join (" +
+                "  Select max(timeDate) as timeDate, freelancerId, jobId " +
+                "  From TBLJOB_OFFERS " +
+                "  Group By freelancerId, jobId) As u " +
+                "On o.freelancerId = u.freelancerId " +
+                "and o.timeDate = u.timeDate " +
+                "and o.freelancerId = :freelancerId " +
+                "and o.jobId = :jobID " +
+                "and o.offerStatus = :offerStatus ";
+        List<JobOffer> list = template.query(
+                sql,
+                paramMap,
+                jobRowMapper);
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list.get(0));
+        }
+        return Optional.empty();
 
-        Map<String, Object> params = new HashMap<>();
-        Date now = new Date();
-        int response = Integer.parseInt(answer);
-        params.put("jobID", Integer.parseInt(jobID));
-        params.put("freelancerID", Integer.parseInt(freelancerID));
-        params.put("timeDate", now);
-        if (response == 1) {template.update(ACCEPT_JOB_OFFER, params);}
-        else if (response == 2) {template.update(DECLINE_JOB_OFFER, params);}
     }
 
+  public void respondJobOffer(String jobID, String freelancerID, String answer) {
+
+      Map<String, Object> params = new HashMap<>();
+      Date now = new Date();
+      int response = Integer.parseInt(answer);
+      params.put("jobID", Integer.parseInt(jobID));
+      params.put("freelancerID", Integer.parseInt(freelancerID));
+      params.put("timeDate", now);
+      if (response == 1) {template.update(ACCEPT_JOB_OFFER, params);}
+      else if (response == 2) {template.update(DECLINE_JOB_OFFER, params);}
+  }
 
     private RowMapper<JobOffer> jobRowMapper = (rs, rowNum) -> {
         JobOffer jobOffer = new JobOffer();

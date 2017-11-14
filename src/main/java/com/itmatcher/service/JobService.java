@@ -45,7 +45,6 @@ public class JobService {
       job.setTitle(getQueryParam(request, "title"));
       final Optional<Job> savedJob = jobRepository.saveJob(job);
       mSkillRepository.saveAllSkills(savedJob.get().getId(), mapSkills(request));
-//      return job1;
       return  savedJob;
     }
 

@@ -1,16 +1,39 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-        <!--Nav bar for Medium and up viewpoints -->
-        <div class="navbar-header d-none d-md-block">
+
+        <!--Nav bar for Large and up viewpoints -->
+        <div class="navbar-header d-none d-lg-block">
             <img height="50px" src="/img/logo.png">
-            <a class="navbar-brand" href="/">Home</a>
-            <a class="navbar-brand" href="/aboutus">About Us</a>
-            <a class="navbar-brand" href="/register/">Register</a>
-            <a class="navbar-brand" href="/howitworks">How It Works</a>
+            <a class="navbar-brand" href="/">Home<p class = "navbar-separator"> | </p></a>
+            <a class="navbar-brand" href="/aboutus">About Us<p class = "navbar-separator"> | </p></a>
+            <a class="navbar-brand" href="/register/">Register<p class = "navbar-separator"> | </p></a>
+            <a class="navbar-brand" href="/howitworks">How It Works<p class = "navbar-separator"> | </p></a>
             <a class="navbar-brand" href="/profile/">Profile</a>
         </div>
     <#if !userDetails??>
-        <div class="nav navbar-nav navbar-right  d-none d-md-block">
+        <div class="nav navbar-nav navbar-right  d-none d-lg-block">
+            <a class="navbar-brand" href="/login">LOGIN</a>
+        </div>
+    <#else>
+        <div class = "d-none d-lg-block">Account Type: ${userDetails.accountType}</div>
+        <div class="nav navbar-nav navbar-right d-none d-lg-block">
+            <form method="post" action="/logout/">
+                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+            </form>
+        </div>
+    </#if>
+
+        <!--Nav bar for Medium and up viewpoints -->
+        <div class="navbar-header d-none d-md-block d-lg-none">
+            <img height="50px" src="/img/logo.png">
+            <a class="navbar-brand" href="/">Home<p class = "navbar-separator-md"> | </p></a>
+            <a class="navbar-brand" href="/aboutus">About Us<p class = "navbar-separator-md"> | </p></a>
+            <a class="navbar-brand" href="/register/">Register<p class = "navbar-separator-md"> | </p></a>
+            <a class="navbar-brand" href="/howitworks">How It Works<p class = "navbar-separator-md"> | </p></a>
+            <a class="navbar-brand" href="/profile/">Profile</a>
+        </div>
+    <#if !userDetails??>
+        <div class="nav navbar-nav navbar-right  d-none d-md-block d-lg-none">
             <a class="navbar-brand" href="/login">LOGIN</a>
         </div>
     <#else>

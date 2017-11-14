@@ -1,12 +1,13 @@
 package com.itmatcher.service;
 
 import com.itmatcher.domain.FreeLancer;
+import com.itmatcher.domain.FreelancerDto;
 import com.itmatcher.domain.Job;
 import com.itmatcher.domain.Language;
-import com.itmatcher.domain.ScoredFreeLancer;
 import com.itmatcher.domain.Skill;
 import com.itmatcher.domain.WeightedCriteria;
 import com.itmatcher.repository.FreeLancerRepository;
+import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.repository.JobRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,24 +26,29 @@ public class MatchService {
   private FreeLancerRepository lancerRepository;
   @Autowired
   private JobRepository jobRepository;
+  @Autowired
+  private JobOfferRepository offerRepository;
 
-  public List<ScoredFreeLancer> findFreelancersForJob(int jobId) {
+  public List<FreelancerDto> findFreelancersForJob(int jobId) {
     final Job job = jobRepository.getJobById(jobId).get();
     final List<Language> requiredLanguages = getRequiredFields(job.getLanguages(), Language.class);
     final List<Skill> requiredSkills = getRequiredFields(job.getSkills(), Skill.class);
-    final List<FreeLancer> flByRequired = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
-
-    return calculateFLWeight(job, flByRequired);
+    final List<FreeLancer> freeLancers = lancerRepository.findFreeLancersByRequired(requiredLanguages, requiredSkills);
+    final List<FreelancerDto> freelancerDtos = calculateFLWeight(job, freeLancers);
+    freelancerDtos.stream().forEach(
+            f -> f.setHasOffer(offerRepository.hasJobOffer(f.getFreeLancer().getId(), 0, jobId).isPresent())
+    );
+    return freelancerDtos;
   }
 
-  private List<ScoredFreeLancer> calculateFLWeight(Job job, List<FreeLancer> flByRequired) {
-    List<ScoredFreeLancer> scoredFreeLancers = new ArrayList<>(flByRequired.size());
+  private List<FreelancerDto> calculateFLWeight(Job job, List<FreeLancer> flByRequired) {
+    List<FreelancerDto> freelancerDtos = new ArrayList<>(flByRequired.size());
     for (FreeLancer freeLancer : flByRequired) {
       final int langScore = calculatePoints(job.getLanguages(), freeLancer.getLanguages(), freeLancer);
       final int skillScore = calculatePoints(job.getSkills(), freeLancer.getSkills(), freeLancer);
-      scoredFreeLancers.add(new ScoredFreeLancer(freeLancer, langScore + skillScore));
+      freelancerDtos.add(new FreelancerDto(freeLancer, langScore + skillScore));
     }
-    return scoredFreeLancers;
+    return freelancerDtos;
   }
 
   private int calculatePoints(List<? extends WeightedCriteria> jobCriterias, List<? extends WeightedCriteria> flCriterias, FreeLancer freeLancer) {

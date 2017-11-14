@@ -22,9 +22,9 @@
                     </div>
                     <div class="panel-body">
                         <#list jobs as job>
-                            <a href="/viewFreelancers/${job.id}/" <button class="btn btn-success btn-block">${job.id} - ${job.title}</button></a>
+                            <a href="/viewFreelancers/${job.id}/" <button class="btn btn-success btn-block">${job.title}</button></a>
                         </#list>
-                            <a href="/create_job/" <button class="btn btn-warning btn-block">New Job</button></a>
+                            <a href="/create_job/" <button class="btn btn-warning btn-block">Post New Job</button></a>
                     </div>
                 </div>
             </div>
