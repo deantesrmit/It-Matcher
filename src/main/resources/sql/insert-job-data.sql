@@ -4,7 +4,7 @@ INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription,
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (101, Null, 2, 'Thor ragnarok appreciation page ','Job No 2 Description', null, '', '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (102, Null, 4,'', 'Job No 3 Description', null, '', '',  0, Null, 0, Null, 0);
+  VALUES (102, Null, 4,'Artsy blog website', 'Job No 3 Description', null, '', '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (103, Null, 4, 'Fancy tech startup website','Job No 4 Description', null, '', '', 0, Null, 0, Null, 0);
 
