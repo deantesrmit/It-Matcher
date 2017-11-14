@@ -37,8 +37,8 @@
             <a class="navbar-brand" href="/login">LOGIN</a>
         </div>
     <#else>
-        <div class = "d-none d-md-block">Account Type: ${userDetails.accountType}</div>
-        <div class="nav navbar-nav navbar-right d-none d-md-block">
+        <div class = "d-none d-md-block d-lg-none">Account Type: ${userDetails.accountType}</div>
+        <div class="nav navbar-nav navbar-right d-none d-md-block d-lg-none">
             <form method="post" action="/logout/">
                 <input  type="submit" class="navbar-brand" id="logout" value="logout" />
             </form>
