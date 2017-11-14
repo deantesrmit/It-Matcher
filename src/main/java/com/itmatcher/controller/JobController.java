@@ -1,5 +1,6 @@
 package com.itmatcher.controller;
 
+import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.util.Path;
@@ -21,6 +22,8 @@ public class JobController {
     JobService jobService;
     @Autowired
     JobOfferService offerService;
+    @Autowired
+    JobOfferRepository jobOfferRepository;
 
     public Route serveViewJobPage() {
         return (request, response) -> {

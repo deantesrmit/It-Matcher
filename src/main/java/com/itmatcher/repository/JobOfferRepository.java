@@ -1,18 +1,16 @@
 package com.itmatcher.repository;
 
 import com.itmatcher.domain.JobOffer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.stereotype.Repository;
-import sun.java2d.pipe.hw.AccelDeviceEventListener;
-
-import javax.sql.DataSource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Date;
+import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by deant on 10/21/17.
@@ -57,7 +55,7 @@ public class JobOfferRepository {
         //left outer join tbljob_offers as JO on JO.jobid = J.jobsid
         //where JO.offerstatus = 0 and JO.jobid = :jobsid and JO.freelancerid = :freelancer
 
-        String sql = "SELECT * FROM tblJobs_Offers WHERE freelancerID = :freelancerID";
+        String sql = "SELECT * FROM TBLJOB_OFFERS WHERE freelancerID = :freelancerID";
         List <JobOffer> list = template.query(sql, paramMap, jobRowMapper);
         if (list != null && !list.isEmpty()) {
             return Optional.of(list);
@@ -65,7 +63,7 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    public void createJobOffer(String jobID, String freelancerID) {
+    public void createJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());
         params.put("freelancerID", jobOffer.getFreelancerID());
