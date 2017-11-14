@@ -1,5 +1,6 @@
 package com.itmatcher.controller;
 
+import com.itmatcher.repository.JobOfferRepository;
 import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.util.Path;
@@ -21,6 +22,8 @@ public class JobController {
     JobService jobService;
     @Autowired
     JobOfferService offerService;
+    @Autowired
+    JobOfferRepository jobOfferRepository;
 
     public Route serveViewJobPage() {
         return (request, response) -> {
@@ -31,12 +34,22 @@ public class JobController {
     }
 
 
-    public Route handleOfferJob() {
+    public Route handleOfferJobToFreelancer() {
         return (request, response) -> {
-            offerService.createJobOffer(request);
+            offerService.createOrUpdateJobOffer(request);
             response.redirect("/viewFreelancers/" + getQueryParam(request, "jobId") + "/");
             return Spark.redirect;
         };
-    }
+    };
 
+    public Route handerJobAcceptDecline () {
+        return (request, response) -> {
+            Map<String, Object> viewObjects = new HashMap<>();
+            final String answer = getQueryParam (request, "answer");
+            final String jobID = getQueryParam (request, "jobID");
+            final String freelancerID = getQueryParam(request, "freelancerID");
+            jobOfferRepository.respondJobOffer(jobID, freelancerID, answer);
+            return ViewUtil.render(request, viewObjects, Path.Template.INDEX);
+        };
+    }
 }

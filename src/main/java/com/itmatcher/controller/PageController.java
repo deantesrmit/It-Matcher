@@ -2,6 +2,9 @@ package com.itmatcher.controller;
 
 import com.itmatcher.domain.FreelancerDto;
 import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Profile;
+import com.itmatcher.repository.JobOfferRepository;
+import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.repository.SkillRepository;
 import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
@@ -35,6 +38,10 @@ public class PageController {
     @Autowired
     SkillRepository skillRepository;
     @Autowired
+    JobOfferRepository jobOfferRepository;
+    @Autowired
+    ProfileRepository profileRepository;
+    @Autowired
     JobOfferService jobOfferService;
     public static final Pattern ALPHANUMERIC_PATTER = Pattern.compile("^[a-zA-Z0-9]*$");
     public static final SimpleDateFormat YYYYMMDD_FORMAT = new SimpleDateFormat("YYYY-MM-DD");
@@ -48,10 +55,14 @@ public class PageController {
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
         };
     }
+
     public Route serveMatchesPage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
+            Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
+            int freelancerID = profile.getProfileID();
+            viewObjects.put("jobOffers", jobOfferRepository.getJobOfferByProfile(freelancerID));
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }

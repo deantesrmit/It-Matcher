@@ -46,7 +46,12 @@
                     $7500
                 </div>
                 <div class="col-sm-1">
-                    <a href="#" class="btn btn-success">Accept<i class="fa fa-sign-in"></i></a>
+                    <form class="form-login" action="/viewMatches/" method="POST">
+                        <input type="hidden" name="answer" value="1" />
+                        <input type="hidden" name="jobID" value="100" />
+                        <input type="hidden" name="freelancerID" value="100" />
+                        <input type="submit" class="btn btn-primary btn-md" value="Accept Job" />
+                    </form>
                 </div>
                 <div class="col-sm-1">
                     <a href="#" class="btn btn-danger">Decline<i class="fa fa-sign-in"></i></a>

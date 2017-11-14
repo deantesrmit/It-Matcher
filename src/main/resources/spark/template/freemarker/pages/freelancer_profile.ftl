@@ -18,21 +18,9 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>List of auto-matched Jobs</strong></h4>
-                    </div>
-                    <div class="panel-body">
-                        <!-- Edit this to pull applied jobs from database -->
-                        <a href="/viewMatches" <button class="btn btn-success">Auto-matched Jobs</button></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
                         <h4><strong>User Information</strong></h4>
                     </div>
                     <div class="panel-body">
-                        <!-- Edit this to pull user info from database -->
                         <table class="table">
 
                             </br>
@@ -77,6 +65,17 @@
                             </tbody>
                             </table>
                         <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><strong>List of auto-matched Jobs</strong></h4>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Edit this to pull applied jobs from database -->
+                        <a href="/viewMatches" <button class="btn btn-success">Auto-matched Jobs</button></a>
                     </div>
                 </div>
             </div>
