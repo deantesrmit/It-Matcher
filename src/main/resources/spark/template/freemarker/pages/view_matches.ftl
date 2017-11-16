@@ -6,6 +6,15 @@
         <h4 id="login">View Your Matches Below</h4>
         <br/>
         <div class="matches">
+        <#list jobOffers as offers>
+           <form class="form-login" action="/viewMatches/" method="POST">
+                <input type="hidden" name="answer" value="1" />
+                <input type="hidden" name="jobID" value="100" />
+                <input type="hidden" name="freelancerID" value="100" />
+                <input type="submit" class="btn btn-primary btn-md" value="Accept Job" />
+            </form>
+        </#list>
+
             <div class="row" id="heading">
                 <div class="col-sm-2">
                     Job Name

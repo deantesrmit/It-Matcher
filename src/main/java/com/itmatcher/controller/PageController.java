@@ -14,10 +14,7 @@ import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +59,9 @@ public class PageController {
             Map<String, Object> viewObjects = new HashMap<>();
             Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
             int freelancerID = profile.getProfileID();
-            viewObjects.put("jobOffers", jobOfferRepository.getJobOfferByProfile(freelancerID));
+            final List <Job> jobOffers = jobOfferRepository.getJobsForFreelancer(freelancerID);
+            viewObjects.put("freelancerID", freelancerID);
+            viewObjects.put("jobOffers", jobOffers);
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }
