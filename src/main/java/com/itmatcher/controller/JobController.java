@@ -1,11 +1,16 @@
 package com.itmatcher.controller;
 
+import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Profile;
 import com.itmatcher.repository.JobOfferRepository;
+import com.itmatcher.repository.ProfileRepository;
 import com.itmatcher.service.JobOfferService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.util.Path;
+import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,6 +29,7 @@ public class JobController {
     JobOfferService offerService;
     @Autowired
     JobOfferRepository jobOfferRepository;
+    @Autowired ProfileRepository profileRepository;
 
     public Route serveViewJobPage() {
         return (request, response) -> {
@@ -47,9 +53,16 @@ public class JobController {
             Map<String, Object> viewObjects = new HashMap<>();
             final String answer = getQueryParam (request, "answer");
             final String jobID = getQueryParam (request, "jobID");
-            final String freelancerID = getQueryParam(request, "freelancerID");
-            jobOfferRepository.respondJobOffer(jobID, freelancerID, answer);
-            return ViewUtil.render(request, viewObjects, Path.Template.INDEX);
+            final String flID = getQueryParam(request, "freelancerID");
+            jobOfferRepository.respondJobOffer(jobID, flID, answer);
+
+
+            Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
+            int freelancerID = profile.getProfileID();
+            final List<Job> jobOffers = jobOfferRepository.getJobsForFreelancer(freelancerID);
+            viewObjects.put("freelancerID", freelancerID);
+            viewObjects.put("jobOffers", jobOffers);
+            return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }
 }

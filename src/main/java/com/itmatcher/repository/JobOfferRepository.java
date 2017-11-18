@@ -7,6 +7,7 @@ import com.itmatcher.repository.JobRepository;
 import java.util.*;
 import javax.sql.DataSource;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import com.itmatcher.service.JobService;
 
@@ -29,7 +30,7 @@ public class JobOfferRepository {
                     "VALUES (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
     public static final String UPDATE_JOB_OFFER =
-            "UPDATE tblJob_Offers SET offerStatus = :offerStatus, timeDate = :timeDate " +
+            "UPDATE tblJob_Offers SET offerStatus = 1, timeDate = :timeDate " +
                     "WHERE jobID = :jobID AND freelancerID = :freelancerID";
 
     public static final String DECLINE_JOB_OFFER =
@@ -123,23 +124,23 @@ public class JobOfferRepository {
         List<Job> freelancersJobs = new ArrayList<Job>();
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerID", freelancerID);
-        String sql = "SELECT * FROM tblJob_Offers WHERE freelancerID = :freelancerID";
-        List<JobOffer> list = template.query(
-                sql,
-                paramMap,
-                jobRowMapper);
-
+        String sql = "SELECT * FROM tblJob_Offers WHERE freelancerID = :freelancerID AND offerStatus = 0";
+        List<JobOffer> list = template.query(sql,paramMap,jobRowMapper);
         if (list != null && !list.isEmpty()) {
             int i = 0;
             while (i < list.size()) {
-                int id = list.get(i).getId();
-                String query = "SELECT * FROM tblJobs WHERE id = :id";
-                Job job = template.query(query, paramMap, jobRepository.jobRowMapper);
-                freelancersJobs.add(job);
+                int id = list.get(i).getJobID();
+                HashMap<String, Object> param = new HashMap<>();
+                param.put("jobsID", id);
+                String query = "SELECT * FROM tblJobs WHERE jobsid = :jobsID";
+                List<Job> job = template.query(query, param, jobRepository.jobRowMapper);
+                freelancersJobs.add(job.get(0));
+                i++;
             }
         }
         return freelancersJobs;
     }
+
 
 
 
