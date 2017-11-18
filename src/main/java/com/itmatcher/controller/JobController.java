@@ -58,7 +58,7 @@ public class JobController {
 
 
             Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
-            int freelancerID = profile.getProfileID();
+            int freelancerID = profile.getId();
             final List<Job> jobOffers = jobOfferRepository.getJobsForFreelancer(freelancerID);
             viewObjects.put("freelancerID", freelancerID);
             viewObjects.put("jobOffers", jobOffers);
