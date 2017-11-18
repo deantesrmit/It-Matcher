@@ -14,30 +14,34 @@
             <div class="col-sm-2">Accept</div>
             <div class="col-sm-2">Decline</div>
         </div>
-        <div class="row listings">
-            <#list jobOffers as jobOffers>
-                <div class="col-sm-2">${jobOffers.title!}</div>
-                <div class="col-sm-3">${jobOffers.description!}</div>
-                <div class="col-sm-1">${jobOffers.budget!}</div>
-                <div class="col-sm-2">${jobOffers.dueDate!}</div>
-                <div class="col-sm-2">
-                    <form class="form-login" action="/viewMatches/" method="POST">
-                        <input type="hidden" name="answer" value="1" />
-                        <input type="hidden" name="jobID" value="${jobOffers.id!}" />
-                        <input type="hidden" name="freelancerID" value="${freelancerID}" />
-                        <input type="submit" value="Accept Job" />
-                    </form>
-                </div>
-                <div class="col-sm-2">
-                    <form class="form-login" action="/viewMatches/" method="POST">
-                        <input type="hidden" name="answer" value="2" />
-                        <input type="hidden" name="jobID" value="${jobOffers.id!}" />
-                        <input type="hidden" name="freelancerID" value="${freelancerID}" />
-                        <input type="submit" value="Decline Job" />
-                    </form>
-                </div>
-            </#list>
-        </div>
+        <#if jobOffers?has_content>
+            <div class="row listings">
+                <#list jobOffers as jobOffers>
+                    <div class="col-sm-2">${jobOffers.title!}</div>
+                    <div class="col-sm-3">${jobOffers.description!}</div>
+                    <div class="col-sm-1">${jobOffers.budget!}</div>
+                    <div class="col-sm-2">${jobOffers.dueDate!}</div>
+                    <div class="col-sm-2">
+                        <form class="form-login" action="/viewMatches/" method="POST">
+                            <input type="hidden" name="answer" value="1" />
+                            <input type="hidden" name="jobID" value="${jobOffers.id!}" />
+                            <input type="hidden" name="freelancerID" value="${freelancerID}" />
+                            <input type="submit" value="Accept Job" />
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <form class="form-login" action="/viewMatches/" method="POST">
+                            <input type="hidden" name="answer" value="2" />
+                            <input type="hidden" name="jobID" value="${jobOffers.id!}" />
+                            <input type="hidden" name="freelancerID" value="${freelancerID}" />
+                            <input type="submit" value="Decline Job" />
+                        </form>
+                    </div>
+                </#list>
+            </div>
+        <#else> <br/><br/><p> You have no current Job Offers </p>
+        </#if>
+
     </div>
 </div>
 </@layout.masterTemplate>
