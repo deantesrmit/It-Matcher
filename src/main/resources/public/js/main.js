@@ -22,7 +22,7 @@ function check(input) {
 }
 
 function checkname(input) {
-    var reg = /^[A-Za-z]+$/;
+    var reg = /^[A-Za-z ]+$/;
     if ( reg.test(input.value) == false) {
         input.setCustomValidity('characters only');
         return false;
@@ -33,7 +33,7 @@ function checkname(input) {
     }
 }
 function check_number_character(input) {
-    var reg = /^[a-z0-9]+$/i;
+    var reg = /^[a-z0-9 ]+$/i;
     if ( reg.test(input.value) == false) {
         input.setCustomValidity('characters and numbers only');
         return false;
