@@ -32,3 +32,26 @@ function checkname(input) {
         return true;
     }
 }
+function check_number_character(input) {
+    var reg = /^[a-z0-9]+$/i;
+    if ( reg.test(input.value) == false) {
+        input.setCustomValidity('characters and numbers only');
+        return false;
+    } else {
+
+        input.setCustomValidity('');
+        return true;
+    }
+}
+
+function check_number_only(input) {
+    var reg = /^[0-9]+$/;
+    if ( reg.test(input.value) == false) {
+        input.setCustomValidity('numbers only');
+        return false;
+    } else {
+
+        input.setCustomValidity('');
+        return true;
+    }
+}

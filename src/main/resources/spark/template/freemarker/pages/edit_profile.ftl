@@ -9,22 +9,22 @@
             <h4 id="login">${profile.id?? ? then('Edit Your', 'Create')} Profile</h4>
             <form class="form-login" action="${profile.id?? ? then(' /edit_profile/', ' /create_profile/')}" method="POST">
                 <label for "location">Location</label>
-                <input type="text" id="location" name="location" class="form-control input-sm chat-input" value="${profile.location!}"/><br/>
+                <input type="text" id="location" name="location" class="form-control input-sm chat-input" value="${profile.location!}" oninput=check_number_character(this) required/><br/>
 
                 <label for "address">Address</label>
-                <input type="text" id="address1" name="address1" class="form-control input-sm chat-input" value="${profile.address1!}"/><br/>
+                <input type="text" id="address1" name="address1" class="form-control input-sm chat-input" value="${profile.address1!}"  oninput=check_number_character(this) required/><br/>
 
                 <label for "suburb">Suburb</label>
-                <input type="text" id="suburb" name="suburb" class="form-control input-sm chat-input" value="${profile.suburb!}"/><br/>
+                <input type="text" id="suburb" name="suburb" class="form-control input-sm chat-input" value="${profile.suburb!}"  oninput=check_number_character(this) required/><br/>
 
                 <label for "state">State</label>
-                <input type="text" id="state" name="state" class="form-control input-sm chat-input" value="${profile.state!}"/><br/>
+                <input type="text" id="state" name="state" class="form-control input-sm chat-input" value="${profile.state!}"  oninput=check_number_character(this) required /><br/>
 
                 <label for "postCode">Postcode</label>
-                <input type="text" id="postCode" name="postCode" class="form-control input-sm chat-input" value="${profile.postCode!}"/><br/>
+                <input type="text" id="postCode" name="postCode" class="form-control input-sm chat-input" value="${profile.postCode!}"  oninput=check_number_only(this) required/><br/>
 
                 <label for "bio">Bio</label>
-                <input type="text" id="bio" name="bio" class="form-control input-sm chat-input" value="${profile.bio!}"/><br/>
+                <input type="text" id="bio" name="bio" class="form-control input-sm chat-input" value="${profile.bio!}"   required /><br/>
 
                 <label for "education">Education</label>
                     <Select>

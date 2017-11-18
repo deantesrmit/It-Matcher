@@ -225,7 +225,7 @@ input:in-range {
 }
 
 
-/*style for listing_freelancer page*/
+/*style for listing_freelancer page code taken from https://bootsnipp.com/snippets/kv8XQ */
 .search-result .thumbnail { border-radius: 0 !important; }
 .search-result:first-child { margin-top: 0 !important; }
 .search-result { margin-top: 20px; }
