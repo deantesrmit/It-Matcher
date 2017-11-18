@@ -1,13 +1,15 @@
 package com.itmatcher.repository;
 
+import com.itmatcher.domain.Job;
 import com.itmatcher.domain.JobOffer;
+import com.itmatcher.repository.JobRepository;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import javax.sql.DataSource;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import com.itmatcher.service.JobService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
@@ -28,7 +30,7 @@ public class JobOfferRepository {
                     "VALUES (:jobID, :freelancerID, :offerStatus, :timeDate)";
 
     public static final String UPDATE_JOB_OFFER =
-            "UPDATE tblJob_Offers SET offerStatus = :offerStatus, timeDate = :timeDate " +
+            "UPDATE tblJob_Offers SET offerStatus = 1, timeDate = :timeDate " +
                     "WHERE jobID = :jobID AND freelancerID = :freelancerID";
 
     public static final String DECLINE_JOB_OFFER =
@@ -38,21 +40,27 @@ public class JobOfferRepository {
     private NamedParameterJdbcTemplate template;
 
     @Autowired
-    public JobOfferRepository(DataSource ds) {
-        template = new NamedParameterJdbcTemplate(ds);
-    }
+    JobService jobService;
+    @Autowired
+    JobRepository jobRepository;
+    @Autowired
+    public JobOfferRepository(DataSource ds) {template = new NamedParameterJdbcTemplate(ds);}
 
 
-    public List<JobOffer> getJobOfferByProfile(int freelancerID) {
+    public Optional<List<JobOffer>> getJobOfferByProfile(int freelancerID) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerID", freelancerID);
-
-        //select J.jobTitle, J.jobDescription, J.duedate, J.budget from tblJobs as J
-        //left outer join tbljob_offers as JO on JO.jobid = J.jobsid
-        //where JO.offerstatus = 0 and JO.jobid = :jobsid and JO.freelancerid = :freelancer
-
         String sql = "SELECT * FROM TBLJOB_OFFERS WHERE freelancerID = :freelancerID";
-        return template.query(sql, paramMap, jobRowMapper);
+        List<JobOffer> list = template.query(
+                sql,
+                paramMap,
+                jobRowMapper);
+
+        if (list != null && !list.isEmpty()) {
+            return Optional.of(list);
+        }
+
+        return Optional.empty();
     }
 
     public void respondJobOffer(String jobID, String freelancerID, String answer) {
@@ -110,5 +118,30 @@ public class JobOfferRepository {
         jobOffer.setLastUpdated(rs.getDate("timeDate"));
         return jobOffer;
     };
+
+    public List <Job> getJobsForFreelancer(int freelancerID)
+    {
+        List<Job> freelancersJobs = new ArrayList<Job>();
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("freelancerID", freelancerID);
+        String sql = "SELECT * FROM tblJob_Offers WHERE freelancerID = :freelancerID AND offerStatus = 0";
+        List<JobOffer> list = template.query(sql,paramMap,jobRowMapper);
+        if (list != null && !list.isEmpty()) {
+            int i = 0;
+            while (i < list.size()) {
+                int id = list.get(i).getJobID();
+                HashMap<String, Object> param = new HashMap<>();
+                param.put("jobsID", id);
+                String query = "SELECT * FROM tblJobs WHERE jobsid = :jobsID";
+                List<Job> job = template.query(query, param, jobRepository.jobRowMapper);
+                freelancersJobs.add(job.get(0));
+                i++;
+            }
+        }
+        return freelancersJobs;
+    }
+
+
+
 
 }

@@ -72,7 +72,7 @@ public class JobRepository {
         jobs.stream().forEach(job -> job.setSkills(skillRepository.getWeightedSkills(job.getId())));
     }
 
-    private RowMapper<Job> jobRowMapper = (rs, rowNum) -> {
+    public RowMapper<Job> jobRowMapper = (rs, rowNum) -> {
         Job job = new Job();
         job.setId(rs.getInt("jobsid"));
         job.setTitle(rs.getString("jobTitle"));
