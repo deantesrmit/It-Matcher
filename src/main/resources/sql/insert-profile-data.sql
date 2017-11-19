@@ -8,7 +8,7 @@ VALUES (5, 'Free','lancer3','freelancer3', 'freelancer3@test.com','$2a$10$ymh/2P
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (1, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
-VALUES (3, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
+VALUES (3, 'Sydney', '1 Test Street', 'Manly', 'NSW', '2095', 'I create web pages', Null, NULL );
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (5, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
 
