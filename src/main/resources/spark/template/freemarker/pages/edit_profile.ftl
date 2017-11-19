@@ -29,7 +29,10 @@
                  <label for "education">Education</label>
                     <Select name = "education">
                         <#list educations as edu>
-                            <option id = "education" value= "${edu.id}">${edu.value}</option>
+                            <option id = "education" value= "${edu.id}"
+                            <#if profile.education??>
+                                <#if profile.education == edu.id>selected</#if>
+                                </#if>>${edu.value}</option>
                         </#list>
                     </Select>
 
@@ -37,7 +40,10 @@
                   <label for "workExperience">WorkExperience</label>
                     <Select name="workExperience">
                         <#list workExperiences as exp>
-                            <option id = "workExperience" value="${exp.id}">${exp.value}</option>
+                            <option id = "workExperience" value="${exp.id}"
+                            <#if profile.workExperience??>
+                             <#if profile.workExperience == exp.id>selected</#if>
+                             </#if>>${exp.value}</option>
                         </#list>
                     </Select>
 
