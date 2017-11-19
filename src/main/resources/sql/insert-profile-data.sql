@@ -26,7 +26,9 @@ VALUES ( 2, 'Palm Cove', '22 Test Street', 'Testville', 'QLD', '4444', 'I like t
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (4, 'Palm Cove', '22 Test Street', 'Testville', 'QLD', '4444', 'I like to write programs', 1, NULL );
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
-VALUES (6, 'Sydney', '123 Fake Street', 'Sydney', 'NSW', '2000', 'I am a web development specialist.', 1, NULL );
+VALUES (6, 'Sydney', '123 Fake Street', 'Sydney', 'NSW', '2000', 'I am a web development specialist', 1, NULL );
+INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
+VALUES (6, 'Perth', '100 George Street', 'Perth', 'WA', '6000', 'Java/Php coder', 1, NULL );
 
 
 -- Insert the list of skills into the skills table
