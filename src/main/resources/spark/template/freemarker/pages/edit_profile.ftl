@@ -29,7 +29,7 @@
                 <label for "education">Education</label>
                     <Select>
                         <#list educations as edu>
-                            <option value= "${edu.id}">${edu.value}</option>
+                            <option id = "education" value= "${edu.id}">${edu.value}</option>
                         </#list>
                     </Select>
 
@@ -37,7 +37,7 @@
                 <label for "workExperience">WorkExperience</label>
                     <Select>
                         <#list workExperiences as exp>
-                            <option value="${exp.id}">${exp.value}</option>
+                            <option id = "workExperience" value="${exp.id}">${exp.value}</option>
                         </#list>
                     </Select>
 
