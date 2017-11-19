@@ -46,6 +46,14 @@ div.navbar-header.d-none.d-md-block.d-lg-none a {
     font-size:16px;
 }
 
+article.search-result {
+    border:1px;
+}
+article.search-result.row:nth-child(even) {background-color:#DCDCDC}
+
+article.search-result.row:nth-child(odd) {background-color:white}
+
+
 a.navbar-brand {
     color:black;
 }

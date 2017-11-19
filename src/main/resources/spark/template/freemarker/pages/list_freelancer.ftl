@@ -29,10 +29,10 @@
             <#assign freeLancer = scoredFreelancer.freeLancer>
             <article class="search-result row">
                 <div class="col-xs-11 col-md-1">
-                    <span>Score:${scoredFreelancer.score} </span>
+                    <span><h5>Score:${scoredFreelancer.score}</h5> </span>
                 </div>
               <div class="col-xs-12 col-sm-12 col-md-3">
-                Matched skills
+                <h5>Matched skills</h5>
                   <ul class="meta-search">
                       <li>
                           <span>
@@ -45,7 +45,7 @@
                   </ul>
               </div>
                 <div class="col-xs-12 col-sm-12 col-md-3">
-                  Skills
+                    <h5>Skills</h5>
                     <ul class="meta-search">
                         <li>
                             <span>
@@ -60,7 +60,7 @@
                 <#assign offer = scoredFreelancer.offer!>
                 <#assign offerStatus = offer.offerStatus!>
                 <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
-                    <h3><a href="#" title="">${freeLancer.name}</a></h3>
+                    <h5><a href="#" title="">${freeLancer.name}</a></h5>
                     <p>${freeLancer.bio}</p>
                     <form class="form-login" action="/offer_job/" method="POST">
                         <input type="hidden" name="jobId" value="${job.id}">
