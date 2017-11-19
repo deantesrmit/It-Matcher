@@ -77,8 +77,8 @@ public class ProfileRepository {
         p.setState(rs.getString("state"));
         p.setPostcode(rs.getString("postCode"));
         p.setBio(rs.getString("bio"));
-        p.setEducation(rs.getString("education"));
-        p.setWorkExperience(rs.getString("workExperience"));
+        p.setEducation(rs.getInt("education"));
+        p.setWorkExperience(rs.getInt("workExperience"));
         return p;
     };
 

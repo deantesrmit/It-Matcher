@@ -39,14 +39,18 @@ public class ProfileService {
   }
 
   private void mapProfile(Request request, Profile profile) {
+
+    System.out.println("EDUCATION" + getQueryParam(request, "education"));
+    System.out.println("WORKEXPERIENCE" + getQueryParam(request, "workExperience"));
+
     profile.setUserId(RequestUtil.getSessionCurrentUser(request).getId());
     profile.setLocation(getQueryParam(request, "location"));
     profile.setAddress1(getQueryParam(request, "address1"));
     profile.setSuburb(getQueryParam(request, "suburb"));
     profile.setState(getQueryParam (request, "state"));
     profile.setPostcode(getQueryParam (request, "postCode"));
-    profile.setWorkExperience(getQueryParam (request, "workExperience"));
-    profile.setEducation(getQueryParam (request, "education"));
+    profile.setWorkExperience(1);
+    profile.setEducation(1);
     profile.setBio(getQueryParam (request, "bio"));
   }
 }

@@ -9,8 +9,8 @@ public class Profile {
     private String state;
     private String postCode;
     private String bio;
-    private String education;
-    private String workExperience;
+    private int education;
+    private int workExperience;
 
     public int getId() {
         return id;
@@ -31,6 +31,7 @@ public class Profile {
     public int getUserId() {
         return userId;
     }
+
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -81,19 +82,17 @@ public class Profile {
         this.bio = bio;
     }
 
-    public String getEducation() {
-        return education;
-    }
+    public int getEducation() {return education;}
 
-    public void setEducation(String education) {
+    public void setEducation(int education) {
         this.education = education;
     }
 
-    public String getWorkExperience() {
+    public int getWorkExperience() {
         return workExperience;
     }
 
-    public void setWorkExperience(String workExperience) {
+    public void setWorkExperience(int workExperience) {
         this.workExperience = workExperience;
     }
 }
