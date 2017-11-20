@@ -26,7 +26,7 @@
                 <label for "bio">Bio</label>
                 <input type="text" id="bio" name="bio" class="form-control input-sm chat-input" value="${profile.bio!}"   required /><br/>
 
-                 <label for "education">Education</label>
+                 <label for "education">Education</label><br/>
                     <Select name = "education">
                         <#list educations as edu>
                             <option id = "education" value= "${edu.id}"
@@ -36,8 +36,8 @@
                         </#list>
                     </Select>
 
-
-                  <label for "workExperience">WorkExperience</label>
+                   <br/><br/>
+                  <label for "workExperience">WorkExperience</label><br/>
                     <Select name="workExperience">
                         <#list workExperiences as exp>
                             <option id = "workExperience" value="${exp.id}"

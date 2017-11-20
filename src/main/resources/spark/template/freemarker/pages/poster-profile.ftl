@@ -75,7 +75,14 @@
                                 <td>Bio:</td>
                                 <td>${profile.bio!}</td>
                             </tr>
-
+                            <tr>
+                                <td>WorkExperience:</td>
+                                <td>${workExp.value!}</td>
+                            </tr>
+                            <tr>
+                                <td>Education:</td>
+                                <td>${education.value!}</td>
+                            </tr>
                             </tbody>
                         </table>
                         <a href="/edit_profile/" <button class="btn btn-success">Edit User Information</button></a>

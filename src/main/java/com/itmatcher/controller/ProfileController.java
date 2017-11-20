@@ -2,11 +2,15 @@ package com.itmatcher.controller;
 
 import com.itmatcher.domain.Profile;
 import com.itmatcher.domain.User;
+import com.itmatcher.domain.WorkExp;
+import com.itmatcher.domain.Education;
 import com.itmatcher.repository.UserRepository;
 import com.itmatcher.service.EducationService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.LookupService;
 import com.itmatcher.service.ProfileService;
+import com.itmatcher.service.WorkExpService;
+import com.itmatcher.service.EducationService;
 import com.itmatcher.type.AccountType;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
@@ -35,6 +39,11 @@ public class ProfileController {
     LookupService lookupService;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    WorkExpService workExpService;
+    @Autowired
+    EducationService educationService;
+
     public Route serveProfilePage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
@@ -47,6 +56,14 @@ public class ProfileController {
                 response.redirect(Path.Web.EDIT_PROFILE);
                 return Spark.redirect;
             }
+
+            int exp = profile.get().getWorkExperience();
+            int edu = profile.get().getEducation();
+            final Optional <WorkExp> workExp = workExpService.getValueWorkExperience(profile.get().getWorkExperience());
+            final Optional <Education> education = educationService.getValueEducation(profile.get().getEducation());
+
+            if (workExp.isPresent()) {params.put("workExp", workExp.get());}  else {params.put("workExp", workExp); }
+            if (education.isPresent()) {params.put("education", education.get());} else {params.put("education", education); }
             params.put("users",test);
             params.put("profile", profile.get());
             params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
@@ -68,7 +85,7 @@ public class ProfileController {
             Map<String, Object> viewObjects = new HashMap<>();
             final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
             if (profile.isPresent()) {viewObjects.put("profile", profile.get());}
-            else {viewObjects.put("profile", profile); };
+            else {viewObjects.put("profile", profile); }
             viewObjects.put("educations", lookupService.getAllEducations());
             viewObjects.put("workExperiences", lookupService.getAllWorkExp());
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
