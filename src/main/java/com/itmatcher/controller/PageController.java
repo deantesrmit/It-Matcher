@@ -43,7 +43,7 @@ public class PageController {
     ProfileRepository profileRepository;
     @Autowired
     JobOfferService jobOfferService;
-    public static final Pattern ALPHANUMERIC_PATTER = Pattern.compile("^[a-zA-Z0-9]*$");
+    public static final Pattern ALPHANUMERIC_PATTER = Pattern.compile("^[a-zA-Z0-9 ]*$");
     public static final SimpleDateFormat YYYYMMDD_FORMAT = new SimpleDateFormat("YYYY-MM-DD");
 
     public Route serveCreateJobPage() {
