@@ -10,7 +10,12 @@ INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription,
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (104, Null, 6, 'IT Match Making web application','A basic match making system for IT consultants to meet project creators', null, '', '', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (105, Null, 8, 'Basic online video game','Multiplayer version of pacman to be played in browser', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (105, Null, 6, 'Basic online video game','Multiplayer version of pacman to be played in browser', null, '', '', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (106, Null, 8, 'eCommerce store website','Website which will allow me to sell products from my home business', null, '', '', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (107, Null, 8, 'iPhone App','iPhone application to enable customers to book services through our company', null, '', '', 0, Null, 0, Null, 0);
+
 
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (100, 1, 5);
