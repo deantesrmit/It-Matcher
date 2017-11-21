@@ -256,6 +256,9 @@ h1 {
     padding-bottom: 20px;
 }
 
+#heading.row {
+    border-radius:15px;
+}
 .pad-top {
     padding-top: 20px;
     padding-bottom: 20px;
