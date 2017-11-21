@@ -49,7 +49,7 @@ public class JobService {
     }
 
   private List<Skill> mapSkills(Request request) {
-    return Arrays.stream(request.queryParamsValues("skills"))
+    return Arrays.stream(request.queryParamsValues("skillsInput"))
     .map(s -> new Skill(Integer.parseInt(s), CriteriaWeight.REQUIRED))
     .collect(Collectors.toList());
   }

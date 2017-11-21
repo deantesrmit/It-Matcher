@@ -14,10 +14,7 @@ import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +48,7 @@ public class PageController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             viewObjects.put("skills", skillRepository.getAllSkills());
-
+            viewObjects.put("educations", lookupService.getAllEducations());
             return ViewUtil.render(request, viewObjects, Path.Template.CREATE_JOB);
         };
     }
@@ -103,13 +100,16 @@ public class PageController {
             final String education = getQueryParam(request, "education");
             final String dueDate = getQueryParam(request, "dueDate");
             final String budget = getQueryParam(request,"budget");
+            final List<String> skillsInput = Arrays.stream(request.queryParamsValues("skillsInput")).collect(Collectors.toList());
             final Date today = new Date();
             model.put("skills", skillRepository.getAllSkills());
+            model.put("educations", lookupService.getAllEducations());
             model.put("description", jobDescription);
             model.put("title",jobTitle);
             model.put("education",education);
             model.put("dueDate",dueDate);
             model.put("budget",budget);
+            model.put("skillsInputs",skillsInput);
             /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");

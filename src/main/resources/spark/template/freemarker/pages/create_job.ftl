@@ -23,30 +23,27 @@
         </div>
         <div class="form-group">
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
-          <select multiple name="skills" class="form-control" id="skillsRequiredInput">
+          <select multiple name="skillsInput" class="form-control" id="skillsRequiredInput">
               <#list skills! as skill>
-                    <option value="${skill.id}">${skill.value}</option>
+                    <option value="${skill.id}" <#if skillsInputs?seq_contains(skill.id + "")> selected="true"</#if>>
+                      ${skill.value}
+                    </option>
               </#list>
           </select>
         </div>
         <div class="form-group">
           <label for="educationInput">Desired Education Level:</label>
+
           <select name="education" class="form-control" id="educationInput">
-            <option>Senior Secondary</option>
-            <option>Certificate I</option>
-            <option>Certificate II</option>
-            <option>Certificate III</option>
-            <option>Certificate IV</option>
-            <option>Diploma</option>
-            <option>Advanced Diploma, Associate Degree</option>
-            <option>Bachelor Degree</option>
-            <option>Bachelor Honors Degree, Graduate Certificate, Graduate Diploma</option>
-            <option>Masters Degree</option>
-            <option>Doctoral Degree</option>
+            <#list educations! as educationItem>
+                <option value="${educationItem.id}" <#if education! == educationItem.id + ''>selected=true</#if>>
+                    ${educationItem.value}
+                </option>
+            </#list>
           </select>
         </div>
         <div class="form-group">
-          <label for="dateRequired">Date Required By:</label>
+          <label for="dateRequired">Date Required By:</label>education.value
           <br/>
           <input name="dueDate" type="date" name="dateRequiredInput">
         </div>
