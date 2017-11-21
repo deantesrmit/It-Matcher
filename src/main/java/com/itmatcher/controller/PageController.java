@@ -40,7 +40,7 @@ public class PageController {
     ProfileRepository profileRepository;
     @Autowired
     JobOfferService jobOfferService;
-    public static final Pattern ALPHANUMERIC_PATTER = Pattern.compile("^[a-zA-Z0-9]*$");
+    public static final Pattern ALPHANUMERIC_PATTER = Pattern.compile("^[a-zA-Z0-9 ]*$");
     public static final SimpleDateFormat YYYYMMDD_FORMAT = new SimpleDateFormat("YYYY-MM-DD");
 
     public Route serveCreateJobPage() {
@@ -89,8 +89,6 @@ public class PageController {
         };
     }
 
-
-
     public Route handleCreateJob() {
         return (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -105,10 +103,10 @@ public class PageController {
             model.put("skills", skillRepository.getAllSkills());
             model.put("educations", lookupService.getAllEducations());
             model.put("description", jobDescription);
-            model.put("title",jobTitle);
-            model.put("education",education);
-            model.put("dueDate",dueDate);
-            model.put("budget",budget);
+            model.put("title", jobTitle);
+            model.put("education", education);
+            model.put("dueDate", dueDate);
+            model.put("budget", budget);
             model.put("skillsInputs",skillsInput);
             /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
