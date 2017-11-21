@@ -29,7 +29,7 @@
             <#assign freeLancer = scoredFreelancer.freeLancer>
             <article class="search-result row">
                 <div class="col-xs-11 col-md-1">
-                    <span><h5>Score:${scoredFreelancer.score}</h5> </span>
+                    <span><h5>Score<br />${scoredFreelancer.score}</h5> </span>
                 </div>
               <div class="col-xs-12 col-sm-12 col-md-3">
                 <h5>Matched skills</h5>
