@@ -56,7 +56,6 @@ public class JobController {
             final String flID = getQueryParam(request, "freelancerID");
             jobOfferRepository.respondJobOffer(jobID, flID, answer);
 
-
             Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
             int freelancerID = profile.getId();
             final List<Job> jobOffers = jobOfferRepository.getJobsForFreelancer(freelancerID);

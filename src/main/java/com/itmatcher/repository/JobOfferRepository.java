@@ -124,24 +124,35 @@ public class JobOfferRepository {
         List<Job> freelancersJobs = new ArrayList<Job>();
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerID", freelancerID);
-        String sql = "SELECT * FROM tblJob_Offers WHERE freelancerID = :freelancerID AND offerStatus = 0";
+        String sql = "SELECT * FROM tblJob_Offers WHERE freelancerID = :freelancerID";
         List<JobOffer> list = template.query(sql,paramMap,jobRowMapper);
         if (list != null && !list.isEmpty()) {
             int i = 0;
             while (i < list.size()) {
-                int id = list.get(i).getJobID();
+                final JobOffer jobOffer = list.get(i);
+                int id = jobOffer.getJobID();
                 HashMap<String, Object> param = new HashMap<>();
                 param.put("jobsID", id);
                 String query = "SELECT * FROM tblJobs WHERE jobsid = :jobsID";
                 List<Job> job = template.query(query, param, jobRepository.jobRowMapper);
-                freelancersJobs.add(job.get(0));
+                final Job e = job.get(0);
+                e.setStatus(mapStatus(jobOffer.getOfferStatus()));
+                freelancersJobs.add(e);
                 i++;
             }
         }
         return freelancersJobs;
     }
 
-
+    private String mapStatus(int status) {
+        if(status == 0) {
+            return "Pending";
+        } else if(status == 2){
+            return "Declined";
+        }else {
+            return "Accepted";
+        }
+    }
 
 
 }
