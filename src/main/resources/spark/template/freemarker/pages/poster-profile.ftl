@@ -8,7 +8,7 @@
                 <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
                     <!-- Edit this to pull Freelancer name from database -->
-                    <h2>Job Poster Profile</h2>
+                    <h2>${users.firstName} ${users.lastName} Poster Profile</h2>
                 </div>
                 <div class = "col"></div>
             </div>

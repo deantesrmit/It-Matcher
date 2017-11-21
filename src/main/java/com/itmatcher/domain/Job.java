@@ -24,6 +24,7 @@ public class Job {
   private boolean jobCompleted = false;
   private Date jobCompletedDate;
   private boolean deleteStatus = false;
+  private String status;
 
   public JobPoster getJobPoster() {
     return jobPoster;
@@ -143,5 +144,13 @@ public class Job {
 
   public void setJobPosterId(int jobPosterId) {
     this.jobPosterId = jobPosterId;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 }

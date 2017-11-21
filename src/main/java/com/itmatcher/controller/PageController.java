@@ -61,8 +61,9 @@ public class PageController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
             Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
-            int freelancerID = profile.getId();
-            viewObjects.put("jobOffers", jobOfferRepository.getJobOfferByProfile(freelancerID));
+            final List<Job> jobOffers = jobOfferRepository.getJobsForFreelancer(profile.getId());
+            viewObjects.put("jobOffers", jobOffers);
+            viewObjects.put("freelancerID", profile.getId());
             return ViewUtil.render(request, viewObjects, Path.Template.VIEW_MATCHES);
         };
     }
@@ -104,7 +105,7 @@ public class PageController {
             final String budget = getQueryParam(request,"budget");
             final Date today = new Date();
             model.put("skills", skillRepository.getAllSkills());
-
+            model.put("description", jobDescription);
             /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");

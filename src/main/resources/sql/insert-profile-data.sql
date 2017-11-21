@@ -1,10 +1,10 @@
 -- Insert Three Freelancer Records
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (1, 'Free','lancer','freelancer', 'freelancer@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+VALUES (1, 'Joe','Smith','freelancer', 'freelancer@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (3, 'Free','lancer2','freelancer2', 'freelancer2@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+VALUES (3, 'Andrew','King','freelancer2', 'freelancer2@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (5, 'Free','lancer3','freelancer3', 'freelancer3@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+VALUES (5, 'Tim','Potter','freelancer3', 'freelancer3@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
 VALUES (7, 'Bill','Murray','bmurray', 'bmurray@hotmail.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 
@@ -21,13 +21,13 @@ VALUES (7, 'Brisbane', '1 Goulburn Street', 'Brisbane', 'QLD', '4000', 'Python d
 
 -- Insert Job Poster Records
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (2, 'Job', 'poster', 'poster', 'poster@test.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
+VALUES (2, 'Kim', 'Marsh', 'poster', 'poster@test.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (4, 'Job', 'poster2', 'poster2', 'poster2@test.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
+VALUES (4, 'Geoff', 'King', 'poster2', 'poster2@test.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (6, 'Job', 'John', 'Smith', 'JohnTester@gmail.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
+VALUES (6, 'Craig', 'Johns', 'Smith', 'JohnTester@gmail.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
-VALUES (8, 'Job', 'Jane', 'West', 'janewest25@hotmail.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
+VALUES (8, 'Kathy', 'Doyle', 'West', 'janewest25@hotmail.com', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'POSTER');
 
 -- Insert a Profile for Job Posters
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)

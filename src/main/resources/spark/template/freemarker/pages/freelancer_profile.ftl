@@ -8,7 +8,7 @@
                 <div class = "col"> </div>
                 <div class = "col-12 col-md-auto">
                     <!-- Edit this to pull Freelancer name from database -->
-                    <h2>Freelancer Profile</h2>
+                    <h2>${users.firstName} ${users.lastName} Freelancer Profile</h2>
                 </div>
                 <div class = "col"></div>
             </div>
@@ -78,11 +78,11 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>List of auto-matched Jobs</strong></h4>
+                        <h4><strong>List of Job Offers</strong></h4>
                     </div>
                     <div class="panel-body">
                         <!-- Edit this to pull applied jobs from database -->
-                        <a href="/viewMatches" <button class="btn btn-success">Auto-matched Jobs</button></a>
+                        <a href="/viewMatches" <button class="btn btn-success">View Job Offers</button></a>
                     </div>
                 </div>
             </div>

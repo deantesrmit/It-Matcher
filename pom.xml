@@ -148,11 +148,8 @@
         <version>0.4.4</version>
         <configuration>
           <jdkVersion>1.8</jdkVersion>
-          <!-- Use your own application name -->
           <appName>it-matcher</appName>
           <processTypes>
-            <!-- Tell Heroku how to launch your application -->
-            <!-- You might have to remove the ./ in front   -->
             <web>java -jar ./target/rmit.it-matcher-1.0-SNAPSHOT-jar-with-dependencies.jar</web>
           </processTypes>
         </configuration>
