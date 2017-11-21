@@ -7,6 +7,10 @@ INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription,
   VALUES (102, Null, 4,'Artsy blog website', 'Job No 3 Description', null, '', '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
   VALUES (103, Null, 4, 'Fancy tech startup website','Job No 4 Description', null, '', '', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (104, Null, 6, 'IT Match Making web application','A basic match making system for IT consultants to meet project creators', null, '', '', 0, Null, 0, Null, 0);
+INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
+  VALUES (105, Null, 8, 'Basic online video game','Multiplayer version of pacman to be played in browser', null, '', '', 0, Null, 0, Null, 0);
 
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (100, 1, 5);
