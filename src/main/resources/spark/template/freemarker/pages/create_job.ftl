@@ -19,7 +19,7 @@
         <div class="form-group">
           <label for="jobDescriptionInput">Job Description</label>
           <input type="text" name="description" class="form-control" id="jobDescriptionInput"
-                 placeholder="Job Description">
+                 placeholder="Job Description" value="${description}">
         </div>
         <div class="form-group">
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
