@@ -16,8 +16,9 @@
 
     </div>
         <#if jobOffers?has_content>
-            <article class="search-result row">
+
                 <#list jobOffers as jobOffer>
+                <article class="search-result row">
                     <div class="col-sm-2">${jobOffer.title!}</div>
                     <div class="col-sm-3">${jobOffer.description!}</div>
                     <div class="col-sm-1">${jobOffer.budget!}</div>
@@ -43,8 +44,8 @@
                     </#if>
 
                     <br/><br/>
+                </article>
                 </#list>
-            </article>
         <#else> <br/><br/><p> You have no current Job Offers </p>
         </#if>
 
