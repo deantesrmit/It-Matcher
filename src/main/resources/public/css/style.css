@@ -21,6 +21,10 @@
     overflow:hidden;
 }
 
+button.btn.btn-success {
+    margin-top:5px;
+}
+
 .col-xs-12.col-sm-6.col-md-12 h5{
     padding-top:10px;
 }
