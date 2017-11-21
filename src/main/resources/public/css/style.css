@@ -21,12 +21,20 @@
     overflow:hidden;
 }
 
+.col-xs-12.col-sm-6.col-md-12 h5{
+    padding-top:10px;
+}
+
 img.bannerimg {
     overflow:hidden;
 }
 
 .col-lg-10 h4{
     text-align:center;
+}
+
+.search-result{
+    margin-top:0px !important;
 }
 
 p.navbar-separator {
@@ -56,7 +64,11 @@ div.navbar-header.d-none.d-md-block.d-lg-none a {
 article.search-result {
     border:1px;
 }
-article.search-result.row:nth-child(even) {background-color:#DCDCDC}
+
+article.search-result.row {
+    border-radius: 15px;
+}
+article.search-result.row:nth-child(even) {background-color:#e6f2ff}
 
 article.search-result.row:nth-child(odd) {background-color:white}
 
