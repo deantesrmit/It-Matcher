@@ -5,12 +5,17 @@ INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, ac
 VALUES (3, 'Free','lancer2','freelancer2', 'freelancer2@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
 VALUES (5, 'Free','lancer3','freelancer3', 'freelancer3@test.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
+INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
+VALUES (7, 'Bill','Murray','bmurray', 'bmurray@hotmail.com','$2a$10$ymh/2PpcAV2cqOy6aBF9T.DF/9x8tvvHAB/rE8yRlR18I5oDDOUra', '$2a$10$ymh/2PpcAV2cqOy6aBF9T.', 'FREELANCER');
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (1, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (3, 'Sydney', '1 Test Street', 'Manly', 'NSW', '2095', 'I create web pages', Null, NULL );
 INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
 VALUES (5, 'Perth', '44 Test Street', 'Testville', 'WA', '7777', 'I like to write Java programs', Null, NULL );
+INSERT INTO tblProfile(userID, location, address1, suburb, state, postCode, bio, education, workExperience)
+VALUES (7, 'Brisbane', '1 Goulburn Street', 'Brisbane', 'QLD', '4000', 'Python developer', Null, NULL );
+
 
 -- Insert Job Poster Records
 INSERT INTO tblUser(id, firstName, lastName, username, email, password, salt, accountType)
