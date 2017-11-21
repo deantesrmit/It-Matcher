@@ -44,7 +44,7 @@
 
                   </ul>
               </div>
-                <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="col-xs-12 col-sm-12 col-md-5">
                     <h5>Skills</h5>
                     <ul class="meta-search">
                         <li>
@@ -59,7 +59,7 @@
                 </div>
                 <#assign offer = scoredFreelancer.offer!>
                 <#assign offerStatus = offer.offerStatus!>
-                <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
+                <div class="col-xs-12 col-sm-12 col-md-3 excerpt">
                     <h5><a href="#" title="">${freeLancer.name}</a></h5>
                     <p>${freeLancer.bio}</p>
                     <form class="form-offer" action="/offer_job/" method="POST">
