@@ -62,7 +62,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-5 excerpet">
                     <h5><a href="#" title="">${freeLancer.name}</a></h5>
                     <p>${freeLancer.bio}</p>
-                    <form class="form-login" action="/offer_job/" method="POST">
+                    <form class="form-offer" action="/offer_job/" method="POST">
                         <input type="hidden" name="jobId" value="${job.id}">
                         <input type="hidden" name="freeLancerId" value="${freeLancer.id}">
 

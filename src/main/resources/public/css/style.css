@@ -213,6 +213,19 @@ h1 {
     border-color:#481d46;
     border-width: 5px;
 }
+
+.form-offer, .form-register, .createjob {
+    margin: 20px 0px 20px 0px;
+    background-color: transparent;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    border-color:#481d46;
+    border-width: 5px;
+}
+
+
 .form label {
     font-style: bold;
 }
