@@ -1,20 +1,20 @@
 -- Insert four Job Record
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (100, Null, 2, 'Bob the builders company website','Job No 1 Description', null, '', '',  0, Null, 0, Null, 0);
+  VALUES (100, Null, 2, 'Bob the builders company website','Job No 1 Description', null, 2, '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (101, Null, 2, 'Thor ragnarok appreciation page ','Job No 2 Description', null, '', '',  0, Null, 0, Null, 0);
+  VALUES (101, Null, 2, 'Thor ragnarok appreciation page ','Job No 2 Description', null, 6, '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (102, Null, 4,'Artsy blog website', 'Job No 3 Description', null, '', '',  0, Null, 0, Null, 0);
+  VALUES (102, Null, 4,'Artsy blog website', 'Job No 3 Description', null, 3, '',  0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (103, Null, 4, 'Fancy tech startup website','Job No 4 Description', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (103, Null, 4, 'Fancy tech startup website','Job No 4 Description', null, 5, '', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (104, Null, 6, 'IT Match Making web application','A basic match making system for IT consultants to meet project creators', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (104, Null, 6, 'IT Match Making web application','A basic match making system for IT consultants to meet project creators', null, 6, '', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (105, Null, 6, 'Basic online video game','Multiplayer version of pacman to be played in browser', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (105, Null, 6, 'Basic online video game','Multiplayer version of pacman to be played in browser', null, 8, '', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (106, Null, 8, 'eCommerce store website','Website which will allow me to sell products from my home business', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (106, Null, 8, 'eCommerce store website','Website which will allow me to sell products from my home business', null, 8, '', 0, Null, 0, Null, 0);
 INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription, dueDate, education, budget, jobAccepted, jobAcceptedDate, jobCompleted, jobCompletedDate, deleteStatus)
-  VALUES (107, Null, 8, 'iPhone App','iPhone application to enable customers to book services through our company', null, '', '', 0, Null, 0, Null, 0);
+  VALUES (107, Null, 8, 'iPhone App','iPhone application to enable customers to book services through our company', null, 8, '', 0, Null, 0, Null, 0);
 
 
 --Skills and weighting for inserted jobs
