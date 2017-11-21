@@ -14,7 +14,7 @@
         </#if>
         <div class="form-group">
           <label for="jobNameInput">Job Name</label>
-          <input type="text" name="title" class="form-control" id="jobNameInput" placeholder="Job Title">
+          <input type="text" name="title" class="form-control" id="jobNameInput" placeholder="Job Title" value ="${title!}">
         </div>
         <div class="form-group">
           <label for="jobDescriptionInput">Job Description</label>
@@ -31,7 +31,7 @@
         </div>
         <div class="form-group">
           <label for="educationInput">Desired Education Level:</label>
-          <select name="education" class="form-control" id="educationInput">
+          <select name="education" class="form-control" id="educationInput" value = "${education!}">
             <option>Senior Secondary</option>
             <option>Certificate I</option>
             <option>Certificate II</option>
@@ -48,11 +48,11 @@
         <div class="form-group">
           <label for="dateRequired">Date Required By:</label>
           <br/>
-          <input name="dueDate" type="date" name="dateRequiredInput">
+          <input name="dueDate" type="date" name="dateRequiredInput" value = "${dueDate!}">
         </div>
         <div class="form-group">
           <label for "budget">Preferred Budget (If you would like to advertise a budget):</label>
-          <input name="budget" type="text" class="form-control" id="budgetInput" placeholder="Budget">
+          <input name="budget" type="text" class="form-control" id="budgetInput" placeholder="Budget" value="${budget!}">
         </div>
         <input type="submit" class="btn btn-primary btn-md" value="Create Job"/>
       </form>
