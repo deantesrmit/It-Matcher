@@ -17,7 +17,7 @@ INSERT INTO tblJobs(jobsID, freelancerID, jobPosterID, jobTitle, jobDescription,
   VALUES (107, Null, 8, 'iPhone App','iPhone application to enable customers to book services through our company', null, '', '', 0, Null, 0, Null, 0);
 
 
-
+--Skills and weighting for inserted jobs
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (100, 1, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (100, 2, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (100, 3, 5);
@@ -28,6 +28,27 @@ INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (101, 6, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (101, 7, 5);
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (102, 8, 5);
+
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (103, 4, 5);
+
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 2, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 1, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 4, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 3, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 20, 5);
+
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 1, 5);
+
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 2, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 1, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 4, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 3, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 20, 5);
+
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 18, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 14, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 15, 5);
+
 
 
 

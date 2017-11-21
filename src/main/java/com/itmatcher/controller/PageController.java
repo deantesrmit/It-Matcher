@@ -106,6 +106,10 @@ public class PageController {
             final Date today = new Date();
             model.put("skills", skillRepository.getAllSkills());
             model.put("description", jobDescription);
+            model.put("title",jobTitle);
+            model.put("education",education);
+            model.put("dueDate",dueDate);
+            model.put("budget",budget);
             /*Check for symbols in title + description, only allow dates in the future, no negative budgets */
             if (isNullOrEmpty(jobTitle) || isNullOrEmpty(jobDescription) || isNullOrEmpty(education) || isNullOrEmpty(dueDate) || isNullOrEmpty(budget)) {
                 model.put("error","Please fill in all required details");
