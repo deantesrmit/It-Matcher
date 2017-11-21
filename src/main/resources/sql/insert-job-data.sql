@@ -37,19 +37,17 @@ INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 4, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 3, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 20, 5);
 
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 1, 3);
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 20, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 1, 5);
 
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 2, 4);
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 1, 4);
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 4, 4);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 2, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 1, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 4, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 3, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 20, 5);
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 18, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 14, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 15, 5);
-INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (107, 20, 3);
 
 
 
