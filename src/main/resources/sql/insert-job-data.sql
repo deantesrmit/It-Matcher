@@ -38,6 +38,8 @@ INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 3, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (104, 20, 5);
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 1, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 6, 5);
+INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (105, 7, 5);
 
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 2, 5);
 INSERT INTO tblJob_Skills(jobID, skillID, weight) VALUES (106, 1, 5);
