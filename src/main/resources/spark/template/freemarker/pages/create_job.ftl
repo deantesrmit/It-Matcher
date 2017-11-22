@@ -25,7 +25,7 @@
           <label for="skillsRequired">Skills Required: Please hold down the control key to tick multiple options</label>
           <select multiple name="skillsInput" class="form-control" id="skillsRequiredInput">
               <#list skills! as skill>
-                    <option value="${skill.id}" <#if skillsInputs?seq_contains(skill.id + "")> selected="true"</#if>>
+                    <option value="${skill.id}" <#if skillsInput?seq_contains(skill.id + "")> selected="true"</#if>>
                       ${skill.value}
                     </option>
               </#list>

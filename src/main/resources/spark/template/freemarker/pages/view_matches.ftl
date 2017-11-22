@@ -15,10 +15,10 @@
         <div class="col-sm-1">Decline</div>
 
     </div>
-    <div class="matches">
         <#if jobOffers?has_content>
-            <div class="row listings">
+
                 <#list jobOffers as jobOffer>
+                <article class="search-result row">
                     <div class="col-sm-2">${jobOffer.title!}</div>
                     <div class="col-sm-3">${jobOffer.description!}</div>
                     <div class="col-sm-1">${jobOffer.budget!}</div>
@@ -44,8 +44,8 @@
                     </#if>
 
                     <br/><br/>
+                </article>
                 </#list>
-            </div>
         <#else> <br/><br/><p> You have no current Job Offers </p>
         </#if>
 
