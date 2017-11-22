@@ -26,27 +26,28 @@
                 <label for "bio">Bio</label>
                 <input type="text" id="bio" name="bio" class="form-control input-sm chat-input" value="${profile.bio!}"   required /><br/>
 
-                 <label for "education">Education</label><br/>
-                    <Select name = "education">
-                        <#list educations as edu>
-                            <option id = "education" value= "${edu.id}"
-                            <#if profile.education??>
-                                <#if profile.education == edu.id>selected</#if>
-                                </#if>>${edu.value}</option>
-                        </#list>
-                    </Select>
+                <#if user.accountType == "FREELANCER">
+                     <label for "education">Education</label><br/>
+                        <Select name = "education">
+                            <#list educations as edu>
+                                <option id = "education" value= "${edu.id}"
+                                <#if profile.education??>
+                                    <#if profile.education == edu.id>selected</#if>
+                                    </#if>>${edu.value}</option>
+                            </#list>
+                        </Select>
 
-                   <br/><br/>
-                  <label for "workExperience">WorkExperience</label><br/>
-                    <Select name="workExperience">
-                        <#list workExperiences as exp>
-                            <option id = "workExperience" value="${exp.id}"
-                            <#if profile.workExperience??>
-                             <#if profile.workExperience == exp.id>selected</#if>
-                             </#if>>${exp.value}</option>
-                        </#list>
-                    </Select>
-
+                       <br/><br/>
+                      <label for "workExperience">WorkExperience</label><br/>
+                        <Select name="workExperience">
+                            <#list workExperiences as exp>
+                                <option id = "workExperience" value="${exp.id}"
+                                <#if profile.workExperience??>
+                                 <#if profile.workExperience == exp.id>selected</#if>
+                                 </#if>>${exp.value}</option>
+                            </#list>
+                        </Select>
+                </#if>
                 <div class="wrapper">
                     <input type="submit" class="btn btn-primary btn-md"
                            value="${profile.id?? ? then('Edit Your', 'Create')}  Profile"/>
