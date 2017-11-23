@@ -34,12 +34,14 @@ public class JobRepository {
     }
 
     public Optional<List<Job>> getJobsByUserId(int id) {
+        final HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
 
-        String sql = "SELECT * FROM tblJobs";
+        String sql = "SELECT * FROM tblJobs WHERE jobPosterID = :id";
 
         List<Job> list = template.query(
                 sql,
-                new HashMap<>(),
+                paramMap,
                 jobRowMapper);
 
         if (list != null && !list.isEmpty()) {
