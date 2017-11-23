@@ -6,7 +6,7 @@
             <img height="50px" src="/img/logo.png">
             <a class="navbar-brand" href="/">Home<p class = "navbar-separator"> | </p></a>
             <a class="navbar-brand" href="/aboutus">About Us<p class = "navbar-separator"> | </p></a>
-            <a class="navbar-brand" href="/register/">Register<p class = "navbar-separator"> | </p></a>
+              <#if !userDetails??><a class="navbar-brand" href="/register/">Register<p class = "navbar-separator"> | </p></a></#if>
             <a class="navbar-brand" href="/howitworks">How It Works<p class = "navbar-separator"> | </p></a>
             <a class="navbar-brand" href="/profile/">Profile</a>
         </div>
@@ -28,7 +28,7 @@
             <img height="50px" src="/img/logo.png">
             <a class="navbar-brand" href="/">Home<p class = "navbar-separator-md"> | </p></a>
             <a class="navbar-brand" href="/aboutus">About Us<p class = "navbar-separator-md"> | </p></a>
-            <a class="navbar-brand" href="/register/">Register<p class = "navbar-separator-md"> | </p></a>
+            <#if !userDetails??><a class="navbar-brand" href="/register/">Register<p class = "navbar-separator-md"> | </p></a></#if>
             <a class="navbar-brand" href="/howitworks">How It Works<p class = "navbar-separator-md"> | </p></a>
             <a class="navbar-brand" href="/profile/">Profile</a>
         </div>
