@@ -18,7 +18,7 @@
         <div class = "d-none d-lg-block">Account Type: ${userDetails.accountType}</div>
         <div class="nav navbar-nav navbar-right d-none d-lg-block">
             <form method="post" action="/logout/">
-                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+                <button  type="submit" class="navbar-brand btn btn-danger" id="logout" value="logout" >Log Out</button>
             </form>
         </div>
     </#if>
@@ -40,7 +40,7 @@
         <div class = "d-none d-md-block d-lg-none">Account Type: ${userDetails.accountType}</div>
         <div class="nav navbar-nav navbar-right d-none d-md-block d-lg-none">
             <form method="post" action="/logout/">
-                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+                <button  type="submit" class="navbar-brand btn btn-danger" id="logout" value="logout" >Log Out</button>
             </form>
         </div>
     </#if>
@@ -77,7 +77,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/logout/">
                             <form method="post" action="/logout/">
-                                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+                                <button  type="submit" class="navbar-brand btn btn-danger" id="logout" value="logout" >Log Out</button>
                             </form>
                         </a>
                     </li>
