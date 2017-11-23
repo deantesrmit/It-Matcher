@@ -7,12 +7,12 @@
     <br/>
     <div class="row" id="heading">
         <div class="col-sm-2">Job Name</div>
-        <div class="col-sm-3">Job Description</div>
+        <div class="col-sm-4">Job Description</div>
         <div class="col-sm-1">Budget</div>
         <div class="col-sm-2">Due Date</div>
-        <div class="col-sm-2">Status</div>
-        <div class="col-sm-1">Accept</div>
-        <div class="col-sm-1">Decline</div>
+        <div class="col-sm-1">Status</div>
+        <div class="col-sm-2"></div>
+
 
     </div>
         <#if jobOffers?has_content>
@@ -20,25 +20,24 @@
                 <#list jobOffers as jobOffer>
                 <article class="search-result row">
                     <div class="col-sm-2">${jobOffer.title!}</div>
-                    <div class="col-sm-3">${jobOffer.description!}</div>
+                    <div class="col-sm-4">${jobOffer.description!}</div>
                     <div class="col-sm-1">${jobOffer.budget!}</div>
                     <div class="col-sm-2">${jobOffer.dueDate!}</div>
-                    <div class="col-sm-2">${jobOffer.status!}</div>
+                    <div class="col-sm-1">${jobOffer.status!}</div>
                     <#if jobOffer.status == "Pending">
-                        <div class="col-sm-1">
-                            <form class="acceptdecline" action="/viewMatches/" method="POST">
+                        <div class="col-sm-2">
+                            <form class="acceptdecline buttonMargin" action="/viewMatches/" method="POST">
                                 <input type="hidden" name="answer" value="1" />
                                 <input type="hidden" name="jobID" value="${jobOffer.id!}" />
                                 <input type="hidden" name="freelancerID" value="${freelancerID!}" />
-                                <input type="submit"  value="Accept" />
+                                <button type="submit" value="Decline" class="btn btn-success btn-block">Accept</button>
                             </form>
-                        </div>
-                        <div class="col-sm-1">
-                            <form class="acceptdecline" action="/viewMatches/" method="POST">
+
+                            <form class="acceptdecline buttonMargin" action="/viewMatches/" method="POST">
                                 <input type="hidden" name="answer" value="2" />
                                 <input type="hidden" name="jobID" value="${jobOffer.id!}" />
                                 <input type="hidden" name="freelancerID" value="${freelancerID!}" />
-                                <input type="submit" value="Decline" />
+                                <button type="submit" value="Decline" class="btn btn-danger btn-block">Decline</button>
                             </form>
                         </div>
                     </#if>
