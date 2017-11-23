@@ -45,8 +45,8 @@ public class ProfileService {
     profile.setSuburb(getQueryParam(request, "suburb"));
     profile.setState(getQueryParam (request, "state"));
     profile.setPostcode(getQueryParam (request, "postCode"));
-    profile.setWorkExperience(Integer.parseInt(getQueryParam(request, "workExperience")));
-    profile.setEducation(Integer.parseInt(getQueryParam(request, "education")));
+    if (getQueryParam(request, "workExperience") != null) {profile.setWorkExperience(Integer.parseInt(getQueryParam(request, "workExperience")));}
+    if (getQueryParam(request, "education") != null) {profile.setEducation(Integer.parseInt(getQueryParam(request, "education")));}
     profile.setBio(getQueryParam (request, "bio"));
   }
 }

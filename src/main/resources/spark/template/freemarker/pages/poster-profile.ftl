@@ -18,7 +18,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>List of your Jobs/Applicants</strong></h4>
+                        <h4><strong>List of your Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
                         <#list jobs as job>
@@ -39,10 +39,6 @@
 
                             </br>
                             <tbody>
-                            <tr>
-                                <td>User ID:</td>
-                                <td>${users.id!}</td>
-                            </tr>
                             <tr>
                                 <td>User Name:</td>
                                 <td>${users.username!}</td>
@@ -74,14 +70,6 @@
                             <tr>
                                 <td>Bio:</td>
                                 <td>${profile.bio!}</td>
-                            </tr>
-                            <tr>
-                                <td>WorkExperience:</td>
-                                <td>${workExp.value!}</td>
-                            </tr>
-                            <tr>
-                                <td>Education:</td>
-                                <td>${education.value!}</td>
                             </tr>
                             </tbody>
                         </table>

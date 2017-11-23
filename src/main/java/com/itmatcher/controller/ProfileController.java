@@ -83,9 +83,12 @@ public class ProfileController {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> viewObjects = new HashMap<>();
+            String username = getSessionCurrentUser(request).getUsername();
+            User user = (userRepository.getUserByUserName(username)).get();
             final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
             if (profile.isPresent()) {viewObjects.put("profile", profile.get());}
             else {viewObjects.put("profile", profile); }
+            viewObjects.put("user", user);
             viewObjects.put("educations", lookupService.getAllEducations());
             viewObjects.put("workExperiences", lookupService.getAllWorkExp());
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);

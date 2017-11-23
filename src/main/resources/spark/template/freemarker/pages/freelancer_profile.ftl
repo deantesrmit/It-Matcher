@@ -25,10 +25,7 @@
 
                             </br>
                             <tbody>
-                            <tr>
-                                <td>User ID:</td>
-                                <td>${users.id!}</td>
-                            </tr>
+
                             <tr>
                                 <td>User Name:</td>
                                 <td>${users.username!}</td>
