@@ -28,7 +28,7 @@
 
                 <#if user.accountType == "FREELANCER">
                      <label for "education">Education</label><br/>
-                        <Select name = "education">
+                        <Select class="form-control input-sm chat-input" name = "education">
                             <#list educations as edu>
                                 <option id = "education" value= "${edu.id}"
                                 <#if profile.education??>
@@ -39,7 +39,7 @@
 
                        <br/><br/>
                       <label for "workExperience">WorkExperience</label><br/>
-                        <Select name="workExperience">
+                        <Select class="form-control input-sm chat-input" name="workExperience">
                             <#list workExperiences as exp>
                                 <option id = "workExperience" value="${exp.id}"
                                 <#if profile.workExperience??>

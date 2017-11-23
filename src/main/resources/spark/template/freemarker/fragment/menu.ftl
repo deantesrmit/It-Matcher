@@ -18,7 +18,7 @@
         <div class = "d-none d-lg-block">Account Type: ${userDetails.accountType}</div>
         <div class="nav navbar-nav navbar-right d-none d-lg-block">
             <form method="post" action="/logout/">
-                <input  type="submit" class="navbar-brand" id="logout" value="logout" />
+                <input  type="submit" class="navbar-brand " id="logout" value="logout" />
             </form>
         </div>
     </#if>

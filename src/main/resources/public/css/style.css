@@ -15,6 +15,11 @@
     margin-left:auto;
 }
 
+.buttonMargin {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
 .bannerimg {
     width:100%;
     height:40%;

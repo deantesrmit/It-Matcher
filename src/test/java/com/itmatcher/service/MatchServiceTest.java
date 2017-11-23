@@ -1,14 +1,14 @@
 
 package com.itmatcher.service;
 
-import org.junit.Test;
+//import org.junit.Test;
 
-import static org.mockito.ArgumentMatchers.any;
+//import static org.mockito.ArgumentMatchers.any;
 
 /**
  * @author Dean Tesoriero
  */
-public class MatchServiceTest {
+//public class MatchServiceTest {
     //  @Spy
 //  private FreeLancerRepository lancerRepository;
 //  @InjectMocks
@@ -44,27 +44,27 @@ public class MatchServiceTest {
 //    javaFreeLancer.setSkills(asList(new Skill(skill)));
 //    return javaFreeLancer;
 //  }
-    private static int longest(int[] A) {
-        int ans = 0;
-        int[] len = new int[A.length];
+//    private static int longest(int[] A) {
+//        int ans = 0;
+//        int[] len = new int[A.length];
 
-        for (int i = 0; i < A.length; i++) {
-            len[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (A[i] >= A[j]) {
-                    len[i] = Math.max(len[i], len[j] + 1);
-                    ans = Math.max(ans, len[i]);
-                }
-            }
-        }
+//        for (int i = 0; i < A.length; i++) {
+//            len[i] = 1;
+//            for (int j = 0; j < i; j++) {
+//                if (A[i] >= A[j]) {
+//                    len[i] = Math.max(len[i], len[j] + 1);
+//                    ans = Math.max(ans, len[i]);
+//                }
+//            }
+//        }
 
-        return ans;
-    }
+//        return ans;
+//    }
 
-    @Test
-    public void test() {
-        final int longest = longest(new int[]{5, 3, 4, 8, 6, 7});
-    }
-}
+//    @Test
+//    public void test() {
+//        final int longest = longest(new int[]{5, 3, 4, 8, 6, 7});
+//    }
+//}
 
 

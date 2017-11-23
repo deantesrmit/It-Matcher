@@ -18,7 +18,7 @@
             <div class="col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4><strong>List of your Jobs/Applicants</strong></h4>
+                        <h4><strong>List of your Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
                         <#list jobs as job>
