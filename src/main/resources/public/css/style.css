@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Candal');
 
 .containerhome {
-    min-height: 800px;
+    min-height: 1200px;
     background: url("../img/background.jpg");
     background-size: 100% 100%;
 //background-attachment: fixed;
@@ -214,9 +214,20 @@ h1 {
     border-width: 5px;
 }
 
-.form-offer, .form-register, .createjob {
+.form-offer, .createjob {
+     margin: 20px 0px 20px 0px;
+     background-color: transparent;
+     padding-top: 30px;
+     padding-bottom: 30px;
+     padding-right: 30px;
+     border-radius: 15px;
+     border-color:#481d46;
+     border-width: 5px;
+ }
+
+.form-register {
     margin: 20px 0px 20px 0px;
-    background-color: transparent;
+    background-color: #c4c0be;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-right: 30px;
@@ -224,7 +235,6 @@ h1 {
     border-color:#481d46;
     border-width: 5px;
 }
-
 
 .form label {
     font-style: bold;
