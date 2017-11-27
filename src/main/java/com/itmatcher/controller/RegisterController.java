@@ -12,6 +12,7 @@ import spark.Response;
 import spark.Route;
 import com.itmatcher.domain.User;
 import spark.Spark;
+import java.util.Optional;
 
 import static com.itmatcher.util.RequestUtil.clearSessionRedirect;
 import static com.itmatcher.util.RequestUtil.getQueryParam;
@@ -48,18 +49,21 @@ public class RegisterController {
             Map<String, Object> model = new HashMap<>();
             final User user = populateUser(request);
             final String password = getQueryParam(request, "password");
+            Optional <User> usercheck = userRepository.getUserByUserName(getQueryParam(request, "username"));
+            if (usercheck.isPresent()){
+                model.put("error", "That username is already taken");
+                return ViewUtil.render(request, model, Path.Template.REGISTER);
+            }
             if (isNullOrEmpty(user.getUsername()) || isNullOrEmpty(password)) {
                 model.put("error", "Please enter an email and password to register.");
                 return ViewUtil.render(request, model, Path.Template.REGISTER);
-            } else if (userRepository.getUserByUserName(user.getUsername()).isPresent()) {
-                model.put("error", "Email already exists.");
-                return ViewUtil.render(request, model, Path.Template.REGISTER);
-            } else {
-                final User newUser = authService.registerUser(user, password);
-                request.session().attribute("currentUser", newUser);
-                response.redirect(Path.Web.PROFILE);
-                return Spark.redirect;
             }
+
+            final User newUser = authService.registerUser(user, password);
+            request.session().attribute("currentUser", newUser);
+            response.redirect(Path.Web.PROFILE);
+            return Spark.redirect;
+
         };
     }
 

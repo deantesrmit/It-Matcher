@@ -41,13 +41,12 @@
                             </form>
                         </div>
                     </#if>
-
                     <br/><br/>
                 </article>
                 </#list>
         <#else> <br/><br/><p> You have no current Job Offers </p>
         </#if>
-
+        <a href=/profile/><button class="btn btn-success">Back</button> </a>
     </div>
 </div>
 </@layout.masterTemplate>
