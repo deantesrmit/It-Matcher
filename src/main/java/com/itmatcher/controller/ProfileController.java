@@ -4,6 +4,7 @@ import com.itmatcher.domain.Profile;
 import com.itmatcher.domain.User;
 import com.itmatcher.domain.WorkExp;
 import com.itmatcher.domain.Education;
+import com.itmatcher.domain.Job;
 import com.itmatcher.repository.UserRepository;
 import com.itmatcher.service.EducationService;
 import com.itmatcher.service.JobService;
@@ -18,6 +19,7 @@ import com.itmatcher.util.ViewUtil;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
@@ -52,21 +54,33 @@ public class ProfileController {
             final Optional<Profile> profile = profileService.getProfileByUserId(RequestUtil.getSessionCurrentUser(request).getId());
             String username1 = getSessionCurrentUser(request).getUsername();
             User test = (userRepository.getUserByUserName(username1)).get();
-            if(!profile.isPresent()) {
+            if (!profile.isPresent()) {
                 response.redirect(Path.Web.EDIT_PROFILE);
                 return Spark.redirect;
             }
 
             int exp = profile.get().getWorkExperience();
             int edu = profile.get().getEducation();
-            final Optional <WorkExp> workExp = workExpService.getValueWorkExperience(profile.get().getWorkExperience());
-            final Optional <Education> education = educationService.getValueEducation(profile.get().getEducation());
+            final Optional<WorkExp> workExp = workExpService.getValueWorkExperience(profile.get().getWorkExperience());
+            final Optional<Education> education = educationService.getValueEducation(profile.get().getEducation());
 
-            if (workExp.isPresent()) {params.put("workExp", workExp.get());}  else {params.put("workExp", workExp); }
-            if (education.isPresent()) {params.put("education", education.get());} else {params.put("education", education); }
-            params.put("users",test);
+            if (workExp.isPresent()) {
+                params.put("workExp", workExp.get());
+            } else {
+                params.put("workExp", workExp);
+            }
+            if (education.isPresent()) {
+                params.put("education", education.get());
+            } else {
+                params.put("education", education);
+            }
+            params.put("users", test);
             params.put("profile", profile.get());
-            params.put("jobs", jobService.getJobsForUser(getSessionCurrentUser(request)).get());
+            Optional <List<Job>> jobList = jobService.getJobsForUser(getSessionCurrentUser(request));
+            if (jobList.isPresent()) {params.put("jobs", jobList.get());}
+            else {params.put("jobs", null);}
+
+
             return ViewUtil.render(request, params, getProfilePath(accountType));
         };
     }

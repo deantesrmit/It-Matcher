@@ -21,11 +21,14 @@
                         <h4><strong>List of your Jobs</strong></h4>
                     </div>
                     <div class="panel-body">
+                    <#if jobs??>
                         <#list jobs as job>
                             <a href="/viewFreelancers/${job.id}/" <button class="btn btn-success btn-block">${job.title}</button></a>
                         </#list>
-                            <a href="/create_job/" <button class="btn btn-warning btn-block">Post New Job</button></a>
-                    </div>
+                    <#else><p>You currently have no jobs posted. Please click below to post a job</p>
+                    </#if>
+                    <a href="/create_job/" <button class="btn btn-warning btn-block">Post New Job</button></a>
+                   </div>
                 </div>
             </div>
             <div class="col-md-6">
