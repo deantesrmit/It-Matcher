@@ -51,7 +51,7 @@ public class UserRepository {
         params.put ("firstName",user.getFirstName());
         params.put("lastName",user.getLastName());
 
-        String sql = "insert into tblUser (username, password, salt, accountType, firstName, lastName) values (:username, :password, :salt, :accountType ,:firstName, :lastName)";
+        String sql = "insert into tblUser (username, password, salt, accountType, firstName, lastName, email) values (:username, :password, :salt, :accountType ,:firstName, :lastName, :username)";
 
         template.update(sql, params);
     }

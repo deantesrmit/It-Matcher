@@ -37,6 +37,9 @@ public class JobOfferRepository {
             "UPDATE tblJob_Offers SET offerStatus = 2, timeDate = :timeDate " +
                     "WHERE jobID = :jobID AND freelancerID = :freelancerID";
 
+    public static final String UPDATE_JOB = "UPDATE tblJobs SET freelancerID = :freelancerID, jobAcceptedDate = :timeDate, " +
+            "jobAccepted = 1 WHERE jobsid = :jobID";
+
     private NamedParameterJdbcTemplate template;
 
     @Autowired
@@ -73,10 +76,13 @@ public class JobOfferRepository {
         params.put("timeDate", now);
         if (response == 1) {
             template.update(UPDATE_JOB_OFFER, params);
+            template.update(UPDATE_JOB, params);
         } else if (response == 2) {
             template.update(DECLINE_JOB_OFFER, params);
         }
     }
+
+
 
     public Optional<JobOffer> findOfferByFreeLancerIdJobId(int freeLancerId, int status) {
         Map<String, Object> params = new HashMap<>();
