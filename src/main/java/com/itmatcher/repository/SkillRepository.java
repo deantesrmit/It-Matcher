@@ -86,6 +86,16 @@ public class SkillRepository {
             template.update("insert into TBLJOB_SKILLS(jobID, skillID, weight) values (:jobID, :skillID, :weight) ", params);
         }
     }
+
+    public void saveFreelancerSkills (int userID, List<Skill> skills) {
+        for (Skill skill : skills) {
+            Map <String, Object> params = new HashMap<>();
+            params.put("userID", userID);
+            params.put("skillID", skill.getId());
+            template.update("insert into tblSkills_User(userID, skillID) values (:userID, :skillID)", params);
+        }
+
+    }
     private RowMapper<Skill> skillMapper = (rs, rowNum) -> new Skill(rs.getInt("id"), rs.getString("value"));
     private RowMapper<Skill> wsMapper = (rs, rowNum) -> new Skill(rs.getString("value"), fromScore(rs.getInt("weight")));
 

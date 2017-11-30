@@ -47,6 +47,15 @@
                                  </#if>>${exp.value}</option>
                             </#list>
                         </Select>
+                        <br/><br/>
+                        <div class="form-group">
+                        <label for="skillsRequired">Your Skills: Please hold down the control key to tick multiple options</label>
+                            <select multiple name="skillsInput" class="form-control" id="skillsRequiredInput">
+                                <#list skills! as skill>
+                                    <option value="${skill.id}">${skill.value}</option>
+                                </#list>
+                        </select>
+                        </div>
                 </#if>
                 <div class="wrapper">
                     <input type="submit" class="btn btn-primary btn-md"

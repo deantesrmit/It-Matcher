@@ -5,7 +5,9 @@ import com.itmatcher.domain.User;
 import com.itmatcher.domain.WorkExp;
 import com.itmatcher.domain.Education;
 import com.itmatcher.domain.Job;
+import com.itmatcher.domain.Skill;
 import com.itmatcher.repository.UserRepository;
+import com.itmatcher.repository.SkillRepository;
 import com.itmatcher.service.EducationService;
 import com.itmatcher.service.JobService;
 import com.itmatcher.service.LookupService;
@@ -16,10 +18,10 @@ import com.itmatcher.type.AccountType;
 import com.itmatcher.util.Path;
 import com.itmatcher.util.RequestUtil;
 import com.itmatcher.util.ViewUtil;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.List;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import spark.Request;
@@ -45,6 +47,8 @@ public class ProfileController {
     WorkExpService workExpService;
     @Autowired
     EducationService educationService;
+    @Autowired
+    SkillRepository skillRepository;
 
     public Route serveProfilePage() {
         return (request, response) -> {
@@ -103,6 +107,7 @@ public class ProfileController {
             if (profile.isPresent()) {viewObjects.put("profile", profile.get());}
             else {viewObjects.put("profile", profile); }
             viewObjects.put("user", user);
+            viewObjects.put("skills", skillRepository.getAllSkills());
             viewObjects.put("educations", lookupService.getAllEducations());
             viewObjects.put("workExperiences", lookupService.getAllWorkExp());
             return ViewUtil.render(request, viewObjects, Path.Template.EDIT_PROFILE);
@@ -114,6 +119,9 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
+            int userID = getSessionCurrentUser(request).getId();
+            final List<Skill> skills = jobService.mapFreelancerSkills(request);
+            skillRepository.saveFreelancerSkills(userID, skills);
             response.redirect("/profile/");
             return Spark.redirect;
         };

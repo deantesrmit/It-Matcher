@@ -7,6 +7,10 @@ package com.itmatcher.domain;
 public class Skill extends WeightedCriteria{
   private int id;
 
+  public Skill (int id) {
+    this.id = id;
+  }
+
   public Skill(int id, String value) {
     this.id = id;
     this.value = value;
@@ -29,3 +33,4 @@ public class Skill extends WeightedCriteria{
     this.id = id;
   }
 }
+

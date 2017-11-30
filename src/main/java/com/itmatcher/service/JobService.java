@@ -53,4 +53,10 @@ public class JobService {
     .map(s -> new Skill(Integer.parseInt(s), CriteriaWeight.REQUIRED))
     .collect(Collectors.toList());
   }
+
+  public List<Skill> mapFreelancerSkills(Request request) {
+      return Arrays.stream(request.queryParamsValues("skillsInput"))
+              .map(s -> new Skill(Integer.parseInt(s)))
+              .collect(Collectors.toList());
+  }
 }
