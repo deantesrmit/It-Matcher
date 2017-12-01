@@ -137,6 +137,8 @@ public class ProfileController {
         };
     }
 
+    /**Handles the POST function of the create profile feature, when the user edits their profile and confirms
+     * @return the users current session, redirects the user to profile page is proceeds correctly*/
     public Route handleCreateProfile() {
         return (Request request, Response response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
