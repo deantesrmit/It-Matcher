@@ -73,6 +73,10 @@ public class LoginController {
         }
     }
 
+    /**
+     * Handles the logout POST function for the logout feature
+     * @return the users currrent session but removes the currentUser attribute, logging the user out
+     * */
     public Route handleLogoutPost() {
         return (Request request, Response response) -> {
             request.session().removeAttribute("currentUser");
