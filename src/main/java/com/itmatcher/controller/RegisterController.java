@@ -26,7 +26,11 @@ import static com.itmatcher.util.RequestUtil.getSessionRedirect;
 
 
 /**
- * Created by deant on 10/4/17.
+ * RegisterController - a class for handling the serving and posting of the register feature
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class RegisterController {
@@ -36,6 +40,8 @@ public class RegisterController {
     @Autowired
     AuthService authService;
 
+    /** Serves the register page to the user
+     * @return the register page for the current session */
     public Route serveRegisterPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
@@ -44,6 +50,8 @@ public class RegisterController {
         };
     }
 
+    /**Handles the POST method of the register function
+     * @return the current session view */
      public Route handleRegisterPost() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
