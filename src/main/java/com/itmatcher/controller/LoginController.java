@@ -43,6 +43,11 @@ public class LoginController {
         };
     }
 
+    /**
+     * Class that handles the login POST function for the login feature
+     * @return the users current session, redirects back to login if incorrect data is entered and
+     * redirects to index page if successful
+     * */
     public Route handleLoginPost() {
         return (Request request, Response response) -> {
             Map<String, Object> model = new HashMap<>();
