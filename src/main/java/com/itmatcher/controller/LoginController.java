@@ -19,7 +19,11 @@ import static com.itmatcher.util.RequestUtil.getQueryParam;
 import static com.itmatcher.util.RequestUtil.getSessionRedirect;
 
 /**
- * Created by deant on 10/4/17.
+ * LoginController - a class for handling the serving and posting of the Login feature
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class LoginController {
@@ -30,7 +34,8 @@ public class LoginController {
     @Autowired
     ProfileRepository profileRepository;
 
-
+    /**Serves the login page based on the users current session
+     * @return the users current session for the login page */
     public Route serveLoginPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
