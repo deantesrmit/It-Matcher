@@ -120,8 +120,10 @@ public class ProfileController {
             Map<String, Object> model = new HashMap<>();
             profileService.updateProfile(request);
             int userID = getSessionCurrentUser(request).getId();
-            final List<Skill> skills = jobService.mapFreelancerSkills(request);
-            skillRepository.saveFreelancerSkills(userID, skills);
+            if (request.queryParamsValues("skillsInput") != null) {
+                final List <Skill> skills = jobService.mapFreelancerSkills(request);
+                skillRepository.saveFreelancerSkills(userID, skills);
+            }
             response.redirect("/profile/");
             return Spark.redirect;
         };
