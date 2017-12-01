@@ -134,9 +134,13 @@ public class ProfileController {
             RequestUtil.ensureUserIsLoggedIn(request, response);
             Map<String, Object> model = new HashMap<>();
             profileService.createProfile(request);
+            int userID = getSessionCurrentUser(request).getId();
+            if (request.queryParamsValues("skillsInput") != null) {
+                final List <Skill> skills = jobService.mapFreelancerSkills(request);
+                skillRepository.saveFreelancerSkills(userID, skills);
+            }
             response.redirect("/profile/");
             return Spark.redirect;
-
         };
     }
 }
