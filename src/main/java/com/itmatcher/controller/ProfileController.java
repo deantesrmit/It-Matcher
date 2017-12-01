@@ -31,7 +31,11 @@ import spark.Spark;
 import static com.itmatcher.util.RequestUtil.getSessionCurrentUser;
 
 /**
- * Created by deant on 10/8/17.
+ * ProfileController - a class for handling the serving and posting of the profile feature
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class ProfileController {
@@ -97,6 +101,8 @@ public class ProfileController {
         }
     }
 
+    /**Serves the edit profile page based on the users current session
+     * @return the users current session for edit profile based on what type of user they are */
     public Route serveEditProfilePage() {
         return (request, response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
@@ -114,6 +120,8 @@ public class ProfileController {
         };
     }
 
+    /**Handles the POST function of the edit profile feature, when the user edits their profile and confirms
+     * @return the users current session, redirects the user to profile page is proceeds correctly*/
     public Route handleEditProfile() {
         return (Request request, Response response) -> {
             RequestUtil.ensureUserIsLoggedIn(request, response);
