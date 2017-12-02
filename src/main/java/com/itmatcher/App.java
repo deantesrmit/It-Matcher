@@ -6,7 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * Created by deant on 9/14/17.
+ * App Class - The main application class for running the app
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Configuration
 @ComponentScan({ "com.itmatcher" })
