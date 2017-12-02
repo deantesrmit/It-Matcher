@@ -121,7 +121,7 @@ public class PageController {
                 model.put("error","Budget must be a positive number");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }
-            else if (today.before(YYYYMMDD_FORMAT.parse(dueDate)) == true) {
+            else if (today.before(YYYYMMDD_FORMAT.parse(dueDate)) != true) {
                 model.put("error","Due date must be set in the future");
                 return ViewUtil.render(request, model, Path.Template.CREATE_JOB);
             }

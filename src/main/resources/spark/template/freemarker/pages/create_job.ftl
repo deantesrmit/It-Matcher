@@ -39,7 +39,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="dateRequired">Date Required By:</label>education.value
+          <label for="dateRequired">Date Required By:</label>
           <br/>
           <input name="dueDate" type="date" name="dateRequiredInput">
         </div>
