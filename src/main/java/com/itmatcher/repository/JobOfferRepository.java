@@ -111,7 +111,8 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
-    /**Creates a job offer with the specified fields from the on screen form*/
+    /**Creates a job offer with the specified fields from the on screen form
+     * @param jobOffer a jobOffer class that needs to be created based on form*/
     public void createJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());
@@ -121,7 +122,8 @@ public class JobOfferRepository {
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
-    /**Updates a job offer with the specified fields from the on screen form*/
+    /**Updates a job offer with the specified fields from the on screen form
+     * @param jobOffer a jobOffer class that needs to be updated based on form*/
     public void updateJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());

@@ -42,7 +42,7 @@ public class WeightedCriteria {
   }
 
   /**Sets the value of the WeightedCriteria instance
-   * @return a string containing the value */
+   * @param value a string containing a value for a WeightedCriteria*/
   public void setValue(String value) {
     this.value = value;
   }

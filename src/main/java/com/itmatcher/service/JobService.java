@@ -45,6 +45,7 @@ public class JobService {
     }
 
     /**Creates the current job based on the parameters in the html form
+     * @param request a request with the users current session
      * @return returns the saved job once completed */
     public Optional<Job> createJob(Request request) {
       Job job = new Job();
@@ -67,6 +68,7 @@ public class JobService {
   }
 
   /**Maps the freelancer skills
+   * @param request a request with the users current session
    * @return Sets the required skills to the freelancer based on the HTML form */
   public List<Skill> mapFreelancerSkills(Request request) {
       return Arrays.stream(request.queryParamsValues("skillsInput"))

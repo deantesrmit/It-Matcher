@@ -103,7 +103,8 @@ public class JobRepository {
 
 
     /**Saves a job based on a job entered
-     * @param job a job element containing a job*/
+     * @param job a job element containing a job
+     * @return a job based on the job that was entered*/
     public Optional<Job> saveJob(Job job) {
         KeyHolder holder = new GeneratedKeyHolder();
         String SQL =
