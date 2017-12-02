@@ -17,7 +17,12 @@ import static spark.Spark.post;
 import static spark.Spark.staticFileLocation;
 
 /**
- * Created by deant on 10/4/17.
+ * WebConfig - A class which handles the routes for Spark commands throughout the web application
+ * handles POST,GET for all classes as required by the web application
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class WebConfig {
