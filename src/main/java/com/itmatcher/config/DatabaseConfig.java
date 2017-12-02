@@ -9,7 +9,11 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import javax.sql.DataSource;
 
 /**
- * Created by deant on 10/5/17.
+ * Database config - A class which fills the database with the required scripts for the application
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Configuration
 public class DatabaseConfig {
