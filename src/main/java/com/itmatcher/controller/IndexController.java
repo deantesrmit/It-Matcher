@@ -9,7 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by deant on 10/4/17.
+ * IndexController - a class for serving the index page for a user
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class IndexController {
