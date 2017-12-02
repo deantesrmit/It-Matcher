@@ -33,8 +33,13 @@ public class WorkExpService {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
+    /**Returns a list of all the work experience in the database
+     * @return returns a list of all the work experience values in the database */
     public List<WorkExp> getAllWorkExp() {return lookupRepository.getAllWorkExp();}
 
+    /**Returns a value for a work experience based on the ID provided
+     * @param id an int containing an ID for a Work Experience class
+     * @return return a Work experience element matched by the ID*/
     public Optional<WorkExp> getValueWorkExperience(int id) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);

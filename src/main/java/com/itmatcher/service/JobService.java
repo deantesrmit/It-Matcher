@@ -30,14 +30,22 @@ public class JobService {
     @Autowired
     SkillRepository mSkillRepository;
 
+    /**Returns the current jobs for a user based on user presented
+     * @param user a filled user class
+     * @return returns a list of the matched jobs for that user based on ID*/
     public Optional<List<Job>> getJobsForUser(User user) {
         return jobRepository.getJobsByUserId(user.getId());
     }
 
+    /**Returns the current job based on job ID presented
+     * @param jobId an int containing a job ID
+     * @return returns the matched job */
     public Optional<Job> getJobById(int jobId) {
         return jobRepository.getJobById(jobId);
     }
 
+    /**Creates the current job based on the parameters in the html form
+     * @return returns the saved job once completed */
     public Optional<Job> createJob(Request request) {
       Job job = new Job();
       job.setJobPosterId(RequestUtil.getSessionCurrentUser(request).getId());
@@ -58,6 +66,8 @@ public class JobService {
     .collect(Collectors.toList());
   }
 
+  /**Maps the freelancer skills
+   * @return Sets the required skills to the freelancer based on the HTML form */
   public List<Skill> mapFreelancerSkills(Request request) {
       return Arrays.stream(request.queryParamsValues("skillsInput"))
               .map(s -> new Skill(Integer.parseInt(s)))

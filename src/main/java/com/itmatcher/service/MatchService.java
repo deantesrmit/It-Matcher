@@ -28,6 +28,9 @@ public class MatchService {
   @Autowired
   private JobOfferRepository offerRepository;
 
+  /**Finds freelancers for a particular job based on ID
+   * @param jobId an int containing a job ID
+   * @return returns a List of FreelancerDto's for the particular job*/
   public List<FreelancerDto> findFreelancersForJob(int jobId) {
     final Job job = jobRepository.getJobById(jobId).get();
     final List<Language> requiredLanguages = getRequiredFields(job.getLanguages(), Language.class);

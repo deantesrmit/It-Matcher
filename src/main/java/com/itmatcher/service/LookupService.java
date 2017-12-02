@@ -21,10 +21,14 @@ public class LookupService {
 
     LookupRepository lookupRepository;
 
+    /**Returns a list of all education values
+     * @return a list of all the education values in the database */
     public List <Education> getAllEducations() {
         return lookupRepository.getAllEducations();
     }
 
+    /**Returns a list of all Work Exp values
+     * @return a list of all the work experience values in the database */
     public List <WorkExp> getAllWorkExp() {
         return lookupRepository.getAllWorkExp();
     }

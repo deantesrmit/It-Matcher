@@ -24,6 +24,8 @@ public class JobOfferService {
   @Autowired
   JobOfferRepository jobOfferRepository;
 
+  /**Creates or updates the job offer in the database
+   * @param request a request element containing the users current session variables*/
   public void createOrUpdateJobOffer(Request request) {
     final int freeLancerId = parseInt(getQueryParam(request, "freeLancerId"));
     final int jobId = parseInt(getQueryParam(request, "jobId"));

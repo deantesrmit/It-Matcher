@@ -25,17 +25,24 @@ public class ProfileService {
   @Autowired
   ProfileRepository profileRepository;
 
+  /**Returns a profile based on the user ID presented
+   * @param userId an int containing a user ID
+   * @return a profile based on the user ID that was entered*/
   public Optional<Profile> getProfileByUserId(int userId) {
     return profileRepository.getProfileByUserID(userId);
   }
 
 
+  /**Updates the profile with the current session elements
+   * @param request the users current request session */
   public void updateProfile(Request request) {
     Profile profile = profileRepository.getProfileByUserID(RequestUtil.getSessionCurrentUser(request).getId()).get();
     mapProfile(request, profile);
     profileRepository.updateProfile(profile);
   }
 
+  /**Creates the profile with the current session elements
+   * @param request the users current request session */
   public void createProfile(Request request) {
     Profile profile = new Profile();
     mapProfile(request, profile);

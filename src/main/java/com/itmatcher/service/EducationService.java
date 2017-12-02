@@ -34,6 +34,9 @@ public class EducationService {
 
     public List <Education> getAllEducations() {return lookupRepository.getAllEducations();}
 
+    /**Returns an education value based on ID
+     * @param id an int containing the ID of an education level
+     * @return returns the matching value of the education based on the ID*/
     public Optional <Education> getValueEducation(int id) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);
