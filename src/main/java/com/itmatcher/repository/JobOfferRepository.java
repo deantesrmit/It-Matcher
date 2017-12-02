@@ -54,7 +54,9 @@ public class JobOfferRepository {
     @Autowired
     public JobOfferRepository(DataSource ds) {template = new NamedParameterJdbcTemplate(ds);}
 
-
+    /**Returns the job offer based on the freelancers profile ID
+     * @param freelancerID an int containing the freelancer ID of a freelancer
+     * @return the correct profile ID or a null list if no match found*/
     public Optional<List<JobOffer>> getJobOfferByProfile(int freelancerID) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("freelancerID", freelancerID);
@@ -71,6 +73,10 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
+    /**Responds to the job offer, based on the job ID, freelancer ID and the answer the freelancer gives
+     * @param jobID a string containing a job ID
+     * @param freelancerID a string containing a freelancer ID
+     * @param answer the response the freelaner gives to the job offer*/
     public void respondJobOffer(String jobID, String freelancerID, String answer) {
 
         Map<String, Object> params = new HashMap<>();
@@ -87,8 +93,10 @@ public class JobOfferRepository {
         }
     }
 
-
-
+    /**Returns the offer status for a freelancer based on job ID
+     * @param freeLancerId an int containing a freelancers ID
+     * @param status an int containing the status of the job offer
+     * @return a JobOffer based on the parameters*/
     public Optional<JobOffer> findOfferByFreeLancerIdJobId(int freeLancerId, int status) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobId", freeLancerId);
@@ -103,6 +111,7 @@ public class JobOfferRepository {
         return Optional.empty();
     }
 
+    /**Creates a job offer with the specified fields from the on screen form*/
     public void createJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());
@@ -112,6 +121,7 @@ public class JobOfferRepository {
         template.update(CREATE_NEW_JOB_OFFER, params);
     }
 
+    /**Updates a job offer with the specified fields from the on screen form*/
     public void updateJobOffer(JobOffer jobOffer) {
         Map<String, Object> params = new HashMap<>();
         params.put("jobID", jobOffer.getJobID());
@@ -130,6 +140,9 @@ public class JobOfferRepository {
         return jobOffer;
     };
 
+    /**Returns a list of the current jobs for a freelancer based on ID
+     * @param freelancerID an int containing a freelancer iD
+     * @return returns the list of jobs for the freelancer*/
     public List <Job> getJobsForFreelancer(int freelancerID)
     {
         List<Job> freelancersJobs = new ArrayList<Job>();

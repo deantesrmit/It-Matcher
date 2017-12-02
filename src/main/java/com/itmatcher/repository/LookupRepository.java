@@ -31,7 +31,8 @@ public class LookupRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
-
+    /**Returns a list of all educations in the database
+     * @return returns a list of all educations */
     public List<Education> getAllEducations() {
         Map<String, Object> params = new HashMap<>();
 
@@ -48,6 +49,8 @@ public class LookupRepository {
         return p;
     };
 
+    /**Returns a list of all work experience values in the database
+     * @return a list of WorkExp containing all the work experience classes in the database */
     public List<WorkExp> getAllWorkExp() {
         Map<String, Object> params = new HashMap<>();
 

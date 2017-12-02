@@ -40,6 +40,9 @@ public class ProfileRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
+    /**Returns a Profile based on the profile ID
+     * @param userID an int containing a user ID
+     * @return returns a profile based on the user ID presented*/
     public Optional<Profile> getProfileByUserID(int userID) {
         Map<String, Object> params = new HashMap<>();
         params.put("userID", userID);
@@ -50,11 +53,15 @@ public class ProfileRepository {
         return Optional.empty();
     }
 
+    /**Updates the users profile based on the profile presented
+     * @param profile a profile created through the Profile class */
     public void updateProfile(Profile profile) {
         Map<String, Object> params = mapProfileParams(profile);
         template.update(UPDATE_PROFILE_SQL, params);
     }
 
+    /**Creates the users profile based on the profile presented
+     * @param profile a profile created through the Profile class*/
     public void createProfile(Profile profile) {
         Map<String, Object> params = mapProfileParams(profile);
         template.update(INSERT_NEW_PROFILE, params);

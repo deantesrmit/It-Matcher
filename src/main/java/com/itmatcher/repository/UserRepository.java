@@ -28,6 +28,9 @@ public class UserRepository {
         template = new NamedParameterJdbcTemplate(ds);
     }
 
+    /**Returns a user based on the username presented
+     * @param username a string containing a users username
+     * @return returns a user if one is found matching the username*/
     public Optional<User> getUserByUserName(String username) {
         Map<String, Object> params = new HashMap<>();
         params.put("username", username);
@@ -46,6 +49,8 @@ public class UserRepository {
         return Optional.empty();
     }
 
+    /**Registers the user to the application
+     * @param user a user created through the user class*/
     public void registerUser(User user) {
         Map<String, Object> params = new HashMap<>();
         params.put("username", user.getUsername());

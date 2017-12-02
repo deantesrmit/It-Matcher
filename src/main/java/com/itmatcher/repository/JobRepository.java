@@ -37,6 +37,9 @@ public class JobRepository {
         mJdbcTemplate = new JdbcTemplate(ds);
     }
 
+    /**Returns a list of jobs based on user ID
+     * @param id an int containing a user ID
+     * @return a list of jobs based on the user ID entered*/
     public Optional<List<Job>> getJobsByUserId(int id) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", id);
@@ -55,7 +58,9 @@ public class JobRepository {
         return Optional.empty();
     }
 
-
+    /**Returns a job based on the job ID entered
+     * @param jobId an int containing a job ID number
+     * @return return a Job based on the job ID entered*/
     public Optional<Job> getJobById(int jobId) {
         final HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("jobId", jobId);
@@ -78,6 +83,7 @@ public class JobRepository {
         jobs.stream().forEach(job -> job.setSkills(skillRepository.getWeightedSkills(job.getId())));
     }
 
+    /** Maps a row based on the row number, creates job based on the elements in that row number*/
     public RowMapper<Job> jobRowMapper = (rs, rowNum) -> {
         Job job = new Job();
         job.setId(rs.getInt("jobsid"));
@@ -96,7 +102,8 @@ public class JobRepository {
     };
 
 
-
+    /**Saves a job based on a job entered
+     * @param job a job element containing a job*/
     public Optional<Job> saveJob(Job job) {
         KeyHolder holder = new GeneratedKeyHolder();
         String SQL =

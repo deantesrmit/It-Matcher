@@ -50,6 +50,8 @@ public class SkillRepository {
         return Optional.empty();
     }
 
+    /**Returns a list of all skills in the database
+     * @return a list of all skills currently entered into the database */
     public List<Skill> getAllSkills() {
         Map<String, Object> params = new HashMap<>();
               String sql = "select * from tblSkills";
@@ -61,6 +63,9 @@ public class SkillRepository {
                return list;
     }
 
+    /**Returns a list of all weighted skills based on job ID entered
+     * @param jobsId an int containing a jobs ID
+     * @return a list containing the weighted skills for the chosen job*/
     public List<Skill> getWeightedSkills(int jobsId) {
 
         Map<String, Object> params = new HashMap<>();
@@ -81,6 +86,9 @@ public class SkillRepository {
 
     }
 
+    /**Saves skills from the list of skills to a particular job
+     * @param job an int containing a jobID
+     * @param skills a list of required skills for a job*/
     public void saveAllSkills(int job, List<Skill> skills) {
         for (Skill skill : skills) {
             Map<String, Object> params = new HashMap<>();
@@ -91,6 +99,9 @@ public class SkillRepository {
         }
     }
 
+    /**Saves freelancers skills from the list of skills
+     * @param userID an int containing a user ID
+     * @param skills a list of required skills for a job*/
     public void saveFreelancerSkills (int userID, List<Skill> skills) {
         for (Skill skill : skills) {
             Map <String, Object> params = new HashMap<>();

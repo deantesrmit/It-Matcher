@@ -34,6 +34,10 @@ public class FreeLancerRepository {
     template = new NamedParameterJdbcTemplate(ds);
   }
 
+  /**Returns the required freelancers based on the required languages and skills
+   * @param requiredLanguages a list containing required languages for a job
+   * @param requiredSkills a list containing required skills for a job
+   * @return a list of freelancers which match the parameters */
   public List<FreeLancer> findFreeLancersByRequired(List<Language> requiredLanguages, List<Skill> requiredSkills) {
     final Optional<List<FreeLancer>> maybeFreeLancers = getFreeLancers();
     if (!maybeFreeLancers.isPresent()) {
