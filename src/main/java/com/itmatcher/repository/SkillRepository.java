@@ -15,7 +15,11 @@ import java.util.Optional;
 import static com.itmatcher.domain.CriteriaWeight.fromScore;
 
 /**
- * Created by deant on 10/15/17.
+ * SkillRepository Class - The repository for calling functions for Skills
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Repository
 public class SkillRepository {

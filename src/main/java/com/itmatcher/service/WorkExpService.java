@@ -16,7 +16,11 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by deant on 10/24/17.
+ * WorkExpService Class - Repository for functions related to Work experience
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class WorkExpService {

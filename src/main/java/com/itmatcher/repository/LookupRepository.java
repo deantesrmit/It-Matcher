@@ -14,7 +14,11 @@ import javax.sql.DataSource;
 import java.util.List;
 
 /**
- * Created by deant on 10/24/17.
+ * LookUpRepository Class - The repository for calling functions for lookup commands
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Repository
 

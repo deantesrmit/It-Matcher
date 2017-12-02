@@ -13,6 +13,13 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+/**
+ * ProfileRepository Class - The repository for calling functions for Profiles
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
+ */
 @Repository
 public class ProfileRepository {
     private NamedParameterJdbcTemplate template;

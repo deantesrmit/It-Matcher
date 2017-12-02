@@ -11,7 +11,11 @@ import java.util.Optional;
 import static com.google.common.base.Strings.isNullOrEmpty;
 
 /**
- * Created by deant on 10/8/17.
+ * AuthService Class - Repository for functions related to authentication
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class AuthService {

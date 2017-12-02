@@ -9,7 +9,11 @@ import java.util.Optional;
 import java.util.List;
 
 /**
- * Created by deant on 10/24/17.
+ * LookupService Class - Repository for functions related to lookups
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class LookupService {

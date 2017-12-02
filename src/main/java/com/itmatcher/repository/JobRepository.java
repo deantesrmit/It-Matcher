@@ -16,7 +16,11 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by deant on 10/21/17.
+ * JobRepository Class - The repository for calling functions for Jobs
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Repository
 public class JobRepository {

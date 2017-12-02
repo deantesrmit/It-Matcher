@@ -12,7 +12,11 @@ import static com.itmatcher.util.RequestUtil.getQueryParam;
 import static java.lang.Integer.parseInt;
 
 /**
- * @author Dean Tesoriero
+ * JobOfferService Class - Repository for functions related to job offers
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class JobOfferService {

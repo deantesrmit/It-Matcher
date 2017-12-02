@@ -17,7 +17,11 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author Dean Tesoriero
+ * FreeLancerRepository Class - The repository for calling functions for Freelancers
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Repository
 public class FreeLancerRepository {
@@ -29,7 +33,6 @@ public class FreeLancerRepository {
   public FreeLancerRepository(DataSource ds) {
     template = new NamedParameterJdbcTemplate(ds);
   }
-
 
   public List<FreeLancer> findFreeLancersByRequired(List<Language> requiredLanguages, List<Skill> requiredSkills) {
     final Optional<List<FreeLancer>> maybeFreeLancers = getFreeLancers();

@@ -13,7 +13,11 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * Created by deant on 10/5/17.
+ * UserRepository Class - The repository for calling functions for Users
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Repository
 public class UserRepository {

@@ -13,7 +13,11 @@ import java.util.Optional;
 import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 /**
- * @author Dean Tesoriero
+ * ProfileService Class - Repository for functions related to profiles
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class ProfileService {

@@ -12,7 +12,11 @@ import org.springframework.stereotype.Service;
 import static com.itmatcher.domain.CriteriaWeight.REQUIRED;
 
 /**
- * @author Dean Tesoriero
+ * MatchService Class - Repository for functions related to the Matchmaking function
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class MatchService {

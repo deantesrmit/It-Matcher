@@ -17,7 +17,11 @@ import spark.Request;
 import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 /**
- * Created by deant on 10/21/17.
+ * JobService Class - Repository for functions related to Job Services
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Service
 public class JobService {
