@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Dean Tesoriero
+ * Freelancer Class - represents a freelancer user
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 public class FreeLancer {
     private int id;
