@@ -6,7 +6,11 @@ import spark.Request;
 import spark.Response;
 
 /**
- * Created by deant on 10/4/17.
+ * Filters Class - A class that assists users with filtering if they forget slashes in the URL
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class Filters {
