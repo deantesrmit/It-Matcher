@@ -56,6 +56,8 @@ public class JobController {
         };
     };
 
+    /**Handles the accepting and declining of a job by ta freelancer
+     * @return returns the current freelancers job offers after an offer has been processed as accepted or declined*/
     public Route handerJobAcceptDecline () {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
