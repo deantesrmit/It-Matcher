@@ -19,7 +19,11 @@ import spark.Spark;
 import static com.itmatcher.util.RequestUtil.getQueryParam;
 
 /**
- * Created by deant on 10/21/17.
+ * JobController - a class for handling the accepting and offering jobs
+ *
+ * @author dean, bede, melissa, john, mark and stephen
+ * @version 1.0
+ *
  */
 @Component
 public class JobController {
@@ -31,6 +35,8 @@ public class JobController {
     JobOfferRepository jobOfferRepository;
     @Autowired ProfileRepository profileRepository;
 
+    /**Serves the view job page based on the users current session
+     * @return the users current session for the view job page based on what type of user they are */
     public Route serveViewJobPage() {
         return (request, response) -> {
             Map<String, Object> viewObjects = new HashMap<>();
@@ -40,6 +46,8 @@ public class JobController {
     }
 
 
+    /**Handles the offering of a job to a freelancer by passing current job ID to the offer service
+     * @return redirects the user after creating the job offer*/
     public Route handleOfferJobToFreelancer() {
         return (request, response) -> {
             offerService.createOrUpdateJobOffer(request);
